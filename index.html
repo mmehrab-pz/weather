@@ -1,12 +1,419 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather</title>
     <link rel="stylesheet" href="src/styles/output.css">
+    <link rel="icon" type="image/x-icon" href="src/asset/img/logo/logo-4.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="src/asset/img/logo/logo-4.png">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
-<body class="bg-amber-50">
-    
+
+<body class="bg-[url(../asset/img/night-back.webp)] bg-cover h-dvh flex overflow-hidden p-3 select-none">
+    <main class="w-full h-full flex">
+        <!-- ---------------------------------------aside---------------------------------- -->
+        <aside
+            class="hidden lg:block h-full w-[80px] px-2.5 rounded-l-[18px] bg-[#ffffff0e] backdrop-blur-2xl border-r border-r-[#ffffff17]">
+            <figure class="w-full h-[65px] flex items-center">
+                <img src="src/asset/img/icon/clouds.png" alt="">
+            </figure>
+            <!-- -----------------nav bar---------------- -->
+            <nav class="w-full h-[200px] mt-2.5">
+                <ul id="nav-ul" class="w-full">
+                    <li data-name="home"
+                        class="w-full flex justify-center rounded-2xl p-3.5 mb-7 cursor-pointer active-nav hover:bg-[#ffffff1e] duration-300">
+                        <figure>
+                            <img src="src/asset/img/icon/icons8-home-96.png" class="w-[30px]">
+                        </figure>
+                    </li>
+                    <li data-name="first"
+                        class="w-full flex justify-center rounded-2xl p-3.5 mb-7 cursor-pointer hover:bg-[#ffffff1e] duration-300">
+                        <figure>
+                            <img src="src/asset/img/icon/icons8-four-squares-96.png" class="w-[30px]">
+                        </figure>
+                    </li>
+                    <li data-name="location"
+                        class="w-full flex justify-center rounded-2xl p-3.5 mb-7 cursor-pointer hover:bg-[#ffffff1e] duration-300">
+                        <figure>
+                            <img src="src/asset/img/icon/icons8-location-96.png" class="w-[35px]">
+                        </figure>
+                    </li>
+                    <li data-name="search"
+                        class="w-full flex justify-center rounded-2xl p-3.5 mb-7 cursor-pointer hover:bg-[#ffffff1e] duration-300">
+                        <figure>
+                            <img src="src/asset/img/icon/icons8-search-96.png" class="w-[30px]">
+                        </figure>
+                    </li>
+                    <li data-name="profile"
+                        class="w-full flex justify-center rounded-2xl p-3.5 mb-7 cursor-pointer hover:bg-[#ffffff1e] duration-300">
+                        <figure>
+                            <img src="src/asset/img/icon/icons8-profile-96.png" class="w-[30px]">
+                        </figure>
+                    </li>
+                    <li data-name="setting"
+                        class="w-full flex justify-center rounded-2xl p-3.5 mb-7 cursor-pointer hover:bg-[#ffffff1e] duration-300">
+                        <figure>
+                            <img src="src/asset/img/icon/icons8-setting-96.png" class="w-[30px]">
+                        </figure>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+        <!-- ---------------------------------------pages---------------------------------- -->
+        <section id="pages"
+            class="w-full h-full lg:w-[calc(100%-80px)] bg-[#ffffff0e] rounded-2xl lg:rounded-[0px] lg:rounded-r-2xl backdrop-blur-2xl">
+            <!-- ---------------------------------home--------------------------------- -->
+            <section data-name="home"
+                class="w-full h-full scrollHide">
+                <header class="w-full flex justify-between items-center px-2.5 h-[65px] border-b border-b-dark-border">
+                    <div class="flex lg:hidden items-center">
+                        <figure class=" flex items-center">
+                            <img src="src/asset/img/icon/clouds.png" alt="" class="w-[50px]">
+                        </figure>
+                        <span
+                            class="w-[40px] h-[40px] flex justify-center items-center rounded-2xl bg-[#ffffff1e] ml-5 cursor-pointer">
+                            <img src="src/asset/img/icon/menu.png" alt="" class="w-[30px]">
+                        </span>
+                    </div>
+                    <div></div>
+                    <div class="flex">
+                        <span
+                            class="flex justify-center items-center w-[40px] h-[40px] rounded-full bg-[#ffffff1e] mr-2.5 cursor-pointer">
+                            <figure>
+                                <img src="src/asset/img/icon/bell.png" alt="" class="w-[25px]">
+                            </figure>
+                        </span>
+                        <figure>
+                            <img src="src/asset/img/mehrab.png" alt="mehrab pourzakaria"
+                                class="w-[40px] rounded-full cursor-pointer">
+                        </figure>
+                    </div>
+                </header>
+                <div class="w-full h-[calc(100%-65px)] flex justify-between flex-wrap">
+                    <div class="w-full lg:w-1/2 h-1/2 flex p-2.5 justify-center items-center">
+                        <a href="https://pourzakaria.com/" target="_blank"
+                            class="w-full h-full flex justify-center items-center rounded-2xl bg1">
+                            <figure class="flex items-center">
+                                <img src="src/asset/img/mehrab2.webp" alt="" class="w-[70px] lg:w-[80px]">
+                                <figcaption class="ml-5 capitalize text-[white] text-[30px] lg:text-[50px] xl:text-[70px] font-['500']">my website</figcaption>
+                            </figure>
+                        </a>
+                    </div>
+                    <div class="w-full lg:w-1/2 h-1/2 flex p-2.5 justify-center items-center">
+                        <a href="https://github.com/mmehrab-pz" target="_blank"
+                            class="w-full h-full flex justify-center items-center rounded-2xl bg2">
+                            <figure class="flex items-center">
+                                <img src="src/asset/img/icon/github.png" alt="" class="w-[70px] lg:w-[100px]">
+                                <figcaption class="ml-5 capitalize text-[white] text-[30px] lg:text-[50px] xl:text-[70px] font-['500']">github</figcaption>
+                            </figure>
+                        </a>
+                    </div>
+                    <div class="w-full lg:w-1/2 h-1/2 flex p-2.5 justify-center items-center">
+                        <a href="https://www.instagram.com/mehrab.poorzakaria_web/" target="_blank"
+                            class="w-full h-full flex justify-center items-center rounded-2xl bg3">
+                            <figure class="flex items-center">
+                                <img src="src/asset/img/icon/instagram.png" alt="" class="w-[70px] lg:w-[100px]">
+                                <figcaption class="ml-5 capitalize text-[white] text-[30px] lg:text-[50px] xl:text-[70px] font-['500']">instagram</figcaption>
+                            </figure>
+                        </a>
+                    </div>
+                    <div class="w-full lg:w-1/2 h-1/2 flex p-2.5 justify-center items-center">
+                        <a href="https://www.linkedin.com/in/mehrab-pourzakaria-1b2492237/" target="_blank"
+                            class="w-full h-full flex justify-center items-center rounded-2xl bg4">
+                            <figure class="flex items-center">
+                                <img src="src/asset/img/icon/linkedin.png" alt="" class="w-[70px] lg:w-[100px]">
+                                <figcaption class="ml-5 capitalize text-[white] text-[30px] lg:text-[50px] xl:text-[70px] font-['500']">linkedin</figcaption>
+                            </figure>
+                        </a>
+                    </div>
+                </div>
+            </section>
+            <!-- ----------------------------------------first------------------------------------- -->
+            <section data-name="first" class="w-full h-full text-white text-[70px] hidden">
+                <header class="w-full flex justify-between items-center px-2.5 h-[65px] border-b border-b-dark-border">
+                    <div class="flex lg:hidden items-center">
+                        <figure class=" flex items-center">
+                            <img src="src/asset/img/icon/clouds.png" alt="" class="w-[50px]">
+                        </figure>
+                        <span
+                            class="w-[40px] h-[40px] flex justify-center items-center rounded-2xl bg-[#ffffff1e] ml-5 cursor-pointer">
+                            <img src="src/asset/img/icon/menu.png" alt="" class="w-[30px]">
+                        </span>
+                    </div>
+                    <div></div>
+                    <div class="flex">
+                        <span
+                            class="flex justify-center items-center w-[40px] h-[40px] rounded-full bg-[#ffffff1e] mr-2.5 cursor-pointer">
+                            <figure>
+                                <img src="src/asset/img/icon/bell.png" alt="" class="w-[25px]">
+                            </figure>
+                        </span>
+                        <figure>
+                            <img src="src/asset/img/mehrab.png" alt="mehrab pourzakaria"
+                                class="w-[40px] rounded-full cursor-pointer">
+                        </figure>
+                    </div>
+                </header>
+                <div class="w-full h-[calc(100%-65px)] p-2.5 scrollHide">
+                    <div class="w-full flex flex-wrap">
+                        <!-- ----------------------------row 1 -->
+                        <!-- --------------current weather -->
+                        <div class="w-full lg:w-4/12 h-[400px] p-2.5">
+                            <div
+                                class="w-full h-full p-6 rounded-2xl bg-[#00000067] backdrop-blur-2xl border border-dark-border flex flex-col justify-between">
+                                <h3 class="font-['400'] text-[20px] capitalize text-[white]">current weather</h3>
+                                <div class="w-full flex items-center">
+                                    <figure>
+                                        <img src="src/asset/img/icon/rain.png" alt="" class="w-[100px]">
+                                    </figure>
+                                    <h3 class="font-['600'] text-[60px] ml-[30px]">
+                                        24
+                                        <sup class="font-['400'] text-[40px]">
+                                            °C
+                                        </sup>
+                                    </h3>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <h6 class="font-['400'] text-[14px] xl:text-[16px] capitalize text-[white]">heavy
+                                        rain</h6>
+                                    <figure class="flex items-center">
+                                        <img src="src/asset/img/icon/icons8-location-96.png" alt=""
+                                            class="w-[22px] xl:w-[25px]">
+                                        <figcaption class="font-['400'] text-[14px] capitalize text-[white] ml-2">
+                                            tehran
+                                        </figcaption>
+                                    </figure>
+                                    <figure class="flex items-center">
+                                        <img src="src/asset/img/icon/time.png" alt="" class="w-[22px] xl:w-[25px]">
+                                        <figcaption
+                                            class="font-['400'] text-[14px] xl:text-[16px] capitalize text-[white] ml-2">
+                                            6:30
+                                        </figcaption>
+                                    </figure>
+                                    <figure class="flex items-center">
+                                        <img src="src/asset/img/icon/icons8-timeline-week-96.png" alt=""
+                                            class="w-[22px] xl:w-[25px]">
+                                        <figcaption
+                                            class="font-['400'] text-[14px] xl:text-[16px] capitalize text-[white] ml-2">
+                                            2025-10-23
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <figure
+                                        class="font-['400'] text-[16px] capitalize text-[white] flex flex-col items-center justify-center">
+                                        <img src="src/asset/img/icon/Humidity.png" alt="" class="w-[25px]">
+                                        <figcaption class="font-['400'] text-[16px] capitalize text-[white] mt-2.5">50%
+                                        </figcaption>
+                                    </figure>
+                                    <figure
+                                        class="font-['400'] text-[16px] capitalize text-[white] flex flex-col items-center justify-center">
+                                        <img src="src/asset/img/icon/visibility.png" alt="" class="w-[25px]">
+                                        <figcaption class="font-['400'] text-[16px] capitalize text-[white] mt-2.5">
+                                            10000</figcaption>
+                                    </figure>
+                                    <figure
+                                        class="font-['400'] text-[16px] capitalize text-[white] flex flex-col items-center justify-center">
+                                        <img src="src/asset/img/icon/pressure.png" alt="" class="w-[25px]">
+                                        <figcaption class="font-['400'] text-[16px] capitalize text-[white] mt-2.5">1012
+                                        </figcaption>
+                                    </figure>
+                                    <figure
+                                        class="font-['400'] text-[16px] capitalize text-[white] flex flex-col items-center justify-center">
+                                        <img src="src/asset/img/icon/wind.png" alt="" class="w-[25px]">
+                                        <figcaption class="font-['400'] text-[16px] capitalize text-[white] mt-2.5">
+                                            3.08Km/h</figcaption>
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- -------------location -->
+                        <div class="w-full lg:w-5/12 h-[400px] p-2.5">
+                            <div id="map"
+                                class="w-full h-full flex justify-center items-center rounded-2xl bg-[#ffffff0a] backdrop-blur-2xl">
+                            </div>
+                        </div>
+                        <!-- -------------popular cities -->
+                        <div class="w-full lg:w-3/12 h-[400px] p-2.5">
+                            <div class="w-full h-full p-6 rounded-2xl bg-[#ffffff0a] backdrop-blur-2xl">
+                                <h3 class="font-['400'] text-[20px] capitalize text-[white]">popular cities</h3>
+                                <ul class=" w-full mt-5">
+                                    <li
+                                        class="w-full flex justify-between items-center cursor-pointer py-2 border-b border-b-dark-border">
+                                        <figure class="flex items-center">
+                                            <img src="src/asset/img/icon/strom.png" class="w-[25px]">
+                                            <figcaption class="font-['400'] text-[16px] capitalize text-[white] ml-2">
+                                                tokyo</figcaption>
+                                        </figure>
+                                        <h6 class="font-['400'] text-[14px] capitalize text-[white]">stromy</h6>
+                                    </li>
+                                    <li
+                                        class="w-full flex justify-between items-center cursor-pointer py-2 border-b border-b-dark-border">
+                                        <figure class="flex items-center">
+                                            <img src="src/asset/img/icon/rain.png" alt="" class="w-[25px]">
+                                            <figcaption class="font-['400'] text-[16px] capitalize text-[white] ml-2">
+                                                new york</figcaption>
+                                        </figure>
+                                        <h6 class="font-['400'] text-[14px] capitalize text-[white]">rainy</h6>
+                                    </li>
+                                    <li
+                                        class="w-full flex justify-between items-center cursor-pointer py-2 border-b border-b-dark-border">
+                                        <figure class="flex items-center">
+                                            <img src="src/asset/img/icon/clouds.png" class="w-[25px]">
+                                            <figcaption class="font-['400'] text-[16px] capitalize text-[white] ml-2">
+                                                london</figcaption>
+                                        </figure>
+                                        <h6 class="font-['400'] text-[14px] capitalize text-[white]">cloudy</h6>
+                                    </li>
+                                    <li
+                                        class="w-full flex justify-between items-center cursor-pointer py-2 border-b border-b-dark-border">
+                                        <figure class="flex items-center">
+                                            <img src="src/asset/img/icon/Clear.png" class="w-[25px]">
+                                            <figcaption class="font-['400'] text-[16px] capitalize text-[white] ml-2">
+                                                dubai</figcaption>
+                                        </figure>
+                                        <h6 class="font-['400'] text-[14px] capitalize text-[white]">clear</h6>
+                                    </li>
+                                    <li
+                                        class="w-full flex justify-between items-center cursor-pointer py-2 border-b border-b-dark-border">
+                                        <figure class="flex items-center">
+                                            <img src="src/asset/img/icon/strom.png" class="w-[25px]">
+                                            <figcaption class="font-['400'] text-[16px] capitalize text-[white] ml-2">
+                                                tokyo</figcaption>
+                                        </figure>
+                                        <h6 class="font-['400'] text-[14px] capitalize text-[white]">stromy</h6>
+                                    </li>
+                                    <li
+                                        class="w-full flex justify-between items-center cursor-pointer py-2 border-b border-b-dark-border">
+                                        <figure class="flex items-center">
+                                            <img src="src/asset/img/icon/rain.png" alt="" class="w-[25px]">
+                                            <figcaption class="font-['400'] text-[16px] capitalize text-[white] ml-2">
+                                                new york</figcaption>
+                                        </figure>
+                                        <h6 class="font-['400'] text-[14px] capitalize text-[white]">rainy</h6>
+                                    </li>
+                                    <li
+                                        class="w-full flex justify-between items-center cursor-pointer py-2 border-b border-b-dark-border">
+                                        <figure class="flex items-center">
+                                            <img src="src/asset/img/icon/clouds.png" class="w-[25px]">
+                                            <figcaption class="font-['400'] text-[16px] capitalize text-[white] ml-2">
+                                                london</figcaption>
+                                        </figure>
+                                        <h6 class="font-['400'] text-[14px] capitalize text-[white]">cloudy</h6>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- ----------------------------row 2 -->
+                        <!-- --------------forecast -->
+                        <div class="w-full lg:w-4/12 h-[400px] p-2.5">
+                            <div
+                                class="w-full h-full p-6 rounded-2xl bg-[#ffffff0a] backdrop-blur-2xl border border-dark-border flex flex-col justify-between">
+                                <div class="w-full flex justify-between items-center">
+                                    <h3 class="font-['400'] text-[20px] capitalize text-[white]">forecast</h3>
+                                    <span
+                                        class="font-['400'] text-[16px] capitalize text-[white]  py-2.5 px-4 rounded-2xl bg-[#00000067] backdrop-blur-2xl">7
+                                        days</span>
+                                </div>
+                                <ul class=" w-full mt-3">
+                                    <li
+                                        class="w-full flex justify-between items-center cursor-pointer py-2 border-b border-b-dark-border">
+                                        <figure class="flex items-center">
+                                            <img src="src/asset/img/icon/strom.png" class="w-[25px]">
+                                            <figcaption class="font-['400'] text-[16px] capitalize text-[white] ml-4">
+                                                24° / 22°
+                                            </figcaption>
+                                        </figure>
+                                        <h6 class="font-['400'] text-[14px] capitalize text-[white]">2025-10-23</h6>
+                                    </li>
+                                    <li
+                                        class="w-full flex justify-between items-center cursor-pointer py-2 border-b border-b-dark-border">
+                                        <figure class="flex items-center">
+                                            <img src="src/asset/img/icon/strom.png" class="w-[25px]">
+                                            <figcaption class="font-['400'] text-[16px] capitalize text-[white] ml-4">
+                                                24° / 22°
+                                            </figcaption>
+                                        </figure>
+                                        <h6 class="font-['400'] text-[14px] capitalize text-[white]">2025-10-23</h6>
+                                    </li>
+                                    <li
+                                        class="w-full flex justify-between items-center cursor-pointer py-2 border-b border-b-dark-border">
+                                        <figure class="flex items-center">
+                                            <img src="src/asset/img/icon/strom.png" class="w-[25px]">
+                                            <figcaption class="font-['400'] text-[16px] capitalize text-[white] ml-4">
+                                                24° / 22°
+                                            </figcaption>
+                                        </figure>
+                                        <h6 class="font-['400'] text-[14px] capitalize text-[white]">2025-10-23</h6>
+                                    </li>
+                                    <li
+                                        class="w-full flex justify-between items-center cursor-pointer py-2 border-b border-b-dark-border">
+                                        <figure class="flex items-center">
+                                            <img src="src/asset/img/icon/strom.png" class="w-[25px]">
+                                            <figcaption class="font-['400'] text-[16px] capitalize text-[white] ml-4">
+                                                24° / 22°
+                                            </figcaption>
+                                        </figure>
+                                        <h6 class="font-['400'] text-[14px] capitalize text-[white]">2025-10-23</h6>
+                                    </li>
+                                    <li
+                                        class="w-full flex justify-between items-center cursor-pointer py-2 border-b border-b-dark-border">
+                                        <figure class="flex items-center">
+                                            <img src="src/asset/img/icon/strom.png" class="w-[25px]">
+                                            <figcaption class="font-['400'] text-[16px] capitalize text-[white] ml-4">
+                                                24° / 22°
+                                            </figcaption>
+                                        </figure>
+                                        <h6 class="font-['400'] text-[14px] capitalize text-[white]">2025-10-23</h6>
+                                    </li>
+                                    <li
+                                        class="w-full flex justify-between items-center cursor-pointer py-2 border-b border-b-dark-border">
+                                        <figure class="flex items-center">
+                                            <img src="src/asset/img/icon/strom.png" class="w-[25px]">
+                                            <figcaption class="font-['400'] text-[16px] capitalize text-[white] ml-4">
+                                                24° / 22°
+                                            </figcaption>
+                                        </figure>
+                                        <h6 class="font-['400'] text-[14px] capitalize text-[white]">2025-10-23</h6>
+                                    </li>
+                                    <li class="w-full flex justify-between items-center cursor-pointer py-2 ">
+                                        <figure class="flex items-center">
+                                            <img src="src/asset/img/icon/strom.png" class="w-[25px]">
+                                            <figcaption class="font-['400'] text-[16px] capitalize text-[white] ml-4">
+                                                24° / 22°
+                                            </figcaption>
+                                        </figure>
+                                        <h6 class="font-['400'] text-[14px] capitalize text-[white]">2025-10-23</h6>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- -------------popular cities -->
+                        <div class="w-full lg:w-8/12 h-[400px] p-2.5">
+                            <div class="w-full h-full p-6 rounded-2xl bg-[#ffffff0a] backdrop-blur-2xl">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- ------------------------location--------------------- -->
+            <section data-name="location"
+                class="w-full h-full flex justify-center items-center text-white text-[70px] hidden">location</section>
+            <!-- ------------------------search--------------------- -->
+            <section data-name="search"
+                class="w-full h-full flex justify-center items-center text-white text-[70px] hidden">search</section>
+            <!-- ------------------------profile--------------------- -->
+            <section data-name="profile"
+                class="w-full h-full flex justify-center items-center text-white text-[70px] hidden">profile</section>
+            <!-- ------------------------setting--------------------- -->
+            <section data-name="setting"
+                class="w-full h-full flex justify-center items-center text-white text-[70px] hidden">setting</section>
+        </section>
+    </main>
 </body>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="src/js/master.js"></script>
+
 </html>

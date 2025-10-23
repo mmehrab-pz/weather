@@ -1,10 +1,90 @@
 @import "tailwindcss";
 /* npx @tailwindcss/cli -i ./src/styles/input.css -o ./src/styles/output.css --watch */
 
-@layer base {}
+@layer base {
+    @font-face {
+        font-family: '400';
+        src: url(../asset/font/Poppins-Regular.ttf);
+    }
 
-@layer utilities {}
+    @font-face {
+        font-family: '500';
+        src: url(../asset/font/Poppins-Medium.ttf);
+    }
 
-@layer components {}
+    @font-face {
+        font-family: '600';
+        src: url(../asset/font/Poppins-SemiBold.ttf);
+    }
 
-@theme {}
+    @font-face {
+        font-family: '700';
+        src: url(../asset/font/Poppins-Bold.ttf);
+    }
+
+    @font-face {
+        font-family: '800';
+        src: url(../asset/font/Poppins-ExtraBold.ttf);
+    }
+}
+
+@layer utilities {
+    .bt {
+        @apply border border-[white]
+    }
+
+    .bg1 {
+        background-color: hsla(36, 92%, 67%, 1);
+        background-image:
+            radial-gradient(at 80% 100%, hsla(47, 100%, 42%, 1) 0px, transparent 50%),
+            radial-gradient(at 0% 0%, hsla(38, 100%, 50%, 1) 0px, transparent 50%);
+    }
+
+    .bg2 {
+        background-color: hsla(0, 0%, 10%, 1);
+        background-image:
+            radial-gradient(at 80% 100%, hsla(240, 0%, 0%, 1) 0px, transparent 50%),
+            radial-gradient(at 0% 0%, hsla(343, 0%, 0%, 1) 0px, transparent 50%);
+    }
+
+    .bg3 {
+        background-color: hsla(353, 100%, 59%, 1);
+        background-image:
+            radial-gradient(at 80% 100%, hsla(353, 93%, 71%, 1) 0px, transparent 50%),
+            radial-gradient(at 0% 0%, hsla(353, 93%, 71%, 1) 0px, transparent 50%);
+
+    }
+
+    .bg4 {
+        background-color: hsla(209, 100%, 39%, 1);
+        background-image:
+            radial-gradient(at 80% 100%, hsla(209, 96%, 59%, 1) 0px, transparent 50%),
+            radial-gradient(at 0% 0%, hsla(209, 68%, 61%, 1) 0px, transparent 50%);
+    }
+
+    .scrollHide {
+        overflow-y: auto;
+        /* یا scroll */
+        scrollbar-width: none;
+        /* برای Firefox */
+        -ms-overflow-style: none;
+        /* برای IE و Edge قدیمی */
+    }
+
+    .scrollHide::-webkit-scrollbar {
+        display: none;
+        /* برای Chrome، Safari و Opera */
+    }
+}
+
+@layer components {
+    .active-nav {
+        @apply bg-[#ffffff1e]
+    }
+}
+
+@theme {
+    --color-back: #000000;
+    --color-dark-border: #ffffff17;
+    --color-dark-box: #0000004d;
+}
