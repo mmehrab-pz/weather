@@ -207,24 +207,6 @@
   .col-span-2 {
     grid-column: span 2 / span 2;
   }
-  .container {
-    width: 100%;
-    @media (width >= 40rem) {
-      max-width: 40rem;
-    }
-    @media (width >= 48rem) {
-      max-width: 48rem;
-    }
-    @media (width >= 64rem) {
-      max-width: 64rem;
-    }
-    @media (width >= 80rem) {
-      max-width: 80rem;
-    }
-    @media (width >= 96rem) {
-      max-width: 96rem;
-    }
-  }
   .mx-auto {
     margin-inline: auto;
   }
@@ -546,6 +528,9 @@
     font-size: var(--text-xs);
     line-height: var(--tw-leading, var(--text-xs--line-height));
   }
+  .text-\[12px\] {
+    font-size: 12px;
+  }
   .text-\[14px\] {
     font-size: 14px;
   }
@@ -564,6 +549,9 @@
   .text-\[40px\] {
     font-size: 40px;
   }
+  .text-\[45px\] {
+    font-size: 45px;
+  }
   .text-\[60px\] {
     font-size: 60px;
   }
@@ -577,6 +565,9 @@
   .font-semibold {
     --tw-font-weight: var(--font-weight-semibold);
     font-weight: var(--font-weight-semibold);
+  }
+  .text-\[3\] {
+    color: 3;
   }
   .text-\[white\] {
     color: white;
@@ -631,6 +622,16 @@
       }
     }
   }
+  .sm\:text-\[12px\] {
+    @media (width >= 40rem) {
+      font-size: 12px;
+    }
+  }
+  .sm\:text-\[45px\] {
+    @media (width >= 40rem) {
+      font-size: 45px;
+    }
+  }
   .md\:grid-cols-2 {
     @media (width >= 48rem) {
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -639,6 +640,11 @@
   .md\:grid-cols-3 {
     @media (width >= 48rem) {
       grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  .lg\:ml-2 {
+    @media (width >= 64rem) {
+      margin-left: calc(var(--spacing) * 2);
     }
   }
   .lg\:block {
@@ -702,9 +708,19 @@
       border-bottom-right-radius: var(--radius-2xl);
     }
   }
+  .lg\:text-\[40px\] {
+    @media (width >= 64rem) {
+      font-size: 40px;
+    }
+  }
   .lg\:text-\[50px\] {
     @media (width >= 64rem) {
       font-size: 50px;
+    }
+  }
+  .lg\:text-\[60px\] {
+    @media (width >= 64rem) {
+      font-size: 60px;
     }
   }
   .xl\:w-\[25px\] {
@@ -778,6 +794,10 @@
 }
 @layer components {
   .active-nav {
+    background-color: #ffffff1e;
+  }
+  .active-nav2 {
+    border: none !important;
     background-color: #ffffff1e;
   }
   .current-weather {

@@ -1,8 +1,6 @@
 // ----------------nav bar and pages
 
 const pages = document.querySelectorAll('#pages>section')
-console.log(pages);
-
 
 document.querySelectorAll('.nav-ul>li').forEach((item, index, arr) => {
     item.addEventListener('click', () => {
@@ -54,9 +52,8 @@ function hideLoading() {
     })
 }
 
-
 // -----------------------------------get creat map
-let map; // 👈 یک متغیر سراسری برای نقشه تا دوباره ساخته نشه
+let map;
 
 function createMap(currentLon, currentLat) {
     if (!map) {
@@ -66,11 +63,10 @@ function createMap(currentLon, currentLat) {
             attribution: '&copy; OpenStreetMap contributors'
         }).addTo(map);
     } else {
-        // 👇 اگر قبلاً ساخته شده، فقط موقعیت رو آپدیت کن
+
         map.setView([currentLat, currentLon], 10);
     }
 
-    // 👇 حذف مارکرهای قدیمی قبل از افزودن جدید
     if (map.currentMarker) {
         map.removeLayer(map.currentMarker);
     }
@@ -133,32 +129,6 @@ async function getData() {
     } finally {
         hideLoading();
     }
-
-    // showLoading()
-    // const url = `https://api.openweathermap.org/data/2.5/forecast?q=${currentCity}&units=metric&appid=${API_KEY}`;
-
-    // const response = await fetch(url);
-
-    // const data = await response.json();
-    // hideLoading();
-    // // document.getElementById('result').textContent = JSON.stringify(data, null, 2);
-    // // console.log(JSON.stringify(data, null, 2));
-    // currentTemp = data.list[0].main.temp
-    // currentPressure = data.list[0].main.pressure
-    // currentHumidity = data.list[0].main.humidity
-    // currentVisibility = data.list[0].visibility
-    // currentWind = data.list[0].wind.speed
-    // currentDescription = data.list[0].weather[0].description
-    // currentMain = data.list[0].weather[0].main
-    // currentLat = data.city.coord.lat
-    // currentLon = data.city.coord.lon
-    // currentDt = data.list[0].dt_txt
-    // const [date, time] = currentDt.split(" ");
-    // currentDate = date
-    // currentTime = time
-    // console.log([currentTemp, currentPressure, currentHumidity, currentVisibility, currentWind, currentDescription, currentDt, date, time, currentLon, currentLat]);
-    // creat_current_weather()
-    // createMap(currentLon, currentLat)
 }
 // -----------------------------------creat current weather section
 function creat_current_weather() {
@@ -171,24 +141,24 @@ function creat_current_weather() {
                                     <figure>
                                         <img src="src/asset/img/icon/${currentMain}.png" alt="" class="w-[100px]">
                                     </figure>
-                                    <h3 class="font-['600'] text-[60px] ml-[30px]">
+                                    <h3 class="font-['600'] text-[45px] lg:text-[60px] ml-[30px]">
                                         ${currentTemp}
-                                        <sup class="font-['400'] text-[40px]">
+                                        <sup class="font-['400'] text-[30px] lg:text-[40px]">
                                             °C
                                         </sup>
                                     </h3>
                                 </div>
                                 <div class="flex justify-between items-center">
-                                    <h6 class="font-['400'] text-[14px] xl:text-[16px] capitalize text-[white]">${currentDescription}</h6>
+                                    <h6 class="font-['400'] text-[12px] xl:text-[16px] capitalize text-[white]">${currentDescription}</h6>
                                     <figure class="flex items-center">
                                         <img src="src/asset/img/icon/icons8-location-96.png" alt=""
                                             class="w-[22px] xl:w-[25px]">
-                                        <figcaption class="font-['400'] text-[14px] capitalize text-[white] ml-2">${currentCity}</figcaption>
+                                        <figcaption class="font-['400'] text-[12px] capitalize text-[white] lg:ml-2">${currentCity}</figcaption>
                                     </figure>
                                     <figure class="flex items-center">
                                         <img src="src/asset/img/icon/time.png" alt="" class="w-[22px] xl:w-[25px]">
                                         <figcaption
-                                            class="font-['400'] text-[14px] xl:text-[16px] capitalize text-[white] ml-2">
+                                            class="font-['400'] text-[12px] xl:text-[16px] capitalize text-[white] lg:ml-2">
                                             ${currentTime}
                                         </figcaption>
                                     </figure>
@@ -196,7 +166,7 @@ function creat_current_weather() {
                                         <img src="src/asset/img/icon/icons8-timeline-week-96.png" alt=""
                                             class="w-[22px] xl:w-[25px]">
                                         <figcaption
-                                            class="font-['400'] text-[14px] xl:text-[16px] capitalize text-[white] ml-2">
+                                            class="font-['400'] text-[12px] xl:text-[16px] capitalize text-[white] lg:ml-2">
                                             ${currentDate}
                                         </figcaption>
                                     </figure>
@@ -231,10 +201,14 @@ function creat_current_weather() {
 `
 }
 // -----------------------------------popular cities
-document.querySelectorAll('#popular-cities>li').forEach((item) => {
+document.querySelectorAll('#popular-cities>li').forEach((item, i, arr) => {
     item.addEventListener('click', async () => {
+        arr.forEach((item) => {
+            item.classList.remove('active-nav2')
+
+        })
+        item.classList.add('active-nav2')
         const cityName = item.firstElementChild.lastElementChild.innerText.trim();
-        console.log("🏙 Selected city:", cityName);
         document.getElementById('current-weather').innerHTML = `
              <div class="loading ">
                  <div class="loader"></div>
@@ -247,5 +221,5 @@ document.querySelectorAll('#popular-cities>li').forEach((item) => {
 });
 // -----------------------------------
 window.addEventListener("load", () => {
-    getData(); // فقط بار اول
+    getData();
 });

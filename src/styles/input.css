@@ -81,6 +81,10 @@
     .active-nav {
         @apply bg-[#ffffff1e]
     }
+    .active-nav2 {
+        border: none !important;
+        @apply bg-[#ffffff1e] 
+    }
 
     .current-weather {
         @apply w-full h-full p-6 rounded-2xl bg-[#00000067] backdrop-blur-2xl border border-dark-border flex flex-col justify-between
