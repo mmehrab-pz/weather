@@ -55,59 +55,35 @@ function hideLoading() {
 }
 
 
-// -----------------------------------get location and creat map
-let currentLat = ''
-let currentLon = ''
-let currentCity = 'tehran'
+// -----------------------------------get creat map
+let map; // 👈 یک متغیر سراسری برای نقشه تا دوباره ساخته نشه
 
-
-async function getCity() {
-    showLoading()
-    if ("geolocation" in navigator) {
-        navigator.geolocation.getCurrentPosition(async function (position) {
-                currentLat = position.coords.latitude;
-                currentLon = position.coords.longitude;
-
-                const response = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${currentLat}&lon=${currentLon}&format=json`);
-                const data = await response.json();
-
-                currentCity = data.address.city || data.address.town || data.address.village || data.address.county || 'tehran';
-                console.log("City:", currentCity);
-                await getData()
-                hideLoading()
-                // ایجاد نقشه و تنظیم موقعیت و زوم
-                const map = L.map('map').setView([currentLat, currentLon], 10); // تهران
-
-
-                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    attribution: '&copy; OpenStreetMap contributors'
-                }).addTo(map);
-                L.marker([currentLat, currentLon])
-                    .addTo(map)
-                    .bindPopup(currentCity)
-                    .openPopup();
-
-            },
-            function (error) {
-                console.error("Error getting location:", error);
-                currentCity = tehran
-                getData()
-                hideLoading()
-
-            });
+function createMap(currentLon, currentLat) {
+    if (!map) {
+        // 👇 فقط یک‌بار نقشه ساخته بشه
+        map = L.map('map').setView([currentLat, currentLon], 10);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
     } else {
-        console.log("Geolocation is not supported by this browser.");
-        currentCity = tehran
-        getData()
-        hideLoading()
+        // 👇 اگر قبلاً ساخته شده، فقط موقعیت رو آپدیت کن
+        map.setView([currentLat, currentLon], 10);
     }
+
+    // 👇 حذف مارکرهای قدیمی قبل از افزودن جدید
+    if (map.currentMarker) {
+        map.removeLayer(map.currentMarker);
+    }
+
+    map.currentMarker = L.marker([currentLat, currentLon])
+        .addTo(map)
+        .bindPopup(currentCity)
+        .openPopup();
 }
-
-getCity();
-
 // -----------------------------------weather api
 const API_KEY = 'ab1bcc592ad966be21f0817b800ba129'
 let currentTemp = ''
+let currentCity = 'tehran'
 let currentPressure = ''
 let currentHumidity = ''
 let currentVisibility = ''
@@ -115,38 +91,81 @@ let currentWind = ''
 let currentDescription = ''
 let currentMain = ''
 let currentDt = ''
-let currentDate = '';
-let currentTime = '';
+let currentDate = ''
+let currentTime = ''
+let currentLat = ''
+let currentLon = ''
 
 async function getData() {
-    // const url = `https://api.openweathermap.org/data/2.5/weather?q=${City}&appid=${API_KEY}&units=metric`;
-    // پیش‌بینی هوا رو برای ۵ روز آینده در بازه‌های ۳ ساعته می‌ده.
-    const url = `https://api.openweathermap.org/data/2.5/forecast?q=${currentCity}&units=metric&appid=${API_KEY}`;
+    showLoading()
 
-    const response = await fetch(url);
+    try {
+        const url = `https://api.openweathermap.org/data/2.5/forecast?q=${currentCity}&units=metric&appid=${API_KEY}`;
+        const response = await fetch(url);
+        const data = await response.json();
 
-    const data = await response.json();
+        if (data.cod !== "200") {
+            throw new Error(data.message || "City not found");
+        }
 
-    // document.getElementById('result').textContent = JSON.stringify(data, null, 2);
-    // console.log(JSON.stringify(data, null, 2));
-    currentTemp = data.list[0].main.temp
-    currentPressure = data.list[0].main.pressure
-    currentHumidity = data.list[0].main.humidity
-    currentVisibility = data.list[0].visibility
-    currentWind = data.list[0].wind.speed
-    currentDescription = data.list[0].weather[0].description
-    currentMain = data.list[0].weather[0].main
-    currentDt = data.list[0].dt_txt
-    const [date, time] = currentDt.split(" ");
-    currentDate = date
-    currentTime = time
-    console.log([currentTemp, currentPressure, currentHumidity, currentVisibility, currentWind, currentDescription, currentDt, date, time]);
-    creat_current_weather()
+        currentTemp = data.list[0].main.temp;
+        currentPressure = data.list[0].main.pressure;
+        currentHumidity = data.list[0].main.humidity;
+        currentVisibility = data.list[0].visibility;
+        currentWind = data.list[0].wind.speed;
+        currentDescription = data.list[0].weather[0].description;
+        currentMain = data.list[0].weather[0].main;
+        currentLat = data.city.coord.lat;
+        currentLon = data.city.coord.lon;
+        currentDt = data.list[0].dt_txt;
+
+        const [date, time] = currentDt.split(" ");
+        currentDate = date;
+        currentTime = time;
+
+        console.log("✅ Weather data for:", currentCity);
+        console.log([currentTemp, currentPressure, currentHumidity, currentWind, currentDescription, currentDt]);
+
+        creat_current_weather();
+        createMap(currentLon, currentLat);
+    } catch (error) {
+        console.error("❌ Error fetching data:", error);
+    } finally {
+        hideLoading();
+    }
+
+    // showLoading()
+    // const url = `https://api.openweathermap.org/data/2.5/forecast?q=${currentCity}&units=metric&appid=${API_KEY}`;
+
+    // const response = await fetch(url);
+
+    // const data = await response.json();
+    // hideLoading();
+    // // document.getElementById('result').textContent = JSON.stringify(data, null, 2);
+    // // console.log(JSON.stringify(data, null, 2));
+    // currentTemp = data.list[0].main.temp
+    // currentPressure = data.list[0].main.pressure
+    // currentHumidity = data.list[0].main.humidity
+    // currentVisibility = data.list[0].visibility
+    // currentWind = data.list[0].wind.speed
+    // currentDescription = data.list[0].weather[0].description
+    // currentMain = data.list[0].weather[0].main
+    // currentLat = data.city.coord.lat
+    // currentLon = data.city.coord.lon
+    // currentDt = data.list[0].dt_txt
+    // const [date, time] = currentDt.split(" ");
+    // currentDate = date
+    // currentTime = time
+    // console.log([currentTemp, currentPressure, currentHumidity, currentVisibility, currentWind, currentDescription, currentDt, date, time, currentLon, currentLat]);
+    // creat_current_weather()
+    // createMap(currentLon, currentLat)
 }
 // -----------------------------------creat current weather section
 function creat_current_weather() {
     document.getElementById('current-weather').innerHTML = `
-
+                                <div class="loading hidden">
+                                    <div class="loader"></div>
+                                </div>
                                 <h3 class="font-['400'] text-[20px] capitalize text-[white]">current weather</h3>
                                 <div class="w-full flex items-center">
                                     <figure>
@@ -211,3 +230,22 @@ function creat_current_weather() {
 
 `
 }
+// -----------------------------------popular cities
+document.querySelectorAll('#popular-cities>li').forEach((item) => {
+    item.addEventListener('click', async () => {
+        const cityName = item.firstElementChild.lastElementChild.innerText.trim();
+        console.log("🏙 Selected city:", cityName);
+        document.getElementById('current-weather').innerHTML = `
+             <div class="loading ">
+                 <div class="loader"></div>
+             </div>
+`
+        currentCity = cityName;
+        await new Promise(r => setTimeout(r, 150));
+        await getData();
+    });
+});
+// -----------------------------------
+window.addEventListener("load", () => {
+    getData(); // فقط بار اول
+});

@@ -92,7 +92,7 @@
         <section id="pages"
             class="w-full h-full lg:w-[calc(100%-80px)] bg-[#ffffff0e] rounded-2xl lg:rounded-[0px] lg:rounded-r-2xl backdrop-blur-2xl">
             <!-- ---------------------------------home--------------------------------- -->
-            <section data-name="home" class="w-full h-full scrollHide">
+            <section data-name="home" class="w-full h-full scrollHide hidden">
                 <header class="w-full flex justify-between items-center px-2.5 h-[65px] border-b border-b-dark-border">
                     <div class="flex lg:hidden items-center">
                         <figure class=" flex items-center">
@@ -165,7 +165,7 @@
                 </div>
             </section>
             <!-- ----------------------------------------first------------------------------------- -->
-            <section data-name="first" class="w-full h-full text-white text-[70px] hidden">
+            <section data-name="first" class="w-full h-full text-white text-[70px]">
                 <header class="w-full flex justify-between items-center px-2.5 h-[65px] border-b border-b-dark-border">
                     <div class="flex lg:hidden items-center">
                         <figure class=" flex items-center">
@@ -215,7 +215,7 @@
                         <div class="w-full lg:w-3/12 h-[400px] p-2.5">
                             <div class="w-full h-full p-6 rounded-2xl bg-[#ffffff0a] backdrop-blur-2xl">
                                 <h3 class="font-['400'] text-[20px] capitalize text-[white]">popular cities</h3>
-                                <ul class=" w-full mt-5">
+                                <ul id="popular-cities" class=" w-full mt-5">
                                     <li
                                         class="w-full flex justify-between items-center cursor-pointer py-2 border-b border-b-dark-border">
                                         <figure class="flex items-center">
@@ -257,7 +257,7 @@
                                         <figure class="flex items-center">
                                             <img src="src/asset/img/icon/strom.png" class="w-[25px]">
                                             <figcaption class="font-['400'] text-[16px] capitalize text-[white] ml-2">
-                                                tokyo</figcaption>
+                                                paris</figcaption>
                                         </figure>
                                         <h6 class="font-['400'] text-[14px] capitalize text-[white]">stromy</h6>
                                     </li>
@@ -266,16 +266,16 @@
                                         <figure class="flex items-center">
                                             <img src="src/asset/img/icon/rain.png" alt="" class="w-[25px]">
                                             <figcaption class="font-['400'] text-[16px] capitalize text-[white] ml-2">
-                                                new york</figcaption>
+                                                rome</figcaption>
                                         </figure>
                                         <h6 class="font-['400'] text-[14px] capitalize text-[white]">rainy</h6>
                                     </li>
                                     <li
-                                        class="w-full flex justify-between items-center cursor-pointer py-2 border-b border-b-dark-border">
+                                        class="w-full flex justify-between items-center cursor-pointer py-2">
                                         <figure class="flex items-center">
                                             <img src="src/asset/img/icon/clouds.png" class="w-[25px]">
                                             <figcaption class="font-['400'] text-[16px] capitalize text-[white] ml-2">
-                                                london</figcaption>
+                                                barcelona</figcaption>
                                         </figure>
                                         <h6 class="font-['400'] text-[14px] capitalize text-[white]">cloudy</h6>
                                     </li>
