@@ -14,17 +14,30 @@
 <body class="bg-[url(../asset/img/night-back.webp)] bg-cover h-dvh flex overflow-hidden p-3 select-none ">
     <main class="w-full h-full flex relative">
         <!-- ----------------------------------------menu mobile----------------------------- -->
-        <div id="menu-mobile" class="w-full h-full absolute top-full left-0 z-100 rounded-[18px] bg-[#ffffff0e] backdrop-blur-2xl overflow-hidden p-3 flex justify-center items-center duration-300">
+        <div id="menu-mobile"
+            class="w-full h-full absolute top-full left-0 z-100 rounded-[18px] bg-[#ffffff0e] backdrop-blur-2xl overflow-hidden p-3 flex justify-center items-center duration-300">
             <span id="close-menu" class="absolute top-[30px] cursor-pointer">
                 <img src="src/asset/img/icon/down.png" alt="" class="w-[70px]">
             </span>
             <ul class="w-full nav-ul">
-                <li data-name="home" class="cursor-pointer rounded-2xl capitalize text-[white] text-[35px] font-['400'] text-center mb-5 active-nav">home</li>
-                <li data-name="first" class="cursor-pointer rounded-2xl capitalize text-[white] text-[35px] font-['400'] text-center mb-5">weather</li>
-                <li data-name="location" class="cursor-pointer rounded-2xl capitalize text-[white] text-[35px] font-['400'] text-center mb-5">map</li>
-                <li data-name="search" class="cursor-pointer rounded-2xl capitalize text-[white] text-[35px] font-['400'] text-center mb-5">search</li>
-                <li data-name="profile" class="cursor-pointer rounded-2xl capitalize text-[white] text-[35px] font-['400'] text-center mb-5">profile</li>
-                <li data-name="setting" class="cursor-pointer rounded-2xl capitalize text-[white] text-[35px] font-['400'] text-center">setting</li>
+                <li data-name="home"
+                    class="cursor-pointer rounded-2xl capitalize text-[white] text-[35px] font-['400'] text-center mb-5 active-nav">
+                    home</li>
+                <li data-name="first"
+                    class="cursor-pointer rounded-2xl capitalize text-[white] text-[35px] font-['400'] text-center mb-5">
+                    weather</li>
+                <li data-name="location"
+                    class="cursor-pointer rounded-2xl capitalize text-[white] text-[35px] font-['400'] text-center mb-5">
+                    map</li>
+                <li data-name="search"
+                    class="cursor-pointer rounded-2xl capitalize text-[white] text-[35px] font-['400'] text-center mb-5">
+                    search</li>
+                <li data-name="profile"
+                    class="cursor-pointer rounded-2xl capitalize text-[white] text-[35px] font-['400'] text-center mb-5">
+                    profile</li>
+                <li data-name="setting"
+                    class="cursor-pointer rounded-2xl capitalize text-[white] text-[35px] font-['400'] text-center">
+                    setting</li>
             </ul>
         </div>
         <!-- ---------------------------------------aside---------------------------------- -->
@@ -184,13 +197,18 @@
                         <div class="w-full lg:w-4/12 h-[400px] p-2.5">
                             <div id="current-weather"
                                 class="w-full h-full p-6 rounded-2xl bg-[#00000067] backdrop-blur-2xl border border-dark-border flex flex-col justify-between">
-
+                                <div class="loading hidden">
+                                    <div class="loader"></div>
+                                </div>
                             </div>
                         </div>
                         <!-- -------------location -->
                         <div class="w-full lg:w-5/12 h-[400px] p-2.5">
                             <div id="map"
                                 class="w-full h-full flex justify-center items-center rounded-2xl bg-[#ffffff0a] backdrop-blur-2xl">
+                                <div class="loading hidden">
+                                    <div class="loader"></div>
+                                </div>
                             </div>
                         </div>
                         <!-- -------------popular cities -->

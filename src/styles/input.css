@@ -81,9 +81,71 @@
     .active-nav {
         @apply bg-[#ffffff1e]
     }
-    .current-weather{
+
+    .current-weather {
         @apply w-full h-full p-6 rounded-2xl bg-[#00000067] backdrop-blur-2xl border border-dark-border flex flex-col justify-between
     }
+
+    .loading{
+        @apply  w-full h-full flex justify-center items-center
+    }
+
+    .loader {
+        width: 64px;
+        height: 64px;
+        position: relative;
+        background: #ffffff3a;
+        backdrop-filter: blur(40px);
+        border-radius: 50%;
+        transform: rotate(45deg);
+        animation: rotate 2s linear infinite;
+    }
+
+    .loader:before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 15px;
+        height: 30px;
+        background: #3348a5;
+        transform: skew(5deg, 60deg) translate(-50%, -5%);
+    }
+
+    .loader:after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #FFF;
+        transform: translate(-50%, -50%);
+    }
+
+    @keyframes rotate {
+        0% {
+            transform: rotate(45deg)
+        }
+
+        30%,
+        50%,
+        70% {
+            transform: rotate(230deg)
+        }
+
+        40%,
+        60%,
+        80% {
+            transform: rotate(240deg)
+        }
+
+        100% {
+            transform: rotate(245deg)
+        }
+    }
+
 }
 
 @theme {

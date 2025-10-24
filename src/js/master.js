@@ -39,6 +39,20 @@ document.getElementById('close-menu').addEventListener('click', () => {
     menuMobile.classList.remove('top-0')
     menuMobile.classList.add('top-full')
 })
+// ----------------loading
+const loaders = document.querySelectorAll('.loading')
+
+function showLoading() {
+    loaders.forEach((item) => {
+        item.classList.remove('hidden')
+    })
+}
+
+function hideLoading() {
+    loaders.forEach((item) => {
+        item.classList.add('hidden')
+    })
+}
 
 
 // -----------------------------------get location and creat map
@@ -48,6 +62,7 @@ let currentCity = 'tehran'
 
 
 async function getCity() {
+    showLoading()
     if ("geolocation" in navigator) {
         navigator.geolocation.getCurrentPosition(async function (position) {
                 currentLat = position.coords.latitude;
@@ -58,8 +73,8 @@ async function getCity() {
 
                 currentCity = data.address.city || data.address.town || data.address.village || data.address.county || 'tehran';
                 console.log("City:", currentCity);
-                getData()
-
+                await getData()
+                hideLoading()
                 // ایجاد نقشه و تنظیم موقعیت و زوم
                 const map = L.map('map').setView([currentLat, currentLon], 10); // تهران
 
@@ -75,9 +90,16 @@ async function getCity() {
             },
             function (error) {
                 console.error("Error getting location:", error);
+                currentCity = tehran
+                getData()
+                hideLoading()
+
             });
     } else {
         console.log("Geolocation is not supported by this browser.");
+        currentCity = tehran
+        getData()
+        hideLoading()
     }
 }
 
