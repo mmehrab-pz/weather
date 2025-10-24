@@ -25,7 +25,7 @@ document.querySelectorAll('#nav-ul>li').forEach((item, index, arr) => {
 // -----------------------------------get location and creat map
 let currentLat = ''
 let currentLon = ''
-let currentCity = ''
+let currentCity = 'tehran'
 
 
 async function getCity() {
@@ -37,7 +37,7 @@ async function getCity() {
                 const response = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${currentLat}&lon=${currentLon}&format=json`);
                 const data = await response.json();
 
-                currentCity = data.address.city || data.address.town || data.address.village;
+                currentCity = data.address?.city || data.address?.town || data.address?.village || data.address?.county || 'tehran';
                 console.log("City:", currentCity);
                 getData()
 
