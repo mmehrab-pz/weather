@@ -4,8 +4,10 @@ const pages = document.querySelectorAll('#pages>section')
 console.log(pages);
 
 
-document.querySelectorAll('#nav-ul>li').forEach((item, index, arr) => {
+document.querySelectorAll('.nav-ul>li').forEach((item, index, arr) => {
     item.addEventListener('click', () => {
+        menuMobile.classList.remove('top-0')
+        menuMobile.classList.add('top-full')
         arr.forEach((item) => {
             item.classList.remove('active-nav')
         })
@@ -21,6 +23,23 @@ document.querySelectorAll('#nav-ul>li').forEach((item, index, arr) => {
 
     })
 })
+// ----------------open and close menu mobile
+const menuMobile = document.getElementById('menu-mobile')
+
+document.querySelectorAll('.open-menu').forEach((item) => {
+    item.addEventListener('click', () => {
+        console.log(item);
+        menuMobile.classList.remove('top-full')
+        menuMobile.classList.add('top-0')
+
+    })
+})
+
+document.getElementById('close-menu').addEventListener('click', () => {
+    menuMobile.classList.remove('top-0')
+    menuMobile.classList.add('top-full')
+})
+
 
 // -----------------------------------get location and creat map
 let currentLat = ''
@@ -37,7 +56,7 @@ async function getCity() {
                 const response = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${currentLat}&lon=${currentLon}&format=json`);
                 const data = await response.json();
 
-                currentCity = data.address?.city || data.address?.town || data.address?.village || data.address?.county || 'tehran';
+                currentCity = data.address.city || data.address.town || data.address.village || data.address.county || 'tehran';
                 console.log("City:", currentCity);
                 getData()
 
@@ -99,7 +118,7 @@ async function getData() {
     const [date, time] = currentDt.split(" ");
     currentDate = date
     currentTime = time
-    console.log([currentTemp, currentPressure, currentHumidity, currentVisibility, currentWind, currentDescription , currentDt , date , time]);
+    console.log([currentTemp, currentPressure, currentHumidity, currentVisibility, currentWind, currentDescription, currentDt, date, time]);
     creat_current_weather()
 }
 // -----------------------------------creat current weather section

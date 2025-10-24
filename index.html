@@ -11,8 +11,22 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
 
-<body class="bg-[url(../asset/img/night-back.webp)] bg-cover h-dvh flex overflow-hidden p-3 select-none">
-    <main class="w-full h-full flex">
+<body class="bg-[url(../asset/img/night-back.webp)] bg-cover h-dvh flex overflow-hidden p-3 select-none ">
+    <main class="w-full h-full flex relative">
+        <!-- ----------------------------------------menu mobile----------------------------- -->
+        <div id="menu-mobile" class="w-full h-full absolute top-full left-0 z-100 rounded-[18px] bg-[#ffffff0e] backdrop-blur-2xl overflow-hidden p-3 flex justify-center items-center duration-300">
+            <span id="close-menu" class="absolute top-[30px] cursor-pointer">
+                <img src="src/asset/img/icon/down.png" alt="" class="w-[70px]">
+            </span>
+            <ul class="w-full nav-ul">
+                <li data-name="home" class="cursor-pointer rounded-2xl capitalize text-[white] text-[35px] font-['400'] text-center mb-5 active-nav">home</li>
+                <li data-name="first" class="cursor-pointer rounded-2xl capitalize text-[white] text-[35px] font-['400'] text-center mb-5">weather</li>
+                <li data-name="location" class="cursor-pointer rounded-2xl capitalize text-[white] text-[35px] font-['400'] text-center mb-5">map</li>
+                <li data-name="search" class="cursor-pointer rounded-2xl capitalize text-[white] text-[35px] font-['400'] text-center mb-5">search</li>
+                <li data-name="profile" class="cursor-pointer rounded-2xl capitalize text-[white] text-[35px] font-['400'] text-center mb-5">profile</li>
+                <li data-name="setting" class="cursor-pointer rounded-2xl capitalize text-[white] text-[35px] font-['400'] text-center">setting</li>
+            </ul>
+        </div>
         <!-- ---------------------------------------aside---------------------------------- -->
         <aside
             class="hidden lg:block h-full w-[80px] px-2.5 rounded-l-[18px] bg-[#ffffff0e] backdrop-blur-2xl border-r border-r-[#ffffff17]">
@@ -21,7 +35,7 @@
             </figure>
             <!-- -----------------nav bar---------------- -->
             <nav class="w-full h-[200px] mt-2.5">
-                <ul id="nav-ul" class="w-full">
+                <ul class="w-full nav-ul">
                     <li data-name="home"
                         class="w-full flex justify-center rounded-2xl p-3.5 mb-7 cursor-pointer active-nav hover:bg-[#ffffff1e] duration-300">
                         <figure>
@@ -65,15 +79,14 @@
         <section id="pages"
             class="w-full h-full lg:w-[calc(100%-80px)] bg-[#ffffff0e] rounded-2xl lg:rounded-[0px] lg:rounded-r-2xl backdrop-blur-2xl">
             <!-- ---------------------------------home--------------------------------- -->
-            <section data-name="home"
-                class="w-full h-full scrollHide">
+            <section data-name="home" class="w-full h-full scrollHide">
                 <header class="w-full flex justify-between items-center px-2.5 h-[65px] border-b border-b-dark-border">
                     <div class="flex lg:hidden items-center">
                         <figure class=" flex items-center">
                             <img src="src/asset/img/icon/clouds.png" alt="" class="w-[50px]">
                         </figure>
                         <span
-                            class="w-[40px] h-[40px] flex justify-center items-center rounded-2xl bg-[#ffffff1e] ml-5 cursor-pointer">
+                            class="open-menu w-[40px] h-[40px] flex justify-center items-center rounded-2xl bg-[#ffffff1e] ml-5 cursor-pointer">
                             <img src="src/asset/img/icon/menu.png" alt="" class="w-[30px]">
                         </span>
                     </div>
@@ -97,7 +110,9 @@
                             class="w-full h-full flex justify-center items-center rounded-2xl bg1">
                             <figure class="flex items-center">
                                 <img src="src/asset/img/mehrab2.webp" alt="" class="w-[70px] lg:w-[80px]">
-                                <figcaption class="ml-5 capitalize text-[white] text-[30px] lg:text-[50px] xl:text-[70px] font-['500']">my website</figcaption>
+                                <figcaption
+                                    class="ml-5 capitalize text-[white] text-[30px] lg:text-[50px] xl:text-[70px] font-['500']">
+                                    my website</figcaption>
                             </figure>
                         </a>
                     </div>
@@ -106,7 +121,9 @@
                             class="w-full h-full flex justify-center items-center rounded-2xl bg2">
                             <figure class="flex items-center">
                                 <img src="src/asset/img/icon/github.png" alt="" class="w-[70px] lg:w-[100px]">
-                                <figcaption class="ml-5 capitalize text-[white] text-[30px] lg:text-[50px] xl:text-[70px] font-['500']">github</figcaption>
+                                <figcaption
+                                    class="ml-5 capitalize text-[white] text-[30px] lg:text-[50px] xl:text-[70px] font-['500']">
+                                    github</figcaption>
                             </figure>
                         </a>
                     </div>
@@ -115,7 +132,9 @@
                             class="w-full h-full flex justify-center items-center rounded-2xl bg3">
                             <figure class="flex items-center">
                                 <img src="src/asset/img/icon/instagram.png" alt="" class="w-[70px] lg:w-[100px]">
-                                <figcaption class="ml-5 capitalize text-[white] text-[30px] lg:text-[50px] xl:text-[70px] font-['500']">instagram</figcaption>
+                                <figcaption
+                                    class="ml-5 capitalize text-[white] text-[30px] lg:text-[50px] xl:text-[70px] font-['500']">
+                                    instagram</figcaption>
                             </figure>
                         </a>
                     </div>
@@ -124,7 +143,9 @@
                             class="w-full h-full flex justify-center items-center rounded-2xl bg4">
                             <figure class="flex items-center">
                                 <img src="src/asset/img/icon/linkedin.png" alt="" class="w-[70px] lg:w-[100px]">
-                                <figcaption class="ml-5 capitalize text-[white] text-[30px] lg:text-[50px] xl:text-[70px] font-['500']">linkedin</figcaption>
+                                <figcaption
+                                    class="ml-5 capitalize text-[white] text-[30px] lg:text-[50px] xl:text-[70px] font-['500']">
+                                    linkedin</figcaption>
                             </figure>
                         </a>
                     </div>
@@ -138,7 +159,7 @@
                             <img src="src/asset/img/icon/clouds.png" alt="" class="w-[50px]">
                         </figure>
                         <span
-                            class="w-[40px] h-[40px] flex justify-center items-center rounded-2xl bg-[#ffffff1e] ml-5 cursor-pointer">
+                            class="open-menu w-[40px] h-[40px] flex justify-center items-center rounded-2xl bg-[#ffffff1e] ml-5 cursor-pointer">
                             <img src="src/asset/img/icon/menu.png" alt="" class="w-[30px]">
                         </span>
                     </div>
