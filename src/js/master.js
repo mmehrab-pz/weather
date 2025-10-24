@@ -139,65 +139,78 @@ function creat_current_weather() {
                                 <h3 class="font-['400'] text-[20px] capitalize text-[white]">current weather</h3>
                                 <div class="w-full flex items-center">
                                     <figure>
-                                        <img src="src/asset/img/icon/${currentMain}.png" alt="" class="w-[100px]">
+                                        <img src="src/asset/img/icon/${currentMain}.png" alt="" class="w-[120px]">
                                     </figure>
-                                    <h3 class="font-['600'] text-[45px] lg:text-[60px] ml-[30px]">
-                                        ${currentTemp}
-                                        <sup class="font-['400'] text-[30px] lg:text-[40px]">
-                                            °C
-                                        </sup>
+                                    <h3 class="text-[60px] lg:text-[40px] xl:text-[60px] 2xl:text-[70px] font-['600'] ml-[30px]">
+                                        ${currentTemp}°C
                                     </h3>
                                 </div>
-                                <div class="flex justify-between items-center">
-                                    <h6 class="font-['400'] text-[12px] xl:text-[16px] capitalize text-[white]">${currentDescription}</h6>
-                                    <figure class="flex items-center">
-                                        <img src="src/asset/img/icon/icons8-location-96.png" alt=""
-                                            class="w-[22px] xl:w-[25px]">
-                                        <figcaption class="font-['400'] text-[12px] capitalize text-[white] lg:ml-2">${currentCity}</figcaption>
-                                    </figure>
-                                    <figure class="flex items-center">
-                                        <img src="src/asset/img/icon/time.png" alt="" class="w-[22px] xl:w-[25px]">
+                                <div class="w-full flex flex-wrap items-center gap-2.5">
+                                    <!-- ----------sky -->
+                                    <figure title='sky' class="flex items-center px-2.5 py-1 rounded-[10px] bg-[#ffffff21] backdrop-blur-[35px]">
+                                        <img src="src/asset/img/icon/sky.png" alt="" class="w-[22px] xl:w-[25px]">
                                         <figcaption
-                                            class="font-['400'] text-[12px] xl:text-[16px] capitalize text-[white] lg:ml-2">
-                                            ${currentTime}
+                                            class="font-['400'] text-[12px] xl:text-[14px] 2xl:text-[16px] capitalize text-[white] ml-1.5">
+                                            ${currentDescription}
                                         </figcaption>
                                     </figure>
-                                    <figure class="flex items-center">
-                                        <img src="src/asset/img/icon/icons8-timeline-week-96.png" alt=""
-                                            class="w-[22px] xl:w-[25px]">
+                                    <!-- ----------city -->
+                                    <figure title='city' class="flex items-center px-2.5 py-1 rounded-[10px] bg-[#ffffff21] backdrop-blur-[35px]">
+                                        <img src="src/asset/img/icon/city.png" alt="" class="w-[22px] xl:w-[25px]">
                                         <figcaption
-                                            class="font-['400'] text-[12px] xl:text-[16px] capitalize text-[white] lg:ml-2">
+                                            class="font-['400'] text-[12px] xl:text-[14px] 2xl:text-[16px] capitalize text-[white] ml-1.5">
+                                            ${currentCity}
+                                        </figcaption>
+                                    </figure>
+                                    <!-- ----------date -->
+                                    <figure title='date' class="flex items-center px-2.5 py-1 rounded-[10px] bg-[#ffffff21] backdrop-blur-[35px]">
+                                        <img src="src/asset/img/icon/date.png" alt="" class="w-[22px] xl:w-[25px]">
+                                        <figcaption
+                                            class="font-['400'] text-[12px] xl:text-[14px] 2xl:text-[16px] capitalize text-[white] ml-1.5">
                                             ${currentDate}
                                         </figcaption>
                                     </figure>
+                                    <!-- ----------time -->
+                                    <figure title='time' class="flex items-center px-2.5 py-1 rounded-[10px] bg-[#ffffff21] backdrop-blur-[35px]">
+                                        <img src="src/asset/img/icon/time.png" alt="" class="w-[22px] xl:w-[25px]">
+                                        <figcaption
+                                            class="font-['400'] text-[12px] xl:text-[14px] 2xl:text-[16px] capitalize text-[white] ml-1.5">
+                                            ${currentTime}
+                                        </figcaption>
+                                    </figure>
+                                    <!-- ----------Humidity -->
+                                    <figure title='Humidity' class="flex items-center px-2.5 py-1 rounded-[10px] bg-[#ffffff21] backdrop-blur-[35px]">
+                                        <img src="src/asset/img/icon/Humidity.png" alt="" class="w-[22px] xl:w-[25px]">
+                                        <figcaption
+                                            class="font-['400'] text-[12px] xl:text-[14px] 2xl:text-[16px] capitalize text-[white] ml-1.5">
+                                            ${currentHumidity}
+                                        </figcaption>
+                                    </figure>
+                                    <!-- ----------visibility -->
+                                    <figure title='visibility' class="flex items-center px-2.5 py-1 rounded-[10px] bg-[#ffffff21] backdrop-blur-[35px]">
+                                        <img src="src/asset/img/icon/visibility.png" alt="" class="w-[22px] xl:w-[25px]">
+                                        <figcaption
+                                            class="font-['400'] text-[12px] xl:text-[14px] 2xl:text-[16px] capitalize text-[white] ml-1.5">
+                                            ${currentVisibility}
+                                        </figcaption>
+                                    </figure>
+                                    <!-- ----------pressure -->
+                                    <figure title='pressure' class="flex items-center px-2.5 py-1 rounded-[10px] bg-[#ffffff21] backdrop-blur-[35px]">
+                                        <img src="src/asset/img/icon/pressure.png" alt="" class="w-[22px] xl:w-[25px]">
+                                        <figcaption
+                                            class="font-['400'] text-[12px] xl:text-[14px] 2xl:text-[16px] capitalize text-[white] ml-1.5">
+                                            ${currentPressure}
+                                        </figcaption>
+                                    </figure>
+                                    <!-- ----------wind -->
+                                    <figure title='wind' class="flex items-center px-2.5 py-1 rounded-[10px] bg-[#ffffff21] backdrop-blur-[35px]">
+                                        <img src="src/asset/img/icon/wind.png" alt="" class="w-[22px] xl:w-[25px]">
+                                        <figcaption
+                                            class="font-['400'] text-[12px] xl:text-[14px] 2xl:text-[16px] capitalize text-[white] ml-1.5">
+                                            ${currentWind}
+                                        </figcaption>
+                                    </figure>
                                 </div>
-                                <div class="flex justify-between items-center">
-                                     <!-- --------------Humidity -->
-                                    <figure title='Humidity'
-                                        class="font-['400'] text-[16px] capitalize text-[white] flex flex-col items-center justify-center">
-                                        <img src="src/asset/img/icon/Humidity.png" alt="" class="w-[25px]">
-                                        <figcaption class="font-['400'] text-[16px] capitalize text-[white] mt-2.5">${currentHumidity}%</figcaption>
-                                    </figure>
-                                    <!-- --------------visibility -->
-                                    <figure title='visibility'
-                                        class="font-['400'] text-[16px] capitalize text-[white] flex flex-col items-center justify-center">
-                                        <img src="src/asset/img/icon/visibility.png" alt="" class="w-[25px]">
-                                        <figcaption class="font-['400'] text-[16px] capitalize text-[white] mt-2.5">${currentVisibility}</figcaption>
-                                    </figure>
-                                    <!-- --------------pressure -->
-                                    <figure title='pressure'
-                                        class="font-['400'] text-[16px] capitalize text-[white] flex flex-col items-center justify-center">
-                                        <img src="src/asset/img/icon/pressure.png" alt="" class="w-[25px]">
-                                        <figcaption class="font-['400'] text-[16px] capitalize text-[white] mt-2.5">${currentPressure}</figcaption>
-                                    </figure>
-                                    <!-- --------------wind -->
-                                    <figure title='wind speed'
-                                        class="font-['400'] text-[16px] capitalize text-[white] flex flex-col items-center justify-center">
-                                        <img src="src/asset/img/icon/wind.png" alt="" class="w-[25px]">
-                                        <figcaption class="font-['400'] text-[16px] capitalize text-[white] mt-2.5">${currentWind}m/s</figcaption>
-                                    </figure>
-                                </div>
-
 `
 }
 // -----------------------------------popular cities
