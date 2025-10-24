@@ -141,7 +141,7 @@ function creat_current_weather() {
                                     <figure>
                                         <img src="src/asset/img/icon/${currentMain}.png" alt="" class="w-[120px]">
                                     </figure>
-                                    <h3 class="text-[60px] lg:text-[40px] xl:text-[60px] 2xl:text-[70px] font-['600'] ml-[30px]">
+                                    <h3 class="text-[40px] lg:text-[40px] xl:text-[50px] 2xl:text-[70px] font-['600'] ml-[30px]">
                                         ${currentTemp}°C
                                     </h3>
                                 </div>
@@ -203,7 +203,7 @@ function creat_current_weather() {
                                         </figcaption>
                                     </figure>
                                     <!-- ----------wind -->
-                                    <figure title='wind' class="flex items-center px-2.5 py-1 rounded-[10px] bg-[#ffffff21] backdrop-blur-[35px]">
+                                    <figure title='wind speed' class="flex items-center px-2.5 py-1 rounded-[10px] bg-[#ffffff21] backdrop-blur-[35px]">
                                         <img src="src/asset/img/icon/wind.png" alt="" class="w-[22px] xl:w-[25px]">
                                         <figcaption
                                             class="font-['400'] text-[12px] xl:text-[14px] 2xl:text-[16px] capitalize text-[white] ml-1.5">
