@@ -1,3 +1,4 @@
+// https://api.openweathermap.org/data/2.5/forecast?q=tehran&units=metric&appid=ab1bcc592ad966be21f0817b800ba129
 // ----------------nav bar and pages
 
 const pages = document.querySelectorAll('#pages>section')

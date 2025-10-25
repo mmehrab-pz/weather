@@ -86,6 +86,11 @@
         @apply bg-[#ffffff1e] 
     }
 
+    .setting-active{
+        color: #FFF !important;
+        @apply bg-[#59deff88] backdrop-blur-2xl text-white 
+    }
+
     .current-weather {
         @apply w-full h-full p-6 rounded-2xl bg-[#00000067] backdrop-blur-2xl border border-dark-border flex flex-col justify-between
     }
