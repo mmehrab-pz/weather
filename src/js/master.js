@@ -11,7 +11,6 @@ document.querySelectorAll('.nav-ul>li').forEach((item, index, arr) => {
             item.classList.remove('active-nav')
         })
         item.classList.add('active-nav')
-        console.log(item.dataset.name);
         let id = item.dataset.name
         pages.forEach((page) => {
             page.classList.add('hidden')
@@ -27,7 +26,6 @@ const menuMobile = document.getElementById('menu-mobile')
 
 document.querySelectorAll('.open-menu').forEach((item) => {
     item.addEventListener('click', () => {
-        console.log(item);
         menuMobile.classList.remove('top-full')
         menuMobile.classList.add('top-0')
 
@@ -115,6 +113,46 @@ async function getData() {
         currentLat = data.city.coord.lat;
         currentLon = data.city.coord.lon;
         currentDt = data.list[0].dt_txt;
+        console.log(temperature);
+
+
+        switch (temperature) {
+            case 'Celsius':
+                currentTemp = currentTemp + '°C'
+                break;
+            case 'Fahrenheit':
+                currentTemp = parseInt(((currentTemp * 9.5) + 32)) + '°F'
+                break;
+            case 'Kelvin':
+                currentTemp = parseInt((currentTemp + 273.15)) + 'K'
+                break;
+        }
+        switch (windSpeed) {
+            case 'm/s':
+                currentWind = currentWind + ' m/s'
+                break;
+            case 'km/h':
+                currentWind = currentWind * 3.6 + ' km/h'
+                break;
+            case 'mph':
+                currentWind = currentWind * 2.237 + ' mph'
+                break;
+        }
+        switch (pressure) {
+            case 'hPa':
+                currentPressure = currentPressure + ' hPa'
+                break;
+            case 'atm':
+                currentPressure = currentPressure * 1013.25 + ' atm'
+                break;
+            case 'Pa':
+                currentPressure = currentPressure * 100 + ' Pa'
+                break;
+            case 'mmHg':
+                currentPressure = currentPressure * 0.75 + ' mmHg'
+                break;
+        }
+
 
         const [date, time] = currentDt.split(" ");
         currentDate = date;
@@ -143,7 +181,7 @@ function creat_current_weather() {
                                         <img src="src/asset/img/icon/${currentMain}.png" alt="" class="w-[120px]">
                                     </figure>
                                     <h3 class="text-[40px] lg:text-[40px] xl:text-[50px] 2xl:text-[70px] font-['600'] ml-[30px]">
-                                        ${currentTemp}°C
+                                        ${currentTemp}
                                     </h3>
                                 </div>
                                 <div class="w-full flex flex-wrap items-center gap-2.5">
@@ -183,7 +221,7 @@ function creat_current_weather() {
                                     <figure title='Humidity' class="flex items-center px-2.5 py-1 rounded-[10px] bg-[#ffffff21] backdrop-blur-[35px]">
                                         <img src="src/asset/img/icon/Humidity.png" alt="" class="w-[22px] xl:w-[25px]">
                                         <figcaption
-                                            class="font-['400'] text-[12px] xl:text-[14px] 2xl:text-[16px] capitalize text-[white] ml-1.5">
+                                            class="font-['400'] text-[12px] xl:text-[14px] 2xl:text-[16px] text-[white] ml-1.5">
                                             ${currentHumidity}
                                         </figcaption>
                                     </figure>
@@ -191,7 +229,7 @@ function creat_current_weather() {
                                     <figure title='visibility' class="flex items-center px-2.5 py-1 rounded-[10px] bg-[#ffffff21] backdrop-blur-[35px]">
                                         <img src="src/asset/img/icon/visibility.png" alt="" class="w-[22px] xl:w-[25px]">
                                         <figcaption
-                                            class="font-['400'] text-[12px] xl:text-[14px] 2xl:text-[16px] capitalize text-[white] ml-1.5">
+                                            class="font-['400'] text-[12px] xl:text-[14px] 2xl:text-[16px] text-[white] ml-1.5">
                                             ${currentVisibility}
                                         </figcaption>
                                     </figure>
@@ -199,7 +237,7 @@ function creat_current_weather() {
                                     <figure title='pressure' class="flex items-center px-2.5 py-1 rounded-[10px] bg-[#ffffff21] backdrop-blur-[35px]">
                                         <img src="src/asset/img/icon/pressure.png" alt="" class="w-[22px] xl:w-[25px]">
                                         <figcaption
-                                            class="font-['400'] text-[12px] xl:text-[14px] 2xl:text-[16px] capitalize text-[white] ml-1.5">
+                                            class="font-['400'] text-[12px] xl:text-[14px] 2xl:text-[16px] text-[white] ml-1.5">
                                             ${currentPressure}
                                         </figcaption>
                                     </figure>
@@ -207,7 +245,7 @@ function creat_current_weather() {
                                     <figure title='wind speed' class="flex items-center px-2.5 py-1 rounded-[10px] bg-[#ffffff21] backdrop-blur-[35px]">
                                         <img src="src/asset/img/icon/wind.png" alt="" class="w-[22px] xl:w-[25px]">
                                         <figcaption
-                                            class="font-['400'] text-[12px] xl:text-[14px] 2xl:text-[16px] capitalize text-[white] ml-1.5">
+                                            class="font-['400'] text-[12px] xl:text-[14px] 2xl:text-[16px] text-[white] ml-1.5">
                                             ${currentWind}
                                         </figcaption>
                                     </figure>
@@ -237,3 +275,48 @@ document.querySelectorAll('#popular-cities>li').forEach((item, i, arr) => {
 window.addEventListener("load", () => {
     getData();
 });
+
+// -----------------------------------setting option
+let temperature = 'Celsius'
+let windSpeed = 'm/s'
+let pressure = 'hPa'
+
+document.querySelectorAll('.temperature>div').forEach((item, i, all) => {
+    item.addEventListener('click', () => {
+        settingOption(item, all)
+        temperature = item.innerText
+        getData()
+    })
+})
+document.querySelectorAll('.windSpeed>div').forEach((item, i, all) => {
+    item.addEventListener('click', () => {
+        settingOption(item, all)
+        windSpeed = item.innerText
+        getData()
+    })
+
+})
+document.querySelectorAll('.pressure>div').forEach((item, i, all) => {
+    item.addEventListener('click', () => {
+        settingOption(item, all)
+        pressure = item.innerText
+        getData()
+    })
+})
+document.querySelectorAll('.precipitation>div').forEach((item, i, all) => {
+    item.addEventListener('click', () => settingOption(item, all))
+})
+document.querySelectorAll('.distance>div').forEach((item, i, all) => {
+    item.addEventListener('click', () => settingOption(item, all))
+})
+
+function settingOption(item, all) {
+    all.forEach(item => item.classList.remove('setting-active'))
+    item.classList.add('setting-active')
+
+    document.getElementById('loading2').classList.remove('hidden')
+
+    setTimeout(() => {
+        document.getElementById('loading2').classList.add('hidden')
+    }, 1000);
+}

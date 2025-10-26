@@ -126,7 +126,7 @@
                     </div>
                 </header>
                 <div class="w-full h-[calc(100%-65px)] flex justify-between flex-wrap">
-                    <div class="w-full lg:w-1/2 h-1/2 flex p-2.5 justify-center items-center">
+                    <div class="w-full lg:w-1/2 h-1/2 flex p-5 justify-center items-center">
                         <a href="https://pourzakaria.com/" target="_blank"
                             class="w-full h-full flex justify-center items-center rounded-2xl bg1">
                             <figure class="flex items-center">
@@ -137,7 +137,7 @@
                             </figure>
                         </a>
                     </div>
-                    <div class="w-full lg:w-1/2 h-1/2 flex p-2.5 justify-center items-center">
+                    <div class="w-full lg:w-1/2 h-1/2 flex p-5 justify-center items-center">
                         <a href="https://github.com/mmehrab-pz" target="_blank"
                             class="w-full h-full flex justify-center items-center rounded-2xl bg2">
                             <figure class="flex items-center">
@@ -148,7 +148,7 @@
                             </figure>
                         </a>
                     </div>
-                    <div class="w-full lg:w-1/2 h-1/2 flex p-2.5 justify-center items-center">
+                    <div class="w-full lg:w-1/2 h-1/2 flex p-5 justify-center items-center">
                         <a href="https://www.instagram.com/mehrab.poorzakaria_web/" target="_blank"
                             class="w-full h-full flex justify-center items-center rounded-2xl bg3">
                             <figure class="flex items-center">
@@ -159,7 +159,7 @@
                             </figure>
                         </a>
                     </div>
-                    <div class="w-full lg:w-1/2 h-1/2 flex p-2.5 justify-center items-center">
+                    <div class="w-full lg:w-1/2 h-1/2 flex p-5 justify-center items-center">
                         <a href="https://www.linkedin.com/in/mehrab-pourzakaria-1b2492237/" target="_blank"
                             class="w-full h-full flex justify-center items-center rounded-2xl bg4">
                             <figure class="flex items-center">
@@ -173,7 +173,7 @@
                 </div>
             </section>
             <!-- ----------------------------------------first------------------------------------- -->
-            <section data-name="first" class="w-full h-full text-white text-[70px] hidden">
+            <section data-name="first" class="w-full h-full text-white text-[70px]">
                 <header class="w-full flex justify-between items-center px-2.5 h-[65px] border-b border-b-dark-border">
                     <form action="#" class="w-[40%] h-full p-2.5 hidden lg:flex">
                         <input type="text" placeholder="search for cities" class="w-[calc(100%-50px)] h-full rounded-l-full bg-[#00000067] *:flex *:items-center pl-3 outline-0 backdrop-blur-2xl border border-dark-border border-r-0 flex items-center text-[16px]
@@ -378,7 +378,7 @@
             <section data-name="search"
                 class="w-full h-full flex justify-center items-center text-white text-[70px] hidden"></section>
             <!-- ------------------------profile--------------------- -->
-            <section data-name="profile" class="w-full h-full">
+            <section data-name="profile" class="w-full h-full hidden">
                 <header class="w-full flex justify-between items-center px-2.5 h-[65px] border-b border-b-dark-border">
                     <form action="#" class="w-[40%] h-full p-2.5 hidden lg:flex">
                         <input type="text" placeholder="search for cities" class="w-[calc(100%-50px)] h-full rounded-l-full bg-[#00000067] *:flex *:items-center pl-3 outline-0 backdrop-blur-2xl border border-dark-border border-r-0 flex items-center text-[16px]
@@ -569,58 +569,66 @@
                         </figure>
                     </div>
                 </header>
-                <section class="w-full h-[calc(100%-65px)] p-2.5 flex flex-wrap">
+                <section class="w-full h-[calc(100%-65px)] p-2.5 flex flex-wrap relative">
                     <div class="w-full h-full p-2.5 scrollHide">
                         <!-- -------------------------------------units -->
                         <h3 class="text-[white] text-[16px] capitalize font-['500']">unit</h3>
                         <div
-                            class="w-full p-5 rounded-2xl bg-[#00000067] backdrop-blur-2xl border border-dark-border mt-2.5">
+                            class="w-full p-5 rounded-2xl bg-[#00000067] backdrop-blur-2xl border border-dark-border mt-2.5 relative overflow-hidden">
+                            <span id="loading2"
+                                class="absolute flex justify-center items-center w-full h-full top-0 left-0 bg-[#00000098] backdrop-blur-2xl z-50 hidden">
+                                    <div class="loader"></div>
+                            </span>
+
                             <!-- -------------temperature -->
                             <h3 class="text-[#ffffff7e] text-[14px] uppercase font-['500']">temperature</h3>
-                            <div
-                                class="w-full h-12 rounded-xl p-1 mt-2.5 flex bg-[#3d3d3d7c] border border-dark-border">
+                            <div data-temperature=""
+                                class="temperature w-full h-12 rounded-xl p-1 mt-2.5 flex bg-[#3d3d3d7c] border border-dark-border">
                                 <div
-                                    class="w-1/2 rounded-lg flex justify-center items-center text-[#ffffff7e] capitalize font-['400'] text-[14px] cursor-pointer setting-active">
+                                    class="setting-option w-1/3 rounded-lg flex justify-center items-center text-[#ffffff7e] capitalize font-['400'] text-[14px] cursor-pointer setting-active">
                                     celsius</div>
                                 <div
-                                    class="w-1/2 rounded-lg flex justify-center items-center text-[#ffffff7e] capitalize font-['400'] text-[14px] cursor-pointer">
+                                    class="setting-option w-1/3 rounded-lg flex justify-center items-center text-[#ffffff7e] capitalize font-['400'] text-[14px] cursor-pointer">
                                     fahrenheit</div>
+                                <div
+                                    class="setting-option w-1/3 rounded-lg flex justify-center items-center text-[#ffffff7e] capitalize font-['400'] text-[14px] cursor-pointer">
+                                    kelvin</div>
                             </div>
                             <!-- -------------wind speed -->
                             <h3 class="text-[#ffffff7e] text-[14px] uppercase font-['500'] mt-5">wind speed</h3>
                             <div
-                                class="w-full h-12 rounded-xl p-1 mt-2.5 flex bg-[#3d3d3d7c] border border-dark-border">
+                                class="windSpeed w-full h-12 rounded-xl p-1 mt-2.5 flex bg-[#3d3d3d7c] border border-dark-border">
                                 <div
-                                    class="w-1/3 rounded-lg flex justify-center items-center text-[#ffffff7e] capitalize font-['400'] text-[14px] cursor-pointer">
-                                    Km/h</div>
+                                    class="w-1/3 rounded-lg flex justify-center items-center text-[#ffffff7e] font-['400'] text-[14px] cursor-pointer">
+                                    km/h</div>
                                 <div
-                                    class="w-1/3 rounded-lg flex justify-center items-center text-[#ffffff7e] capitalize font-['400'] text-[14px] cursor-pointer setting-active">
+                                    class="w-1/3 rounded-lg flex justify-center items-center text-[#ffffff7e] font-['400'] text-[14px] cursor-pointer setting-active">
                                     m/s</div>
                                 <div
-                                    class="w-1/3 rounded-lg flex justify-center items-center text-[#ffffff7e] capitalize font-['400'] text-[14px] cursor-pointer">
-                                    knots</div>
+                                    class="w-1/3 rounded-lg flex justify-center items-center text-[#ffffff7e] font-['400'] text-[14px] cursor-pointer">
+                                    mph</div>
                             </div>
                             <!-- -------------pressure -->
                             <h3 class="text-[#ffffff7e] text-[14px] uppercase font-['500'] mt-5">pressure</h3>
                             <div
-                                class="w-full h-12 rounded-xl p-1 mt-2.5 flex bg-[#3d3d3d7c] border border-dark-border">
-                                <div
-                                    class="w-1/4 rounded-lg flex justify-center items-center text-[#ffffff7e] font-['400'] text-[14px] cursor-pointer">
-                                    hPa</div>
-                                <div
-                                    class="w-1/4 rounded-lg flex justify-center items-center text-[#ffffff7e] font-['400'] capitalize text-[14px] cursor-pointer">
-                                    inches</div>
-                                <div
-                                    class="w-1/4 rounded-lg flex justify-center items-center text-[#ffffff7e] font-['400'] text-[14px] cursor-pointer">
-                                    kPa</div>
+                                class="pressure w-full h-12 rounded-xl p-1 mt-2.5 flex bg-[#3d3d3d7c] border border-dark-border">
                                 <div
                                     class="w-1/4 rounded-lg flex justify-center items-center text-[#ffffff7e] font-['400'] text-[14px] cursor-pointer setting-active">
-                                    mm</div>
+                                    hPa</div>
+                                <div
+                                    class="w-1/4 rounded-lg flex justify-center items-center text-[#ffffff7e] font-['400'] text-[14px] cursor-pointer">
+                                    atm</div>
+                                <div
+                                    class="w-1/4 rounded-lg flex justify-center items-center text-[#ffffff7e] font-['400'] text-[14px] cursor-pointer">
+                                    Pa</div>
+                                <div
+                                    class="w-1/4 rounded-lg flex justify-center items-center text-[#ffffff7e] font-['400'] text-[14px] cursor-pointer">
+                                    mmHg</div>
                             </div>
                             <!-- -------------precipitation -->
                             <h3 class="text-[#ffffff7e] text-[14px] uppercase font-['500'] mt-5">precipitation</h3>
                             <div
-                                class="w-full h-12 rounded-xl p-1 mt-2.5 flex bg-[#3d3d3d7c] border border-dark-border">
+                                class="precipitation w-full h-12 rounded-xl p-1 mt-2.5 flex bg-[#3d3d3d7c] border border-dark-border">
                                 <div
                                     class="w-1/2 rounded-lg flex justify-center items-center text-[#ffffff7e] capitalize font-['400'] text-[14px] cursor-pointer setting-active">
                                     milimeters</div>
@@ -631,7 +639,7 @@
                             <!-- -------------distance -->
                             <h3 class="text-[#ffffff7e] text-[14px] uppercase font-['500'] mt-5">distance</h3>
                             <div
-                                class="w-full h-12 rounded-xl p-1 mt-2.5 flex bg-[#3d3d3d7c] border border-dark-border">
+                                class="distance w-full h-12 rounded-xl p-1 mt-2.5 flex bg-[#3d3d3d7c] border border-dark-border">
                                 <div
                                     class="w-1/2 rounded-lg flex justify-center items-center text-[#ffffff7e] capitalize font-['400'] text-[14px] cursor-pointer setting-active">
                                     kilometers</div>
