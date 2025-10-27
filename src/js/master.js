@@ -113,18 +113,20 @@ async function getData() {
         currentLat = data.city.coord.lat;
         currentLon = data.city.coord.lon;
         currentDt = data.list[0].dt_txt;
-        console.log(temperature);
 
 
         switch (temperature) {
-            case 'Celsius':
+            case 'celsius':
                 currentTemp = currentTemp + '°C'
                 break;
-            case 'Fahrenheit':
+            case 'fahrenheit':
                 currentTemp = parseInt(((currentTemp * 9.5) + 32)) + '°F'
                 break;
-            case 'Kelvin':
+            case 'kelvin':
                 currentTemp = parseInt((currentTemp + 273.15)) + 'K'
+                break;
+            default:
+                currentTemp = currentTemp + '°C'
                 break;
         }
         switch (windSpeed) {
@@ -136,6 +138,9 @@ async function getData() {
                 break;
             case 'mph':
                 currentWind = currentWind * 2.237 + ' mph'
+                break;
+            default:
+                currentWind = currentWind + ' m/s'
                 break;
         }
         switch (pressure) {
@@ -150,6 +155,9 @@ async function getData() {
                 break;
             case 'mmHg':
                 currentPressure = currentPressure * 0.75 + ' mmHg'
+                break;
+            default:
+                currentPressure = currentPressure + ' hPa'
                 break;
         }
 
@@ -277,37 +285,67 @@ window.addEventListener("load", () => {
 });
 
 // -----------------------------------setting option
-let temperature = 'Celsius'
-let windSpeed = 'm/s'
-let pressure = 'hPa'
+let temperature = localStorage.getItem('savedTemperature')
+let windSpeed = localStorage.getItem('savedWindSpeed')
+let pressure = localStorage.getItem('savedPressure')
+let precipitation = localStorage.getItem('savedPrecipitation')
+let distance = localStorage.getItem('savedDistance')
 
 document.querySelectorAll('.temperature>div').forEach((item, i, all) => {
     item.addEventListener('click', () => {
         settingOption(item, all)
         temperature = item.innerText
+        localStorage.setItem('savedTemperature', item.innerText)
         getData()
     })
+    if (item.innerText.trim() === temperature) {
+        console.log(temperature);
+
+
+        settingOption(item, all)
+    }
 })
 document.querySelectorAll('.windSpeed>div').forEach((item, i, all) => {
     item.addEventListener('click', () => {
         settingOption(item, all)
         windSpeed = item.innerText
+        localStorage.setItem('savedWindSpeed', item.innerText)
         getData()
     })
-
+    if (item.innerText.trim() === windSpeed) {
+        settingOption(item, all)
+    }
 })
 document.querySelectorAll('.pressure>div').forEach((item, i, all) => {
     item.addEventListener('click', () => {
         settingOption(item, all)
         pressure = item.innerText
+        localStorage.setItem('savedPressure', item.innerText)
         getData()
     })
+    if (item.innerText.trim() === pressure) {
+        settingOption(item, all)
+    }
 })
 document.querySelectorAll('.precipitation>div').forEach((item, i, all) => {
-    item.addEventListener('click', () => settingOption(item, all))
+    item.addEventListener('click', () => {
+        settingOption(item, all)
+        precipitation = item.innerText
+        localStorage.setItem('savedPrecipitation', item.innerText)
+    })
+    if (item.innerText.trim() === precipitation) {
+        settingOption(item, all)
+    }
 })
 document.querySelectorAll('.distance>div').forEach((item, i, all) => {
-    item.addEventListener('click', () => settingOption(item, all))
+    item.addEventListener('click', () => {
+        settingOption(item, all)
+        distance = item.innerText
+        localStorage.setItem('savedDistance', item.innerText)
+    })
+    if (item.innerText.trim() === distance) {
+        settingOption(item, all)
+    }
 })
 
 function settingOption(item, all) {
