@@ -307,64 +307,18 @@
                         <!-- --------------forecast -->
                         <div class="w-full lg:w-4/12 h-[400px] p-2.5">
                             <div
-                                class="w-full h-full p-6 rounded-2xl bg-[#ffffff0a] backdrop-blur-2xl border border-dark-border flex flex-col">
+                                class="w-full h-full p-6 rounded-2xl bg-[#ffffff0a] backdrop-blur-2xl border border-dark-border flex flex-col relative">
+                                <div class="loading absolute left-0 top-[50%] translate-y-[-50%] hidden">
+                                    <div class="loader"></div>
+                                </div>
                                 <div class="w-full flex justify-between items-center">
                                     <h3 class="font-['400'] text-[20px] capitalize text-[white]">forecast</h3>
                                     <span
                                         class="font-['400'] text-[16px] capitalize text-[white]  py-2.5 px-4 rounded-2xl bg-[#00000067] backdrop-blur-2xl">5
                                         days</span>
                                 </div>
-                                <ul class=" w-full mt-3">
-                                    <li
-                                        class="w-full flex justify-between items-center cursor-pointer py-2 border-b border-b-dark-border">
-                                        <figure class="flex items-center">
-                                            <img src="src/asset/img/icon/thunderstorm.png" class="w-[25px]">
-                                            <figcaption class="font-['400'] text-[16px] capitalize text-[white] ml-4">
-                                                24° / 22°
-                                            </figcaption>
-                                        </figure>
-                                        <h6 class="font-['400'] text-[14px] capitalize text-[white]">2025-10-23</h6>
-                                    </li>
-                                    <li
-                                        class="w-full flex justify-between items-center cursor-pointer py-2 border-b border-b-dark-border">
-                                        <figure class="flex items-center">
-                                            <img src="src/asset/img/icon/thunderstorm.png" class="w-[25px]">
-                                            <figcaption class="font-['400'] text-[16px] capitalize text-[white] ml-4">
-                                                24° / 22°
-                                            </figcaption>
-                                        </figure>
-                                        <h6 class="font-['400'] text-[14px] capitalize text-[white]">2025-10-23</h6>
-                                    </li>
-                                    <li
-                                        class="w-full flex justify-between items-center cursor-pointer py-2 border-b border-b-dark-border">
-                                        <figure class="flex items-center">
-                                            <img src="src/asset/img/icon/thunderstorm.png" class="w-[25px]">
-                                            <figcaption class="font-['400'] text-[16px] capitalize text-[white] ml-4">
-                                                24° / 22°
-                                            </figcaption>
-                                        </figure>
-                                        <h6 class="font-['400'] text-[14px] capitalize text-[white]">2025-10-23</h6>
-                                    </li>
-                                    <li
-                                        class="w-full flex justify-between items-center cursor-pointer py-2 border-b border-b-dark-border">
-                                        <figure class="flex items-center">
-                                            <img src="src/asset/img/icon/thunderstorm.png" class="w-[25px]">
-                                            <figcaption class="font-['400'] text-[16px] capitalize text-[white] ml-4">
-                                                24° / 22°
-                                            </figcaption>
-                                        </figure>
-                                        <h6 class="font-['400'] text-[14px] capitalize text-[white]">2025-10-23</h6>
-                                    </li>
-                                    <li
-                                        class="w-full flex justify-between items-center cursor-pointer py-2 border-b border-b-dark-border">
-                                        <figure class="flex items-center">
-                                            <img src="src/asset/img/icon/thunderstorm.png" class="w-[25px]">
-                                            <figcaption class="font-['400'] text-[16px] capitalize text-[white] ml-4">
-                                                24° / 22°
-                                            </figcaption>
-                                        </figure>
-                                        <h6 class="font-['400'] text-[14px] capitalize text-[white]">2025-10-23</h6>
-                                    </li>
+                                <ul id="forecast-weather" class="w-full mt-3 relative">
+
                                 </ul>
                             </div>
                         </div>

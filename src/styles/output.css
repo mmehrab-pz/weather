@@ -199,6 +199,9 @@
   .top-\[30px\] {
     top: 30px;
   }
+  .top-\[50\%\] {
+    top: 50%;
+  }
   .top-full {
     top: 100%;
   }
@@ -373,11 +376,20 @@
   .h-\[400px\] {
     height: 400px;
   }
+  .h-\[calc\(\)\] {
+    height: calc();
+  }
+  .h-\[calc\(100\%-44px\)\] {
+    height: calc(100% - 44px);
+  }
   .h-\[calc\(100\%-50px\)\] {
     height: calc(100% - 50px);
   }
   .h-\[calc\(100\%-65px\)\] {
     height: calc(100% - 65px);
+  }
+  .h-\[calc\] {
+    height: calc;
   }
   .h-dvh {
     height: 100dvh;
@@ -480,6 +492,10 @@
   }
   .translate-x-\[-50\%\] {
     --tw-translate-x: -50%;
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .translate-y-\[-50\%\] {
+    --tw-translate-y: -50%;
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
   .transform {

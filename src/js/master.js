@@ -4,8 +4,6 @@
 const pages = document.querySelectorAll('#pages>section')
 
 document.querySelectorAll('.nav-ul>li').forEach((item, index, arr) => {
-    console.log(item);
-
     item.addEventListener('click', () => {
         menuMobile.classList.remove('top-0')
         menuMobile.classList.add('top-full')
@@ -95,10 +93,11 @@ let currentDate = ''
 let currentTime = ''
 let currentLat = ''
 let currentLon = ''
+let forecastDays = [];
+let forecastNights = [];
 
 async function getData() {
     showLoading()
-
     try {
         const url = `https://api.openweathermap.org/data/2.5/forecast?q=${currentCity}&units=metric&appid=${API_KEY}`;
         const response = await fetch(url);
@@ -171,10 +170,52 @@ async function getData() {
         currentDate = date;
         currentTime = time;
 
+        // 🟢 استخراج پیش‌بینی ۵ روز آینده (ظهر هر روز و شب هر روز)
+        forecastDays = [];
+        forecastNights = [];
+
+        data.list.forEach(item => {
+            if (item.dt_txt.includes("12:00:00")) {
+                const dateObj = new Date(item.dt_txt);
+                const dayName = dateObj.toLocaleDateString("en-US", {
+                    weekday: "short"
+                });
+                const dateStr = dateObj.toISOString().split("T")[0];
+                const temp = item.main.temp;
+                const dayDes = item.weather[0].description
+                forecastDays.push({
+                    day: dayName,
+                    date: dateStr,
+                    description: dayDes,
+                    temp: temp
+                });
+            }
+            if (item.dt_txt.includes("03:00:00")) {
+                const dateObj = new Date(item.dt_txt);
+                const dayName = dateObj.toLocaleDateString("en-US", {
+                    weekday: "short"
+                });
+                const dateStr = dateObj.toISOString().split("T")[0];
+                const temp = item.main.temp;
+                const dayDes = item.weather[0].description
+                forecastNights.push({
+                    day: dayName,
+                    date: dateStr,
+                    description: dayDes,
+                    temp: temp
+                });
+            }
+        });
+
+        console.log(forecastDays);
+        console.log(forecastNights);
+
+
         console.log("✅ Weather data for:", currentCity);
         console.log([currentTemp, currentPressure, currentHumidity, currentWind, currentDescription, currentDt]);
 
         creat_current_weather();
+        creat_forecast_section();
         createMap(currentLon, currentLat);
     } catch (error) {
         console.error("❌ Error fetching data:", error);
@@ -265,8 +306,68 @@ function creat_current_weather() {
                                 </div>
 `
 }
+
+// -----------------------------------creat forecast section
+function creat_forecast_section() {
+    document.getElementById('forecast-weather').innerHTML = `
+                                            <li
+                                        class="w-full flex justify-between items-center cursor-pointer py-2 border-b border-b-dark-border">
+                                        <figure class="flex items-center">
+                                            <img src="src/asset/img/icon/${forecastDays[0].description}.png" class="w-[25px]">
+                                            <figcaption class="font-['400'] text-[16px] capitalize text-[white] ml-4">
+                                                ${forecastDays[0].temp} /  ${forecastNights[0].temp}
+                                            </figcaption>
+                                        </figure>
+                                        <h6 class="font-['400'] text-[14px] capitalize text-[white]">${forecastDays[0].date}/${forecastDays[0].day}</h6>
+                                    </li>
+                                    <li
+                                        class="w-full flex justify-between items-center cursor-pointer py-2 border-b border-b-dark-border">
+                                        <figure class="flex items-center">
+                                            <img src="src/asset/img/icon/${forecastDays[1].description}.png" class="w-[25px]">
+                                            <figcaption class="font-['400'] text-[16px] capitalize text-[white] ml-4">
+                                                ${forecastDays[1].temp} /  ${forecastNights[1].temp}
+                                            </figcaption>
+                                        </figure>
+                                        <h6 class="font-['400'] text-[14px] capitalize text-[white]">${forecastDays[1].date}/${forecastDays[1].day}</h6>
+                                    </li>
+                                    <li
+                                        class="w-full flex justify-between items-center cursor-pointer py-2 border-b border-b-dark-border">
+                                        <figure class="flex items-center">
+                                            <img src="src/asset/img/icon/${forecastDays[2].description}.png" class="w-[25px]">
+                                            <figcaption class="font-['400'] text-[16px] capitalize text-[white] ml-4">
+                                                ${forecastDays[2].temp} /  ${forecastNights[2].temp}
+                                            </figcaption>
+                                        </figure>
+                                        <h6 class="font-['400'] text-[14px] capitalize text-[white]">${forecastDays[2].date}/${forecastDays[2].day}</h6>
+                                    </li>
+                                    <li
+                                        class="w-full flex justify-between items-center cursor-pointer py-2 border-b border-b-dark-border">
+                                        <figure class="flex items-center">
+                                            <img src="src/asset/img/icon/${forecastDays[3].description}.png" class="w-[25px]">
+                                            <figcaption class="font-['400'] text-[16px] capitalize text-[white] ml-4">
+                                                ${forecastDays[3].temp} /  ${forecastNights[3].temp}
+                                            </figcaption>
+                                        </figure>
+                                        <h6 class="font-['400'] text-[14px] capitalize text-[white]">${forecastDays[3].date}/${forecastDays[3].day}</h6>
+                                    </li>
+                                    <li
+                                        class="w-full flex justify-between items-center cursor-pointer py-2 border-b border-b-dark-border">
+                                        <figure class="flex items-center">
+                                            <img src="src/asset/img/icon/${forecastDays[4].description}.png" class="w-[25px]">
+                                            <figcaption class="font-['400'] text-[16px] capitalize text-[white] ml-4">
+                                                ${forecastDays[4].temp} /  ${forecastNights[4].temp}
+                                            </figcaption>
+                                        </figure>
+                                        <h6 class="font-['400'] text-[14px] capitalize text-[white]">${forecastDays[4].date}/${forecastDays[4].day}</h6>
+                                    </li>
+    `
+}
+
 // -----------------------------------popular cities
 document.querySelectorAll('#popular-cities>li').forEach((item, i, arr) => {
+    item.addEventListener('click', () => {
+        document.getElementById('forecast-weather').innerHTML = ``
+    })
     item.addEventListener('click', async () => {
         arr.forEach((item) => {
             item.classList.remove('active-nav2')
