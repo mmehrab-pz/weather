@@ -7,10 +7,8 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
-    --color-amber-50: oklch(98.7% 0.022 95.277);
     --color-emerald-600: oklch(59.6% 0.145 163.225);
     --color-blue-600: oklch(54.6% 0.245 262.881);
-    --color-indigo-300: oklch(78.5% 0.115 274.713);
     --color-indigo-600: oklch(51.1% 0.262 276.966);
     --color-slate-50: oklch(98.4% 0.003 247.858);
     --color-slate-600: oklch(44.6% 0.043 257.281);
@@ -211,45 +209,6 @@
   .bottom-0 {
     bottom: calc(var(--spacing) * 0);
   }
-  .bottom-2 {
-    bottom: calc(var(--spacing) * 2);
-  }
-  .bottom-2\.5 {
-    bottom: calc(var(--spacing) * 2.5);
-  }
-  .bottom-4 {
-    bottom: calc(var(--spacing) * 4);
-  }
-  .bottom-5 {
-    bottom: calc(var(--spacing) * 5);
-  }
-  .bottom-\[-10\%\] {
-    bottom: -10%;
-  }
-  .bottom-\[-10\] {
-    bottom: -10;
-  }
-  .bottom-\[-\] {
-    bottom: -;
-  }
-  .bottom-\[2px\] {
-    bottom: 2px;
-  }
-  .bottom-\[5\] {
-    bottom: 5;
-  }
-  .bottom-\[10\%\] {
-    bottom: 10%;
-  }
-  .bottom-\[20px\] {
-    bottom: 20px;
-  }
-  .bottom-\[22px\] {
-    bottom: 22px;
-  }
-  .bottom-full {
-    bottom: 100%;
-  }
   .left-0 {
     left: calc(var(--spacing) * 0);
   }
@@ -376,20 +335,11 @@
   .h-\[400px\] {
     height: 400px;
   }
-  .h-\[calc\(\)\] {
-    height: calc();
-  }
-  .h-\[calc\(100\%-44px\)\] {
-    height: calc(100% - 44px);
-  }
   .h-\[calc\(100\%-50px\)\] {
     height: calc(100% - 50px);
   }
   .h-\[calc\(100\%-65px\)\] {
     height: calc(100% - 65px);
-  }
-  .h-\[calc\] {
-    height: calc;
   }
   .h-dvh {
     height: 100dvh;
@@ -427,9 +377,6 @@
   .w-28 {
     width: calc(var(--spacing) * 28);
   }
-  .w-60 {
-    width: calc(var(--spacing) * 60);
-  }
   .w-\[22px\] {
     width: 22px;
   }
@@ -442,29 +389,14 @@
   .w-\[35px\] {
     width: 35px;
   }
-  .w-\[40\%\] {
-    width: 40%;
-  }
   .w-\[40px\] {
     width: 40px;
   }
   .w-\[43\%\] {
     width: 43%;
   }
-  .w-\[44\%\] {
-    width: 44%;
-  }
-  .w-\[45\%\] {
-    width: 45%;
-  }
-  .w-\[50\%\] {
-    width: 50%;
-  }
   .w-\[50px\] {
     width: 50px;
-  }
-  .w-\[60\%\] {
-    width: 60%;
   }
   .w-\[70px\] {
     width: 70px;
@@ -592,14 +524,6 @@
     border-top-left-radius: 18px;
     border-bottom-left-radius: 18px;
   }
-  .rounded-l-full {
-    border-top-left-radius: calc(infinity * 1px);
-    border-bottom-left-radius: calc(infinity * 1px);
-  }
-  .rounded-r-full {
-    border-top-right-radius: calc(infinity * 1px);
-    border-bottom-right-radius: calc(infinity * 1px);
-  }
   .border {
     border-style: var(--tw-border-style);
     border-width: 1px;
@@ -612,17 +536,9 @@
     border-right-style: var(--tw-border-style);
     border-right-width: 1px;
   }
-  .border-r-0 {
-    border-right-style: var(--tw-border-style);
-    border-right-width: 0px;
-  }
   .border-b {
     border-bottom-style: var(--tw-border-style);
     border-bottom-width: 1px;
-  }
-  .border-l-0 {
-    border-left-style: var(--tw-border-style);
-    border-left-width: 0px;
   }
   .border-\[\#59deff\] {
     border-color: #59deff;
@@ -648,15 +564,6 @@
   .bg-\[\#00000067\] {
     background-color: #00000067;
   }
-  .bg-\[\#76adff7c\] {
-    background-color: #76adff7c;
-  }
-  .bg-\[\#76adff93\] {
-    background-color: #76adff93;
-  }
-  .bg-\[\#76adff\] {
-    background-color: #76adff;
-  }
   .bg-\[\#00000098\] {
     background-color: #00000098;
   }
@@ -672,23 +579,11 @@
   .bg-\[\#ffffff21\] {
     background-color: #ffffff21;
   }
-  .bg-\[\#ffffff\] {
-    background-color: #ffffff;
-  }
-  .bg-\[white\] {
-    background-color: white;
-  }
-  .bg-amber-50 {
-    background-color: var(--color-amber-50);
-  }
   .bg-blue-600 {
     background-color: var(--color-blue-600);
   }
   .bg-emerald-600 {
     background-color: var(--color-emerald-600);
-  }
-  .bg-indigo-300 {
-    background-color: var(--color-indigo-300);
   }
   .bg-indigo-600 {
     background-color: var(--color-indigo-600);
@@ -765,9 +660,6 @@
   .pl-2\.5 {
     padding-left: calc(var(--spacing) * 2.5);
   }
-  .pl-3 {
-    padding-left: calc(var(--spacing) * 3);
-  }
   .pl-5 {
     padding-left: calc(var(--spacing) * 5);
   }
@@ -812,9 +704,6 @@
   }
   .text-\[16px\] {
     font-size: 16px;
-  }
-  .text-\[18px\] {
-    font-size: 18px;
   }
   .text-\[20px\] {
     font-size: 20px;
@@ -907,6 +796,14 @@
     -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
     backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
   }
+  .duration-100 {
+    --tw-duration: 100ms;
+    transition-duration: 100ms;
+  }
+  .duration-200 {
+    --tw-duration: 200ms;
+    transition-duration: 200ms;
+  }
   .duration-300 {
     --tw-duration: 300ms;
     transition-duration: 300ms;
@@ -914,16 +811,6 @@
   .select-none {
     -webkit-user-select: none;
     user-select: none;
-  }
-  .\*\:flex {
-    :is(& > *) {
-      display: flex;
-    }
-  }
-  .\*\:items-center {
-    :is(& > *) {
-      align-items: center;
-    }
   }
   .placeholder\:text-\[16px\] {
     &::placeholder {
@@ -944,6 +831,33 @@
     &:hover {
       @media (hover: hover) {
         background-color: #ffffff1e;
+      }
+    }
+  }
+  .hover\:\*\:text-\[\#59deff\] {
+    &:hover {
+      @media (hover: hover) {
+        :is(& > *) {
+          color: #59deff;
+        }
+      }
+    }
+  }
+  .hover\:\*\:text-\[59deff\] {
+    &:hover {
+      @media (hover: hover) {
+        :is(& > *) {
+          color: 59deff;
+        }
+      }
+    }
+  }
+  .hover\:\*\*\:text-\[\#59deff\] {
+    &:hover {
+      @media (hover: hover) {
+        :is(& *) {
+          color: #59deff;
+        }
       }
     }
   }
