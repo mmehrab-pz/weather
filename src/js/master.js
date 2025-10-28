@@ -5,7 +5,7 @@ const pages = document.querySelectorAll('#pages>section')
 
 document.querySelectorAll('.nav-ul>li').forEach((item, index, arr) => {
     console.log(item);
-    
+
     item.addEventListener('click', () => {
         menuMobile.classList.remove('top-0')
         menuMobile.classList.add('top-full')
@@ -13,7 +13,7 @@ document.querySelectorAll('.nav-ul>li').forEach((item, index, arr) => {
             item.classList.remove('active-nav')
         })
         item.classList.add('active-nav')
-        if(item.dataset.name == 'search'){
+        if (item.dataset.name == 'search') {
             document.getElementById('searchBtn').classList.add('active-nav')
         }
         let id = item.dataset.name
@@ -363,3 +363,18 @@ function settingOption(item, all) {
         document.getElementById('loading2').classList.add('hidden')
     }, 1000);
 }
+
+// -----------------------------------alert
+const alert = document.getElementById('alert')
+
+document.querySelectorAll('.alert').forEach(item => {
+    item.addEventListener('click', () => {
+        alert.classList.remove('-bottom-[10%]')
+        alert.classList.add('bottom-0')
+        setTimeout(() => {
+            alert.classList.remove('bottom-0')
+            alert.classList.add('-bottom-[10%]')
+
+        }, 2000);
+    })
+})

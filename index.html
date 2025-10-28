@@ -90,7 +90,14 @@
         </aside>
         <!-- ---------------------------------------pages---------------------------------- -->
         <section id="pages"
-            class="w-full h-full lg:w-[calc(100%-80px)] bg-[#ffffff0e] rounded-2xl lg:rounded-[0px] lg:rounded-r-2xl backdrop-blur-2xl">
+            class="w-full h-full lg:w-[calc(100%-80px)] bg-[#ffffff0e] rounded-2xl lg:rounded-[0px] lg:rounded-r-2xl backdrop-blur-2xl relative">
+            <!-- ---------------------------------alert--------------------------------- -->
+            <span id="alert"
+                class="flex h-[70px] bg-[#1d72f193] backdrop-blur-2xl absolute px-3 z-100 -bottom-[10%] left-[50%] translate-x-[-50%] rounded-t-2xl items-center duration-300">
+                <img src="src/asset/img/icon/info.png" alt="" class="w-[50px]">
+                <p class="text-[16px] text-[white] font-['400'] capitalize ml-2.5">this feature will be available in the
+                    future.</p>
+            </span>
             <!-- ---------------------------------home--------------------------------- -->
             <section data-name="home" class="w-full h-full scrollHide hidden">
                 <header class="w-full flex justify-between items-center px-2.5 h-[65px] border-b border-b-dark-border">
@@ -113,7 +120,7 @@
                     <div></div>
                     <div class="flex">
                         <span
-                            class="flex justify-center items-center w-[40px] h-[40px] rounded-full bg-[#ffffff1e] mr-2.5 cursor-pointer">
+                            class="flex alert justify-center items-center w-[40px] h-[40px] rounded-full bg-[#ffffff1e] mr-2.5 cursor-pointer">
                             <figure>
                                 <img src="src/asset/img/icon/bell.png" alt="" class="w-[25px]">
                             </figure>
@@ -193,7 +200,7 @@
                     <div></div>
                     <div class="flex">
                         <span
-                            class="flex justify-center items-center w-[40px] h-[40px] rounded-full bg-[#ffffff1e] mr-2.5 cursor-pointer">
+                            class="flex alert justify-center items-center w-[40px] h-[40px] rounded-full bg-[#ffffff1e] mr-2.5 cursor-pointer">
                             <figure>
                                 <img src="src/asset/img/icon/bell.png" alt="" class="w-[25px]">
                             </figure>
@@ -397,7 +404,7 @@
                     <div></div>
                     <div class="flex">
                         <span
-                            class="flex justify-center items-center w-[40px] h-[40px] rounded-full bg-[#ffffff1e] mr-2.5 cursor-pointer">
+                            class="flex alert justify-center items-center w-[40px] h-[40px] rounded-full bg-[#ffffff1e] mr-2.5 cursor-pointer">
                             <figure>
                                 <img src="src/asset/img/icon/bell.png" alt="" class="w-[25px]">
                             </figure>
@@ -439,21 +446,21 @@
                                     <label for=""
                                         class="text-[16px] capitalize text-[#59deff] font-['400'] mb-2.5">first
                                         name</label>
-                                    <input type="text" placeholder="mehrab" class="h-10 pl-2.5 bg-[#3d3d3d7c] text-white border border-dark-border outline-0 rounded-[10px]
+                                    <input type="text" disabled placeholder="mehrab" class="h-10 alert pl-2.5 bg-[#3d3d3d7c] text-white border border-dark-border outline-0 rounded-[10px]
                                         placeholder:text-[16px] placeholder:text-[#ffffff73] placeholder:capitalize">
                                 </div>
                                 <!-- ----------l name -->
                                 <div class="w-full lg:w-1/2 flex flex-col px-2.5 mb-5">
                                     <label for="" class="text-[16px] capitalize text-[#59deff] font-['400'] mb-2.5">last
                                         name</label>
-                                    <input type="text" placeholder="pourzakaria" class="h-10 pl-2.5 bg-[#3d3d3d7c] text-white border border-dark-border outline-0 rounded-[10px]
+                                    <input type="text" disabled placeholder="pourzakaria" class="h-10 alert pl-2.5 bg-[#3d3d3d7c] text-white border border-dark-border outline-0 rounded-[10px]
                                         placeholder:text-[16px] placeholder:text-[#ffffff73] placeholder:capitalize">
                                 </div>
                                 <!-- ----------username -->
                                 <div class="w-full lg:w-1/2 flex flex-col px-2.5 mb-5">
                                     <label for=""
                                         class="text-[16px] capitalize text-[#59deff] font-['400'] mb-2.5">username</label>
-                                    <input type="text" placeholder="medivh" class="h-10 pl-2.5 bg-[#3d3d3d7c] text-white border border-dark-border outline-0 rounded-[10px]
+                                    <input type="text" disabled placeholder="medivh" class="h-10 alert pl-2.5 bg-[#3d3d3d7c] text-white border border-dark-border outline-0 rounded-[10px]
                                         placeholder:text-[16px] placeholder:text-[#ffffff73] placeholder:capitalize">
                                 </div>
                                 <!-- ----------phone -->
@@ -461,28 +468,28 @@
                                     <label for=""
                                         class="text-[16px] capitalize text-[#59deff] font-['400'] mb-2.5">phone
                                         number</label>
-                                    <input type="text" placeholder="+989309791544" class="h-10 pl-2.5 bg-[#3d3d3d7c] text-white border border-dark-border outline-0 rounded-[10px]
+                                    <input type="text" disabled placeholder="+989309791544" class="h-10 alert pl-2.5 bg-[#3d3d3d7c] text-white border border-dark-border outline-0 rounded-[10px]
                                         placeholder:text-[16px] placeholder:text-[#ffffff73] placeholder:capitalize">
                                 </div>
                                 <!-- ----------email -->
                                 <div class="w-full lg:w-1/2 flex flex-col px-2.5 mb-5">
                                     <label for=""
                                         class="text-[16px] capitalize text-[#59deff] font-['400'] mb-2.5">email</label>
-                                    <input type="email" placeholder="mmehrab.pk@gmail.com" class="h-10 pl-2.5 bg-[#3d3d3d7c] text-white border border-dark-border outline-0 rounded-[10px]
+                                    <input type="email" disabled placeholder="mmehrab.pk@gmail.com" class="h-10 alert pl-2.5 bg-[#3d3d3d7c] text-white border border-dark-border outline-0 rounded-[10px]
                                         placeholder:text-[16px] placeholder:text-[#ffffff73] placeholder:capitalize">
                                 </div>
                                 <!-- ----------password -->
                                 <div class="w-full lg:w-1/2 flex flex-col px-2.5 mb-5">
                                     <label for=""
                                         class="text-[16px] capitalize text-[#59deff] font-['400'] mb-2.5">password</label>
-                                    <input type="password" placeholder="" class="h-10 pl-2.5 bg-[#3d3d3d7c] text-white border border-dark-border outline-0 rounded-[10px]
+                                    <input type="password" disabled placeholder="" class="h-10 alert pl-2.5 bg-[#3d3d3d7c] text-white border border-dark-border outline-0 rounded-[10px]
                                         placeholder:text-[16px] placeholder:text-[#ffffff73] placeholder:capitalize">
                                 </div>
                                 <!-- ----------country -->
                                 <div class="w-full lg:w-1/2 flex flex-col px-2.5 mb-5">
                                     <label for=""
                                         class="text-[16px] capitalize text-[#59deff] font-['400'] mb-2.5">country</label>
-                                    <input type="text" placeholder="iran" class="h-10 pl-2.5 bg-[#3d3d3d7c] text-white border border-dark-border outline-0 rounded-[10px]
+                                    <input type="text" disabled placeholder="iran" class="h-10 alert pl-2.5 bg-[#3d3d3d7c] text-white border border-dark-border outline-0 rounded-[10px]
                                         placeholder:text-[16px] placeholder:text-[#ffffff73] placeholder:capitalize">
                                 </div>
                                 <!-- ----------repeat password -->
@@ -490,39 +497,39 @@
                                     <label for=""
                                         class="text-[16px] capitalize text-[#59deff] font-['400'] mb-2.5">repeat
                                         password</label>
-                                    <input type="password" placeholder="" class="h-10 pl-2.5 bg-[#3d3d3d7c] text-white border border-dark-border outline-0 rounded-[10px]
+                                    <input type="password" disabled placeholder="" class="h-10 alert pl-2.5 bg-[#3d3d3d7c] text-white border border-dark-border outline-0 rounded-[10px]
                                         placeholder:text-[16px] placeholder:text-[#ffffff73] placeholder:capitalize">
                                 </div>
                                 <!-- ----------city -->
                                 <div class="w-full lg:w-1/2 flex flex-col px-2.5 mb-5">
                                     <label for=""
                                         class="text-[16px] capitalize text-[#59deff] font-['400'] mb-2.5">city</label>
-                                    <input type="text" placeholder="tehran" class="h-10 pl-2.5 bg-[#3d3d3d7c] text-white border border-dark-border outline-0 rounded-[10px]
+                                    <input type="text" disabled placeholder="tehran" class="h-10 alert pl-2.5 bg-[#3d3d3d7c] text-white border border-dark-border outline-0 rounded-[10px]
                                         placeholder:text-[16px] placeholder:text-[#ffffff73] placeholder:capitalize">
                                 </div>
                                 <!-- ----------birthday -->
                                 <div class="w-full lg:w-1/2 flex flex-col px-2.5 mb-5">
                                     <label for=""
                                         class="text-[16px] capitalize text-[#59deff] font-['400'] mb-2.5">birthday</label>
-                                    <input type="date" placeholder="tehran" class="h-10 pl-2.5 bg-[#3d3d3d7c] text-white border border-dark-border outline-0 rounded-[10px]
+                                    <input type="date" disabled placeholder="tehran" class="h-10 alert pl-2.5 bg-[#3d3d3d7c] text-white border border-dark-border outline-0 rounded-[10px]
                                         placeholder:text-[16px] placeholder:text-[#ffffff73] placeholder:capitalize">
                                 </div>
                                 <!-- ----------gender -->
                                 <div class="w-full lg:w-1/2 flex flex-col px-2.5 mb-5">
                                     <label for=""
                                         class="text-[16px] capitalize text-[#59deff] font-['400'] mb-2.5">gender</label>
-                                    <input type="text" placeholder="male" class="h-10 pl-2.5 bg-[#3d3d3d7c] text-white border border-dark-border outline-0 rounded-[10px]
+                                    <input type="text" disabled placeholder="male" class="alert h-10 pl-2.5 bg-[#3d3d3d7c] text-white border border-dark-border outline-0 rounded-[10px]
                                         placeholder:text-[16px] placeholder:text-[#ffffff73] placeholder:capitalize">
                                 </div>
                                 <!-- ----------buttons -->
                                 <div class="w-full lg:w-1/2 flex items-end px-2.5 mb-5 gap-2.5">
                                     <button
-                                        class="w-1/2 h-10 rounded-[10px] border-2 border-[#59deff] text-[#59deff] text-[16px] font-['400'] cursor-pointer flex gap-2.5 justify-center items-center">
+                                        class="alert w-1/2 h-10 rounded-[10px] border-2 border-[#59deff] text-[#59deff] text-[16px] font-['400'] cursor-pointer flex gap-2.5 justify-center items-center">
                                         <img src="src/asset/img/icon/cancel.png" alt="" class="w-[30px]">
                                         cancel
                                     </button>
                                     <button
-                                        class="w-1/2 h-10 rounded-[10px] border-2 border-[#59deff] bg-[#59deff] text-[black] text-[16px] font-['400'] cursor-pointer flex gap-2.5 justify-center items-center">
+                                        class="alert w-1/2 h-10 rounded-[10px] border-2 border-[#59deff] bg-[#59deff] text-[black] text-[16px] font-['400'] cursor-pointer flex gap-2.5 justify-center items-center">
                                         <img src="src/asset/img/icon/save.png" alt="" class="w-[30px]">
                                         save
                                     </button>
@@ -554,7 +561,7 @@
                     <div></div>
                     <div class="flex">
                         <span
-                            class="flex justify-center items-center w-[40px] h-[40px] rounded-full bg-[#ffffff1e] mr-2.5 cursor-pointer">
+                            class="flex alert justify-center items-center w-[40px] h-[40px] rounded-full bg-[#ffffff1e] mr-2.5 cursor-pointer">
                             <figure>
                                 <img src="src/asset/img/icon/bell.png" alt="" class="w-[25px]">
                             </figure>
@@ -647,7 +654,7 @@
                         <!-- -------------------------------------notification -->
                         <h3 class="text-[white] text-[16px] capitalize font-['500'] mt-5">notification</h3>
                         <div
-                            class="w-full p-5 rounded-2xl bg-[#00000067] backdrop-blur-2xl border border-dark-border mt-2.5">
+                            class="alert w-full p-5 rounded-2xl bg-[#00000067] backdrop-blur-2xl border border-dark-border mt-2.5 cursor-pointer">
                             <div class="w-full flex items-center justify-between">
                                 <h4 class="text-[white] text-[15px] capitalize font-['400']">notification</h4>
                                 <span
@@ -660,7 +667,7 @@
                         <!-- -------------------------------------general -->
                         <h3 class="text-[white] text-[16px] capitalize font-['500'] mt-5">general</h3>
                         <div
-                            class="w-full p-5 rounded-2xl bg-[#00000067] backdrop-blur-2xl border border-dark-border mt-2.5">
+                            class="alert w-full p-5 rounded-2xl bg-[#00000067] backdrop-blur-2xl border border-dark-border mt-2.5 cursor-pointer">
                             <div class="w-full flex items-center justify-between pb-5 border-b border-b-dark-border">
                                 <h4 class="text-[white] text-[15px] capitalize font-['400']">12-Hour time</h4>
                                 <span
