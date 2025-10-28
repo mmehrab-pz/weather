@@ -4,6 +4,8 @@
 const pages = document.querySelectorAll('#pages>section')
 
 document.querySelectorAll('.nav-ul>li').forEach((item, index, arr) => {
+    console.log(item);
+    
     item.addEventListener('click', () => {
         menuMobile.classList.remove('top-0')
         menuMobile.classList.add('top-full')
@@ -11,6 +13,9 @@ document.querySelectorAll('.nav-ul>li').forEach((item, index, arr) => {
             item.classList.remove('active-nav')
         })
         item.classList.add('active-nav')
+        if(item.dataset.name == 'search'){
+            document.getElementById('searchBtn').classList.add('active-nav')
+        }
         let id = item.dataset.name
         pages.forEach((page) => {
             page.classList.add('hidden')
