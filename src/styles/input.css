@@ -82,8 +82,11 @@
         @apply bg-[#ffffff1e]
     }
     .active-nav2 {
-        border: none !important;
+        /* border: none !important; */
         @apply bg-[#ffffff1e] 
+    }
+    .active-btn{
+        background-color: #59deff5e !important;
     }
 
     .setting-active{

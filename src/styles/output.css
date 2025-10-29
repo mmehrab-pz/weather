@@ -194,6 +194,12 @@
   .top-0 {
     top: calc(var(--spacing) * 0);
   }
+  .top-50 {
+    top: calc(var(--spacing) * 50);
+  }
+  .top-\[\%\] {
+    top: %;
+  }
   .top-\[30px\] {
     top: 30px;
   }
@@ -214,6 +220,9 @@
   }
   .left-\[50\%\] {
     left: 50%;
+  }
+  .z-20 {
+    z-index: 20;
   }
   .z-50 {
     z-index: 50;
@@ -314,6 +323,9 @@
   .h-10 {
     height: calc(var(--spacing) * 10);
   }
+  .h-11 {
+    height: calc(var(--spacing) * 11);
+  }
   .h-12 {
     height: calc(var(--spacing) * 12);
   }
@@ -334,6 +346,9 @@
   }
   .h-\[400px\] {
     height: 400px;
+  }
+  .h-\[calc\(100\%-45px\)\] {
+    height: calc(100% - 45px);
   }
   .h-\[calc\(100\%-50px\)\] {
     height: calc(100% - 50px);
@@ -370,6 +385,9 @@
   }
   .w-10 {
     width: calc(var(--spacing) * 10);
+  }
+  .w-11 {
+    width: calc(var(--spacing) * 11);
   }
   .w-12 {
     width: calc(var(--spacing) * 12);
@@ -800,10 +818,6 @@
     --tw-duration: 100ms;
     transition-duration: 100ms;
   }
-  .duration-200 {
-    --tw-duration: 200ms;
-    transition-duration: 200ms;
-  }
   .duration-300 {
     --tw-duration: 300ms;
     transition-duration: 300ms;
@@ -827,6 +841,13 @@
       text-transform: capitalize;
     }
   }
+  .hover\:bg-\[\#59deff5e\] {
+    &:hover {
+      @media (hover: hover) {
+        background-color: #59deff5e;
+      }
+    }
+  }
   .hover\:bg-\[\#ffffff1e\] {
     &:hover {
       @media (hover: hover) {
@@ -843,15 +864,6 @@
       }
     }
   }
-  .hover\:\*\:text-\[59deff\] {
-    &:hover {
-      @media (hover: hover) {
-        :is(& > *) {
-          color: 59deff;
-        }
-      }
-    }
-  }
   .hover\:\*\*\:text-\[\#59deff\] {
     &:hover {
       @media (hover: hover) {
@@ -859,6 +871,11 @@
           color: #59deff;
         }
       }
+    }
+  }
+  .md\:w-auto {
+    @media (width >= 48rem) {
+      width: auto;
     }
   }
   .md\:grid-cols-2 {
@@ -1051,8 +1068,10 @@
     background-color: #ffffff1e;
   }
   .active-nav2 {
-    border: none !important;
     background-color: #ffffff1e;
+  }
+  .active-btn {
+    background-color: #59deff5e !important;
   }
   .setting-active {
     color: #FFF !important;

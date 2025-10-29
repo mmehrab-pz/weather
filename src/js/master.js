@@ -1,4 +1,8 @@
 // https://api.openweathermap.org/data/2.5/forecast?q=tehran&units=metric&appid=ab1bcc592ad966be21f0817b800ba129
+// -----------------------------------
+window.addEventListener("load", () => {
+    getData();
+});
 // ----------------nav bar and pages
 
 const pages = document.querySelectorAll('#pages>section')
@@ -173,6 +177,8 @@ async function getData() {
         // 🟢 استخراج پیش‌بینی ۵ روز آینده (ظهر هر روز و شب هر روز)
         forecastDays = [];
         forecastNights = [];
+        let tempDay = ''
+        let tempNight = ''
 
         data.list.forEach(item => {
             if (item.dt_txt.includes("12:00:00")) {
@@ -181,13 +187,68 @@ async function getData() {
                     weekday: "short"
                 });
                 const dateStr = dateObj.toISOString().split("T")[0];
-                const temp = item.main.temp;
+                let temp = item.main.temp;
+                let dayWind = item.wind.speed
+                let dayPressure = item.main.pressure
+                const dayHumidity = item.main.humidity
+                const dayVisibility = item.visibility
                 const dayDes = item.weather[0].description
+                switch (temperature) {
+                    case 'celsius':
+                        temp = temp + '°C'
+                        break;
+                    case 'fahrenheit':
+                        temp = parseInt(((temp * 9.5) + 32)) + '°F'
+                        break;
+                    case 'kelvin':
+                        temp = parseInt((temp + 273.15)) + 'K'
+                        break;
+                    default:
+                        temp = temp + '°C'
+                        break;
+                }
+                switch (windSpeed) {
+                    case 'm/s':
+                        dayWind = dayWind + ' m/s'
+                        break;
+                    case 'km/h':
+                        dayWind = dayWind * 3.6 + ' km/h'
+                        break;
+                    case 'mph':
+                        dayWind = dayWind * 2.237 + ' mph'
+                        break;
+                    default:
+                        dayWind = dayWind + ' m/s'
+                        break;
+                }
+                switch (pressure) {
+                    case 'hPa':
+                        dayPressure = dayPressure + ' hPa'
+                        break;
+                    case 'atm':
+                        dayPressure = dayPressure * 1013.25 + ' atm'
+                        break;
+                    case 'Pa':
+                        dayPressure = dayPressure * 100 + ' Pa'
+                        break;
+                    case 'mmHg':
+                        dayPressure = dayPressure * 0.75 + ' mmHg'
+                        break;
+                    default:
+                        dayPressure = dayPressure + ' hPa'
+                        break;
+                }
                 forecastDays.push({
+                    city: currentCity,
                     day: dayName,
                     date: dateStr,
+                    time: '12:00:00',
                     description: dayDes,
-                    temp: temp
+                    temp: parseInt(temp),
+                    pressure: dayPressure,
+                    humidity: dayHumidity,
+                    visibility: dayVisibility,
+                    wind: dayWind
                 });
             }
             if (item.dt_txt.includes("03:00:00")) {
@@ -196,13 +257,68 @@ async function getData() {
                     weekday: "short"
                 });
                 const dateStr = dateObj.toISOString().split("T")[0];
-                const temp = item.main.temp;
+                let temp = item.main.temp;
+                let dayWind = item.wind.speed
+                let dayPressure = item.main.pressure
+                const dayHumidity = item.main.humidity
+                const dayVisibility = item.visibility
                 const dayDes = item.weather[0].description
+                switch (temperature) {
+                    case 'celsius':
+                        temp = temp + '°C'
+                        break;
+                    case 'fahrenheit':
+                        temp = parseInt(((temp * 9.5) + 32)) + '°F'
+                        break;
+                    case 'kelvin':
+                        temp = parseInt((temp + 273.15)) + 'K'
+                        break;
+                    default:
+                        temp = temp + '°C'
+                        break;
+                }
+                switch (windSpeed) {
+                    case 'm/s':
+                        dayWind = dayWind + ' m/s'
+                        break;
+                    case 'km/h':
+                        dayWind = dayWind * 3.6 + ' km/h'
+                        break;
+                    case 'mph':
+                        dayWind = dayWind * 2.237 + ' mph'
+                        break;
+                    default:
+                        dayWind = dayWind + ' m/s'
+                        break;
+                }
+                switch (pressure) {
+                    case 'hPa':
+                        dayPressure = dayPressure + ' hPa'
+                        break;
+                    case 'atm':
+                        dayPressure = dayPressure * 1013.25 + ' atm'
+                        break;
+                    case 'Pa':
+                        dayPressure = dayPressure * 100 + ' Pa'
+                        break;
+                    case 'mmHg':
+                        dayPressure = dayPressure * 0.75 + ' mmHg'
+                        break;
+                    default:
+                        dayPressure = dayPressure + ' hPa'
+                        break;
+                }
                 forecastNights.push({
+                    city: currentCity,
                     day: dayName,
                     date: dateStr,
+                    time: '03:00:00',
                     description: dayDes,
-                    temp: temp
+                    temp: parseInt(temp),
+                    pressure: dayPressure,
+                    humidity: dayHumidity,
+                    visibility: dayVisibility,
+                    wind: dayWind
                 });
             }
         });
@@ -216,6 +332,10 @@ async function getData() {
 
         creat_current_weather();
         creat_forecast_section();
+        createTemperatureChart();
+        createWindChart();
+        createHumidityChart();
+        createPressureChart();
         createMap(currentLon, currentLat);
     } catch (error) {
         console.error("❌ Error fetching data:", error);
@@ -306,61 +426,146 @@ function creat_current_weather() {
                                 </div>
 `
 }
+// -----------------------------------creat forecast weather section
+function creat_forecast_weather() {
+    document.getElementById('current-weather').innerHTML = `
+                                <div class="loading hidden">
+                                    <div class="loader"></div>
+                                </div>
+                                <h3 class="font-['400'] text-[20px] capitalize text-[white]">current weather</h3>
+                                <div class="w-full flex items-center">
+                                    <figure>
+                                        <img src="src/asset/img/icon/${forecastDays[forecastId].description}.png" alt="" class="w-[120px]">
+                                    </figure>
+                                    <h3 class="text-[40px] lg:text-[40px] xl:text-[50px] 2xl:text-[70px] font-['600'] ml-[30px]">
+                                        ${forecastDays[forecastId].temp}°C
+                                    </h3>
+                                </div>
+                                <div class="w-full flex flex-wrap items-center gap-2.5">
+                                    <!-- ----------sky -->
+                                    <figure title='sky' class="flex items-center px-2.5 py-1 rounded-[10px] bg-[#ffffff21] backdrop-blur-[35px]">
+                                        <img src="src/asset/img/icon/sky.png" alt="" class="w-[22px] xl:w-[25px]">
+                                        <figcaption
+                                            class="font-['400'] text-[12px] xl:text-[14px] 2xl:text-[16px] capitalize text-[white] ml-1.5">
+                                            ${forecastDays[forecastId].description}
+                                        </figcaption>
+                                    </figure>
+                                    <!-- ----------city -->
+                                    <figure title='city' class="flex items-center px-2.5 py-1 rounded-[10px] bg-[#ffffff21] backdrop-blur-[35px]">
+                                        <img src="src/asset/img/icon/city.png" alt="" class="w-[22px] xl:w-[25px]">
+                                        <figcaption
+                                            class="font-['400'] text-[12px] xl:text-[14px] 2xl:text-[16px] capitalize text-[white] ml-1.5">
+                                            ${forecastDays[forecastId].city}
+                                        </figcaption>
+                                    </figure>
+                                    <!-- ----------date -->
+                                    <figure title='date' class="flex items-center px-2.5 py-1 rounded-[10px] bg-[#ffffff21] backdrop-blur-[35px]">
+                                        <img src="src/asset/img/icon/date.png" alt="" class="w-[22px] xl:w-[25px]">
+                                        <figcaption
+                                            class="font-['400'] text-[12px] xl:text-[14px] 2xl:text-[16px] capitalize text-[white] ml-1.5">
+                                            ${forecastDays[forecastId].date}
+                                        </figcaption>
+                                    </figure>
+                                    <!-- ----------time -->
+                                    <figure title='time' class="flex items-center px-2.5 py-1 rounded-[10px] bg-[#ffffff21] backdrop-blur-[35px]">
+                                        <img src="src/asset/img/icon/time.png" alt="" class="w-[22px] xl:w-[25px]">
+                                        <figcaption
+                                            class="font-['400'] text-[12px] xl:text-[14px] 2xl:text-[16px] capitalize text-[white] ml-1.5">
+                                            ${forecastDays[forecastId].time}
+                                        </figcaption>
+                                    </figure>
+                                    <!-- ----------Humidity -->
+                                    <figure title='Humidity' class="flex items-center px-2.5 py-1 rounded-[10px] bg-[#ffffff21] backdrop-blur-[35px]">
+                                        <img src="src/asset/img/icon/Humidity.png" alt="" class="w-[22px] xl:w-[25px]">
+                                        <figcaption
+                                            class="font-['400'] text-[12px] xl:text-[14px] 2xl:text-[16px] text-[white] ml-1.5">
+                                            ${forecastDays[forecastId].humidity}
+                                        </figcaption>
+                                    </figure>
+                                    <!-- ----------visibility -->
+                                    <figure title='visibility' class="flex items-center px-2.5 py-1 rounded-[10px] bg-[#ffffff21] backdrop-blur-[35px]">
+                                        <img src="src/asset/img/icon/visibility.png" alt="" class="w-[22px] xl:w-[25px]">
+                                        <figcaption
+                                            class="font-['400'] text-[12px] xl:text-[14px] 2xl:text-[16px] text-[white] ml-1.5">
+                                            ${forecastDays[forecastId].visibility}
+                                        </figcaption>
+                                    </figure>
+                                    <!-- ----------pressure -->
+                                    <figure title='pressure' class="flex items-center px-2.5 py-1 rounded-[10px] bg-[#ffffff21] backdrop-blur-[35px]">
+                                        <img src="src/asset/img/icon/pressure.png" alt="" class="w-[22px] xl:w-[25px]">
+                                        <figcaption
+                                            class="font-['400'] text-[12px] xl:text-[14px] 2xl:text-[16px] text-[white] ml-1.5">
+                                            ${forecastDays[forecastId].pressure}
+                                        </figcaption>
+                                    </figure>
+                                    <!-- ----------wind -->
+                                    <figure title='wind speed' class="flex items-center px-2.5 py-1 rounded-[10px] bg-[#ffffff21] backdrop-blur-[35px]">
+                                        <img src="src/asset/img/icon/wind.png" alt="" class="w-[22px] xl:w-[25px]">
+                                        <figcaption
+                                            class="font-['400'] text-[12px] xl:text-[14px] 2xl:text-[16px] text-[white] ml-1.5">
+                                            ${forecastDays[forecastId].wind}
+                                        </figcaption>
+                                    </figure>
+                                </div>
+`
+}
 
 // -----------------------------------creat forecast section
 function creat_forecast_section() {
+    document.getElementById('forecast-weather').innerHTML = ``
     document.getElementById('forecast-weather').innerHTML = `
-                                            <li
-                                        class="w-full flex justify-between items-center cursor-pointer py-2 border-b border-b-dark-border">
+                                    <li data-id="0"
+                                        class="w-full forecast flex justify-between items-center cursor-pointer py-2 px-2.5 rounded-2xl border-b border-b-dark-border hover:*:text-[#59deff] hover:**:text-[#59deff]">
                                         <figure class="flex items-center">
                                             <img src="src/asset/img/icon/${forecastDays[0].description}.png" class="w-[25px]">
-                                            <figcaption class="font-['400'] text-[16px] capitalize text-[white] ml-4">
-                                                ${forecastDays[0].temp} /  ${forecastNights[0].temp}
+                                            <figcaption class="font-['400'] text-[16px] capitalize text-[white] duration-100 ml-4">
+                                                ${forecastDays[0].temp}° /  ${forecastNights[0].temp}°
                                             </figcaption>
                                         </figure>
-                                        <h6 class="font-['400'] text-[14px] capitalize text-[white]">${forecastDays[0].date}/${forecastDays[0].day}</h6>
+                                        <h6 class="font-['400'] text-[14px] capitalize text-[white] duration-100">${forecastDays[0].date}/${forecastDays[0].day}</h6>
                                     </li>
-                                    <li
-                                        class="w-full flex justify-between items-center cursor-pointer py-2 border-b border-b-dark-border">
+                                    <li data-id="1"
+                                        class="w-full forecast flex justify-between items-center cursor-pointer py-2 px-2.5 rounded-2xl border-b border-b-dark-border hover:*:text-[#59deff] hover:**:text-[#59deff]">
                                         <figure class="flex items-center">
                                             <img src="src/asset/img/icon/${forecastDays[1].description}.png" class="w-[25px]">
-                                            <figcaption class="font-['400'] text-[16px] capitalize text-[white] ml-4">
-                                                ${forecastDays[1].temp} /  ${forecastNights[1].temp}
+                                            <figcaption class="font-['400'] text-[16px] capitalize duration-100 text-[white] ml-4">
+                                                ${forecastDays[1].temp}° /  ${forecastNights[1].temp}°
                                             </figcaption>
                                         </figure>
-                                        <h6 class="font-['400'] text-[14px] capitalize text-[white]">${forecastDays[1].date}/${forecastDays[1].day}</h6>
+                                        <h6 class="font-['400'] text-[14px] capitalize text-[white] duration-100">${forecastDays[1].date}/${forecastDays[1].day}</h6>
                                     </li>
-                                    <li
-                                        class="w-full flex justify-between items-center cursor-pointer py-2 border-b border-b-dark-border">
+                                    <li data-id="2"
+                                        class="w-full forecast flex justify-between items-center cursor-pointer py-2 px-2.5 rounded-2xl border-b border-b-dark-border hover:*:text-[#59deff] hover:**:text-[#59deff]">
                                         <figure class="flex items-center">
                                             <img src="src/asset/img/icon/${forecastDays[2].description}.png" class="w-[25px]">
-                                            <figcaption class="font-['400'] text-[16px] capitalize text-[white] ml-4">
-                                                ${forecastDays[2].temp} /  ${forecastNights[2].temp}
+                                            <figcaption class="font-['400'] text-[16px] capitalize duration-100 text-[white] ml-4">
+                                                ${forecastDays[2].temp}° /  ${forecastNights[2].temp}°
                                             </figcaption>
                                         </figure>
-                                        <h6 class="font-['400'] text-[14px] capitalize text-[white]">${forecastDays[2].date}/${forecastDays[2].day}</h6>
+                                        <h6 class="font-['400'] text-[14px] capitalize text-[white] duration-100">${forecastDays[2].date}/${forecastDays[2].day}</h6>
                                     </li>
-                                    <li
-                                        class="w-full flex justify-between items-center cursor-pointer py-2 border-b border-b-dark-border">
+                                    <li data-id="3"
+                                        class="w-full forecast flex justify-between items-center cursor-pointer py-2 px-2.5 rounded-2xl border-b border-b-dark-border hover:*:text-[#59deff] hover:**:text-[#59deff]">
                                         <figure class="flex items-center">
                                             <img src="src/asset/img/icon/${forecastDays[3].description}.png" class="w-[25px]">
-                                            <figcaption class="font-['400'] text-[16px] capitalize text-[white] ml-4">
-                                                ${forecastDays[3].temp} /  ${forecastNights[3].temp}
+                                            <figcaption class="font-['400'] text-[16px] duration-100 capitalize text-[white] ml-4">
+                                                ${forecastDays[3].temp}° /  ${forecastNights[3].temp}°
                                             </figcaption>
                                         </figure>
-                                        <h6 class="font-['400'] text-[14px] capitalize text-[white]">${forecastDays[3].date}/${forecastDays[3].day}</h6>
+                                        <h6 class="font-['400'] text-[14px] capitalize text-[white] duration-100">${forecastDays[3].date}/${forecastDays[3].day}</h6>
                                     </li>
-                                    <li
-                                        class="w-full flex justify-between items-center cursor-pointer py-2 border-b border-b-dark-border">
+                                    <li data-id="4"
+                                        class="w-full forecast flex justify-between items-center cursor-pointer py-2 px-2.5 rounded-2xl border-b border-b-dark-border hover:*:text-[#59deff] hover:**:text-[#59deff]">
                                         <figure class="flex items-center">
                                             <img src="src/asset/img/icon/${forecastDays[4].description}.png" class="w-[25px]">
-                                            <figcaption class="font-['400'] text-[16px] capitalize text-[white] ml-4">
-                                                ${forecastDays[4].temp} /  ${forecastNights[4].temp}
+                                            <figcaption class="font-['400'] text-[16px] duration-100 capitalize text-[white] ml-4">
+                                                ${forecastDays[4].temp}° /  ${forecastNights[4].temp}°
                                             </figcaption>
                                         </figure>
-                                        <h6 class="font-['400'] text-[14px] capitalize text-[white]">${forecastDays[4].date}/${forecastDays[4].day}</h6>
+                                        <h6 class="font-['400'] text-[14px] capitalize text-[white] duration-100">${forecastDays[4].date}/${forecastDays[4].day}</h6>
                                     </li>
     `
+    forecastList()
 }
 
 // -----------------------------------popular cities
@@ -383,12 +588,27 @@ document.querySelectorAll('#popular-cities>li').forEach((item, i, arr) => {
         currentCity = cityName;
         await new Promise(r => setTimeout(r, 150));
         await getData();
+        forecastList()
+
     });
 });
-// -----------------------------------
-window.addEventListener("load", () => {
-    getData();
-});
+// -----------------------------------forecast
+let forecastId = ''
+
+function forecastList() {
+    document.querySelectorAll('.forecast').forEach((item, i, arr) => {
+        item.addEventListener('click', () => {
+            arr.forEach((item) => {
+                item.classList.remove('active-nav2')
+            })
+            forecastId = item.dataset.id
+            item.classList.add('active-nav2')
+            console.log(forecastId);
+            creat_forecast_weather()
+        })
+    });
+
+}
 
 // -----------------------------------setting option
 let temperature = localStorage.getItem('savedTemperature')
@@ -477,5 +697,422 @@ document.querySelectorAll('.alert').forEach(item => {
             alert.classList.add('-bottom-[10%]')
 
         }, 2000);
+    })
+})
+// ------------------------------------------------------------------------------------charts
+let tempChart = null;
+let windChart = null;
+let humidityChart = null;
+let pressureChart = null;
+
+function createTemperatureChart() {
+
+    if (tempChart) {
+        tempChart.destroy();
+    }
+
+    const data = forecastDays.map(item => ({
+        day: item.day,
+        count: item.temp
+    }));
+    const nightData = forecastNights.map(item => ({
+        day: item.day,
+        count: item.temp
+    }));
+
+
+    tempChart = new Chart(
+        document.getElementById('temperatureChart'), {
+            type: 'line',
+            data: {
+                labels: data.map(row => row.day),
+                datasets: [{
+                        label: 'Day temperature',
+                        data: data.map(row => row.count),
+                        fill: false,
+                        borderColor: '#ff8a00',
+                        backgroundColor: '#000000',
+                        pointBackgroundColor: 'white',
+                        pointBorderColor: 'black',
+                        tension: 0.3
+                    },
+                    {
+                        label: 'night temperature',
+                        data: nightData.map(row => row.count),
+                        fill: false,
+                        borderColor: '#59deff',
+                        backgroundColor: '#000000',
+                        pointBackgroundColor: 'white',
+                        pointBorderColor: 'black',
+                        tension: 0.2
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    x: {
+                        grid: {
+                            display: true,
+                            color: '#ffffff33'
+                        },
+                        ticks: {
+                            color: '#fff'
+                        }
+
+                    },
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            display: true,
+                            color: '#ffffff33'
+                        },
+                        ticks: {
+                            color: '#fff'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        backgroundColor: '#1e1e1e',
+                        titleColor: '#59deff',
+                        bodyColor: '#ffffff',
+                        borderColor: '#59deff',
+                        borderWidth: 1,
+                        titleFont: {
+                            size: 14,
+                            weight: 'bold',
+                            family: 'Arial'
+                        },
+                        bodyFont: {
+                            size: 13,
+                            family: 'Arial'
+                        },
+                        callbacks: {
+                            label: function (context) {
+                                return context.formattedValue;
+                            }
+                        }
+                    }
+                },
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        }
+    );
+}
+
+function createWindChart() {
+
+    if (windChart) {
+        windChart.destroy();
+    }
+
+    const data = forecastDays.map(item => ({
+        day: item.day,
+        count: Number(item.wind.replace(/[^\d.-]/g, '')) 
+    }));
+    const nightData = forecastNights.map(item => ({
+        day: item.day,
+        count: Number(item.wind.replace(/[^\d.-]/g, ''))
+    }));
+
+    windChart = new Chart(
+        document.getElementById('windChart'), {
+            type: 'line',
+            data: {
+                labels: data.map(row => row.day),
+                datasets: [{
+                        label: 'Day speed wind',
+                        data: data.map(row => row.count),
+                        fill: false,
+                        borderColor: '#ff8a00',
+                        backgroundColor: '#000000',
+                        pointBackgroundColor: 'white',
+                        pointBorderColor: 'black',
+                        tension: 0.3
+                    },
+                    {
+                        label: 'night speed wind',
+                        data: nightData.map(row => row.count),
+                        fill: false,
+                        borderColor: '#59deff',
+                        backgroundColor: '#000000',
+                        pointBackgroundColor: 'white',
+                        pointBorderColor: 'black',
+                        tension: 0.2
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    x: {
+                        grid: {
+                            display: true,
+                            color: '#ffffff33'
+                        },
+                        ticks: {
+                            color: '#fff'
+                        }
+
+                    },
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            display: true,
+                            color: '#ffffff33'
+                        },
+                        ticks: {
+                            color: '#fff'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        backgroundColor: '#1e1e1e',
+                        titleColor: '#59deff',
+                        bodyColor: '#ffffff',
+                        borderColor: '#59deff',
+                        borderWidth: 1,
+                        titleFont: {
+                            size: 14,
+                            weight: 'bold',
+                            family: 'Arial'
+                        },
+                        bodyFont: {
+                            size: 13,
+                            family: 'Arial'
+                        },
+                        callbacks: {
+                            label: function (context) {
+                                return context.formattedValue;
+                            }
+                        }
+                    }
+                },
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        }
+    );
+}
+function createPressureChart() {
+
+    if (pressureChart) {
+        pressureChart.destroy();
+    }
+
+    const data = forecastDays.map(item => ({
+        day: item.day,
+        count: Number(item.pressure.replace(/[^\d.-]/g, '')) 
+    }));
+    const nightData = forecastNights.map(item => ({
+        day: item.day,
+        count: Number(item.pressure.replace(/[^\d.-]/g, ''))
+    }));
+
+    pressureChart = new Chart(
+        document.getElementById('pressureChart'), {
+            type: 'line',
+            data: {
+                labels: data.map(row => row.day),
+                datasets: [{
+                        label: 'Day pressure',
+                        data: data.map(row => row.count),
+                        fill: false,
+                        borderColor: '#ff8a00',
+                        backgroundColor: '#000000',
+                        pointBackgroundColor: 'white',
+                        pointBorderColor: 'black',
+                        tension: 0.3
+                    },
+                    {
+                        label: 'night pressure',
+                        data: nightData.map(row => row.count),
+                        fill: false,
+                        borderColor: '#59deff',
+                        backgroundColor: '#000000',
+                        pointBackgroundColor: 'white',
+                        pointBorderColor: 'black',
+                        tension: 0.2
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    x: {
+                        grid: {
+                            display: true,
+                            color: '#ffffff33'
+                        },
+                        ticks: {
+                            color: '#fff'
+                        }
+
+                    },
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            display: true,
+                            color: '#ffffff33'
+                        },
+                        ticks: {
+                            color: '#fff'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        backgroundColor: '#1e1e1e',
+                        titleColor: '#59deff',
+                        bodyColor: '#ffffff',
+                        borderColor: '#59deff',
+                        borderWidth: 1,
+                        titleFont: {
+                            size: 14,
+                            weight: 'bold',
+                            family: 'Arial'
+                        },
+                        bodyFont: {
+                            size: 13,
+                            family: 'Arial'
+                        },
+                        callbacks: {
+                            label: function (context) {
+                                return context.formattedValue;
+                            }
+                        }
+                    }
+                },
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        }
+    );
+}
+
+function createHumidityChart() {
+    if (humidityChart) {
+        humidityChart.destroy();
+    }
+
+    const data = forecastDays.map(item => ({
+        day: item.day,
+        count: item.humidity 
+    }));
+    const nightData = forecastNights.map(item => ({
+        day: item.day,
+        count: item.humidity
+    }));
+
+    humidityChart = new Chart(
+        document.getElementById('humidityChart'), {
+            type: 'line',
+            data: {
+                labels: data.map(row => row.day),
+                datasets: [{
+                        label: 'Day humidity',
+                        data: data.map(row => row.count),
+                        fill: false,
+                        borderColor: '#ff8a00',
+                        backgroundColor: '#000000',
+                        pointBackgroundColor: 'white',
+                        pointBorderColor: 'black',
+                        tension: 0.3
+                    },
+                    {
+                        label: 'night humidity',
+                        data: nightData.map(row => row.count),
+                        fill: false,
+                        borderColor: '#59deff',
+                        backgroundColor: '#000000',
+                        pointBackgroundColor: 'white',
+                        pointBorderColor: 'black',
+                        tension: 0.2
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    x: {
+                        grid: {
+                            display: true,
+                            color: '#ffffff33'
+                        },
+                        ticks: {
+                            color: '#fff'
+                        }
+
+                    },
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            display: true,
+                            color: '#ffffff33'
+                        },
+                        ticks: {
+                            color: '#fff'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        backgroundColor: '#1e1e1e',
+                        titleColor: '#59deff',
+                        bodyColor: '#ffffff',
+                        borderColor: '#59deff',
+                        borderWidth: 1,
+                        titleFont: {
+                            size: 14,
+                            weight: 'bold',
+                            family: 'Arial'
+                        },
+                        bodyFont: {
+                            size: 13,
+                            family: 'Arial'
+                        },
+                        callbacks: {
+                            label: function (context) {
+                                return context.formattedValue;
+                            }
+                        }
+                    }
+                },
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        }
+    );
+}
+// ----------------------------------chart btn
+const chartBtn = document.querySelectorAll('.chartBtn')
+const chartBox = document.querySelectorAll('.chartBox')
+
+chartBtn.forEach((item, i, arr) => {
+    item.addEventListener('click', () => {
+        arr.forEach(item => {
+            item.classList.remove('active-btn')
+        })
+        item.classList.add('active-btn')
+        let id = item.dataset.name
+        chartBox.forEach(item => {
+            if (item.dataset.name == id) {
+                item.classList.remove('hidden')
+            } else {
+                item.classList.add('hidden')
+            }
+        })
+
     })
 })
