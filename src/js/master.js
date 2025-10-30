@@ -244,7 +244,7 @@ async function getData() {
                     date: dateStr,
                     time: '12:00:00',
                     description: dayDes,
-                    temp: parseInt(temp),
+                    temp: temp,
                     pressure: dayPressure,
                     humidity: dayHumidity,
                     visibility: dayVisibility,
@@ -314,7 +314,7 @@ async function getData() {
                     date: dateStr,
                     time: '03:00:00',
                     description: dayDes,
-                    temp: parseInt(temp),
+                    temp: temp,
                     pressure: dayPressure,
                     humidity: dayHumidity,
                     visibility: dayVisibility,
@@ -512,6 +512,8 @@ function creat_forecast_weather() {
 
 // -----------------------------------creat forecast section
 function creat_forecast_section() {
+    console.log(forecastDays);
+
     document.getElementById('forecast-weather').innerHTML = ``
     document.getElementById('forecast-weather').innerHTML = `
                                     <li data-id="0"
@@ -519,7 +521,7 @@ function creat_forecast_section() {
                                         <figure class="flex items-center">
                                             <img src="src/asset/img/icon/${forecastDays[0].description}.png" class="w-[25px]">
                                             <figcaption class="font-['400'] text-[16px] capitalize text-[white] duration-100 ml-4">
-                                                ${forecastDays[0].temp}° /  ${forecastNights[0].temp}°
+                                                ${forecastDays[0].temp} /  ${forecastNights[0].temp}
                                             </figcaption>
                                         </figure>
                                         <h6 class="font-['400'] text-[14px] capitalize text-[white] duration-100">${forecastDays[0].date}/${forecastDays[0].day}</h6>
@@ -529,7 +531,7 @@ function creat_forecast_section() {
                                         <figure class="flex items-center">
                                             <img src="src/asset/img/icon/${forecastDays[1].description}.png" class="w-[25px]">
                                             <figcaption class="font-['400'] text-[16px] capitalize duration-100 text-[white] ml-4">
-                                                ${forecastDays[1].temp}° /  ${forecastNights[1].temp}°
+                                                ${forecastDays[1].temp} /  ${forecastNights[1].temp}
                                             </figcaption>
                                         </figure>
                                         <h6 class="font-['400'] text-[14px] capitalize text-[white] duration-100">${forecastDays[1].date}/${forecastDays[1].day}</h6>
@@ -539,7 +541,7 @@ function creat_forecast_section() {
                                         <figure class="flex items-center">
                                             <img src="src/asset/img/icon/${forecastDays[2].description}.png" class="w-[25px]">
                                             <figcaption class="font-['400'] text-[16px] capitalize duration-100 text-[white] ml-4">
-                                                ${forecastDays[2].temp}° /  ${forecastNights[2].temp}°
+                                                ${forecastDays[2].temp} /  ${forecastNights[2].temp}
                                             </figcaption>
                                         </figure>
                                         <h6 class="font-['400'] text-[14px] capitalize text-[white] duration-100">${forecastDays[2].date}/${forecastDays[2].day}</h6>
@@ -549,7 +551,7 @@ function creat_forecast_section() {
                                         <figure class="flex items-center">
                                             <img src="src/asset/img/icon/${forecastDays[3].description}.png" class="w-[25px]">
                                             <figcaption class="font-['400'] text-[16px] duration-100 capitalize text-[white] ml-4">
-                                                ${forecastDays[3].temp}° /  ${forecastNights[3].temp}°
+                                                ${forecastDays[3].temp} /  ${forecastNights[3].temp}
                                             </figcaption>
                                         </figure>
                                         <h6 class="font-['400'] text-[14px] capitalize text-[white] duration-100">${forecastDays[3].date}/${forecastDays[3].day}</h6>
@@ -559,7 +561,7 @@ function creat_forecast_section() {
                                         <figure class="flex items-center">
                                             <img src="src/asset/img/icon/${forecastDays[4].description}.png" class="w-[25px]">
                                             <figcaption class="font-['400'] text-[16px] duration-100 capitalize text-[white] ml-4">
-                                                ${forecastDays[4].temp}° /  ${forecastNights[4].temp}°
+                                                ${forecastDays[4].temp} /  ${forecastNights[4].temp}
                                             </figcaption>
                                         </figure>
                                         <h6 class="font-['400'] text-[14px] capitalize text-[white] duration-100">${forecastDays[4].date}/${forecastDays[4].day}</h6>
@@ -713,11 +715,11 @@ function createTemperatureChart() {
 
     const data = forecastDays.map(item => ({
         day: item.day,
-        count: item.temp
+        count: Number(item.temp.replace(/[^\d.-]/g, ''))
     }));
     const nightData = forecastNights.map(item => ({
         day: item.day,
-        count: item.temp
+        count: Number(item.temp.replace(/[^\d.-]/g, ''))
     }));
 
 
@@ -812,7 +814,7 @@ function createWindChart() {
 
     const data = forecastDays.map(item => ({
         day: item.day,
-        count: Number(item.wind.replace(/[^\d.-]/g, '')) 
+        count: Number(item.wind.replace(/[^\d.-]/g, ''))
     }));
     const nightData = forecastNights.map(item => ({
         day: item.day,
@@ -901,6 +903,7 @@ function createWindChart() {
         }
     );
 }
+
 function createPressureChart() {
 
     if (pressureChart) {
@@ -909,7 +912,7 @@ function createPressureChart() {
 
     const data = forecastDays.map(item => ({
         day: item.day,
-        count: Number(item.pressure.replace(/[^\d.-]/g, '')) 
+        count: Number(item.pressure.replace(/[^\d.-]/g, ''))
     }));
     const nightData = forecastNights.map(item => ({
         day: item.day,
@@ -1006,7 +1009,7 @@ function createHumidityChart() {
 
     const data = forecastDays.map(item => ({
         day: item.day,
-        count: item.humidity 
+        count: item.humidity
     }));
     const nightData = forecastNights.map(item => ({
         day: item.day,
