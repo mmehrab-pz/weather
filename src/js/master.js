@@ -4,6 +4,24 @@
 //     createElement
 // } = require("react");
 
+const MIN_LOADING_TIME = 6000;
+const startTime = Date.now();
+
+window.addEventListener('load', () => {
+    const elapsed = Date.now() - startTime;
+    const remaining = Math.max(0, MIN_LOADING_TIME - elapsed);
+
+
+    setTimeout(() => {
+        const loading = document.getElementById('loader');
+        const content = document.getElementById('content');
+
+        
+            loading.classList.add('hidden')
+            content.classList.remove('hidden')
+        
+    }, remaining); 
+});
 
 // -----------------------------------
 window.addEventListener("load", () => {
