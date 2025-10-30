@@ -27,9 +27,6 @@
                 <li data-name="first"
                     class="cursor-pointer rounded-2xl capitalize text-[white] text-[35px] font-['400'] text-center mb-5">
                     weather</li>
-                <li data-name="location"
-                    class="cursor-pointer rounded-2xl capitalize text-[white] text-[35px] font-['400'] text-center mb-5">
-                    map</li>
                 <li data-name="search"
                     class="cursor-pointer rounded-2xl capitalize text-[white] text-[35px] font-['400'] text-center mb-5">
                     search</li>
@@ -60,12 +57,6 @@
                         class="w-full flex justify-center rounded-2xl p-3.5 mb-7 cursor-pointer active-nav hover:bg-[#ffffff1e] duration-300">
                         <figure>
                             <img src="src/asset/img/icon/icons8-four-squares-96.png" class="w-[30px]">
-                        </figure>
-                    </li>
-                    <li data-name="location"
-                        class="w-full flex justify-center rounded-2xl p-3.5 mb-7 cursor-pointer hover:bg-[#ffffff1e] duration-300">
-                        <figure>
-                            <img src="src/asset/img/icon/icons8-location-96.png" class="w-[35px]">
                         </figure>
                     </li>
                     <li id="searchBtn" data-name="search"
@@ -180,7 +171,7 @@
                 </div>
             </section>
             <!-- ----------------------------------------first------------------------------------- -->
-            <section data-name="first" class="w-full h-full text-white text-[70px]">
+            <section data-name="first" class="w-full h-full text-white text-[70px] hidden">
                 <header class="w-full flex justify-between items-center px-2.5 h-[65px] border-b border-b-dark-border">
                     <ul class="nav-ul w-[43%] h-full p-2.5 hidden lg:flex">
                         <li data-name="search"
@@ -407,12 +398,76 @@
                     </div>
                 </div>
             </section>
-            <!-- ------------------------location--------------------- -->
-            <section data-name="location"
-                class="w-full h-full flex justify-center items-center text-white text-[70px] hidden">location</section>
             <!-- ------------------------search--------------------- -->
-            <section data-name="search"
-                class="w-full h-full flex justify-center items-center text-white text-[70px] hidden"></section>
+            <section data-name="search" class="w-full h-full">
+                <header class="w-full flex justify-between items-center px-2.5 h-[65px] border-b border-b-dark-border">
+                    <div class="flex lg:hidden items-center">
+                        <figure class=" flex items-center">
+                            <img src="src/asset/img/icon/clouds.png" alt="" class="w-[50px]">
+                        </figure>
+                        <span
+                            class="open-menu w-[40px] h-[40px] flex justify-center items-center rounded-2xl bg-[#ffffff1e] ml-5 cursor-pointer">
+                            <img src="src/asset/img/icon/menu.png" alt="" class="w-[30px]">
+                        </span>
+                    </div>
+                    <div></div>
+                    <div class="flex">
+                        <span
+                            class="flex alert justify-center items-center w-[40px] h-[40px] rounded-full bg-[#ffffff1e] mr-2.5 cursor-pointer">
+                            <figure>
+                                <img src="src/asset/img/icon/bell.png" alt="" class="w-[25px]">
+                            </figure>
+                        </span>
+                        <figure class="alert">
+                            <img src="src/asset/img/mehrab.png" alt="mehrab pourzakaria"
+                                class="w-[40px] rounded-full cursor-pointer">
+                        </figure>
+                    </div>
+                </header>
+                <section class="w-full h-[calc(100%-65px)] flex flex-wrap p-2.5 scrollHide">
+                    <div class="w-[60%] h-full p-2.5">
+                        <div
+                            class="w-full h-full rounded-2xl p-5 bg-[#00000067] backdrop-blur-2xl border border-dark-border scrollHide">
+                            <!-- ----------search box -->
+                            <div class="w-full h-[60px] flex">
+                                <input id="search-box" type="text" placeholder="search ctiy" class="w-[90%] h-full pl-5 bg-[#3d3d3d7c] text-white text-[16px] font-['400'] border border-dark-border border-r-0 outline-0 rounded-l-full
+                                        placeholder:text-[16px] placeholder:text-[#ffffff73] placeholder:capitalize">
+                                <button id="search-btn"
+                                    class="h-full w-[10%] rounded-r-full flex justify-center items-center bg-[#3d3d3d7c] border border-dark-border border-l-0 outline-0 cursor-pointer">
+                                    <img src="src/asset/img/icon/search.png" alt="" class="w-[30px]">
+                                </button>
+                            </div>
+                            <!-- ----------------- -->
+                            <ul id="city-box" class="nav-ul w-full h-auto pt-5">
+                                <!-- <span class="hidden">
+                                    <img src="src/asset/img/icon/addLocation.png" alt="">
+                                </span> -->
+                                <!-- <li data-name="first" class="w-full h-[120px] rounded-2xl bg-[#3d3d3d7c] border border-dark-border hover:border-[#59deff] p-5 flex justify-between items-center cursor-pointer mb-5">
+                                    <div class="flex items-center">
+                                        <figure class=" h-full">
+                                            <img src="src/asset/img/icon/clear sky.png" alt="">
+                                        </figure>
+                                        <div class=" ml-5">
+                                            <h3 class="text-[white] capitalize font-['400'] text-[35px]">madrid</h3>
+                                            <h4 class="text-[#ffffff7c] capitalize font-['400'] text-[25px]">23C</h4>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <figure class="w-10 h-10 rounded-2xl bg-[#ff18187a] flex justify-center items-center cursor-pointer hover:scale-[1.1] duration-200">
+                                            <img src="src/asset/img/icon/delete.png" alt="" class="w-[30px]">
+                                        </figure>
+                                    </div>
+                                </li> -->
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="w-[40%] h-full p-2.5">
+                        <div
+                            class="w-full h-full rounded-2xl p-5 bg-[#00000067] backdrop-blur-2xl border border-dark-border scrollHide">
+                        </div>
+                    </div>
+                </section>
+            </section>
             <!-- ------------------------profile--------------------- -->
             <section data-name="profile" class="w-full h-full hidden">
                 <header class="w-full flex justify-between items-center px-2.5 h-[65px] border-b border-b-dark-border">

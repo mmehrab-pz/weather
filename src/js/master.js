@@ -1,4 +1,10 @@
 // https://api.openweathermap.org/data/2.5/forecast?q=tehran&units=metric&appid=ab1bcc592ad966be21f0817b800ba129
+
+// const {
+//     createElement
+// } = require("react");
+
+
 // -----------------------------------
 window.addEventListener("load", () => {
     getData();
@@ -7,27 +13,30 @@ window.addEventListener("load", () => {
 
 const pages = document.querySelectorAll('#pages>section')
 
-document.querySelectorAll('.nav-ul>li').forEach((item, index, arr) => {
-    item.addEventListener('click', () => {
-        menuMobile.classList.remove('top-0')
-        menuMobile.classList.add('top-full')
-        arr.forEach((item) => {
-            item.classList.remove('active-nav')
-        })
-        item.classList.add('active-nav')
-        if (item.dataset.name == 'search') {
-            document.getElementById('searchBtn').classList.add('active-nav')
-        }
-        let id = item.dataset.name
-        pages.forEach((page) => {
-            page.classList.add('hidden')
-            if (page.dataset.name == id) {
-                page.classList.remove('hidden')
+function check_nav_li() {
+    document.querySelectorAll('.nav-ul>li').forEach((item, index, arr) => {
+        item.addEventListener('click', () => {
+            menuMobile.classList.remove('top-0')
+            menuMobile.classList.add('top-full')
+            arr.forEach((item) => {
+                item.classList.remove('active-nav')
+            })
+            item.classList.add('active-nav')
+            if (item.dataset.name == 'search') {
+                document.getElementById('searchBtn').classList.add('active-nav')
             }
-        })
+            let id = item.dataset.name
+            pages.forEach((page) => {
+                page.classList.add('hidden')
+                if (page.dataset.name == id) {
+                    page.classList.remove('hidden')
+                }
+            })
 
+        })
     })
-})
+}
+check_nav_li()
 // ----------------open and close menu mobile
 const menuMobile = document.getElementById('menu-mobile')
 
@@ -337,6 +346,8 @@ async function getData() {
         createHumidityChart();
         createPressureChart();
         createMap(currentLon, currentLat);
+        create_city_box()
+        check_nav_li()
     } catch (error) {
         console.error("❌ Error fetching data:", error);
     } finally {
@@ -1119,3 +1130,97 @@ chartBtn.forEach((item, i, arr) => {
 
     })
 })
+// -------------------------------search box
+const searchBox = document.getElementById('search-box')
+const searchBtn = document.getElementById('search-btn')
+
+searchBtn.addEventListener('click', () => {
+
+    const value = searchBox.value.trim().toLowerCase()
+    const englishOnly = /^[A-Za-z]+$/;
+
+    if (!value || !englishOnly.test(value)) {
+        searchBox.parentElement.classList.add('check-input')
+
+    } else {
+        searchBox.parentElement.classList.remove('check-input')
+        console.log(value);
+        currentCity = value;
+        getData()
+    }
+})
+
+// -------------------------------- city box
+function create_city_box() {
+    const cityBoxContainer = document.getElementById('city-box');
+    const cityName = currentCity.trim().toLowerCase();
+    const existingBox = cityBoxContainer.querySelector(`li[data-city="${currentCity.trim().toLowerCase()}"]`);
+    console.log(existingBox);
+
+    if (existingBox) {
+        return;
+    }
+
+    const box = document.createElement('li')
+    box.dataset.name = 'first'
+    box.dataset.city = currentCity.trim().toLowerCase()
+    box.setAttribute('onclick', 'changeCity(this)')
+    box.classList.add('box')
+    box.innerHTML = `
+        <div class="flex items-center">
+            <figure class=" h-full">
+                <img src="src/asset/img/icon/${currentMain}.png" alt="">
+            </figure>
+            <div class=" ml-5">
+               <h3 class="text-[white] capitalize font-['400'] text-[35px]">${currentCity.toLowerCase()}</h3>
+               <h4 class="text-[#ffffff7c] capitalize font-['400'] text-[25px]">${currentTemp}</h4>
+            </div>
+        </div>
+        <div>
+           <figure onclick='removeBox(this,event)' class="w-10 h-10 rounded-2xl bg-[#ff18187a] flex justify-center items-center cursor-pointer hover:scale-[1.1] duration-200">
+               <img src="src/asset/img/icon/delete.png" alt="" class="w-[30px]">
+           </figure>
+        </div>
+    
+     `
+    document.getElementById('city-box').appendChild(box)
+
+    // ✅ ذخیره در localStorage
+    const storedCities = JSON.parse(localStorage.getItem('cities')) || [];
+    storedCities.push({
+        name: cityName,
+        temp: currentTemp,
+        icon: currentMain
+    });
+    localStorage.setItem('cities', JSON.stringify(storedCities));
+}
+
+function removeBox(s, e) {
+    e.stopPropagation();
+
+    const box = s.closest('.box');
+    const city = box.dataset.city;
+
+    // حذف از DOM
+    box.remove();
+
+    // حذف از localStorage
+    const storedCities = JSON.parse(localStorage.getItem('cities')) || [];
+    const updated = storedCities.filter(c => c.name !== city);
+    localStorage.setItem('cities', JSON.stringify(updated));
+}
+
+function changeCity(s) {
+    currentCity = s.firstElementChild.lastElementChild.firstElementChild.innerText
+    getData()
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+    const storedCities = JSON.parse(localStorage.getItem('cities')) || [];
+    storedCities.forEach(city => {
+        currentCity = city.name;
+        currentTemp = city.temp;
+        currentMain = city.icon;
+        create_city_box();
+    });
+});

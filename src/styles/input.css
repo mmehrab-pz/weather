@@ -89,6 +89,19 @@
         background-color: #59deff5e !important;
     }
 
+    .check-input{
+        >input{
+            background-color: #fb00007c !important;
+        }
+        >button{
+            background-color: #fb00007c !important;
+        }
+    }
+
+    .box{
+        @apply w-full h-[120px] rounded-2xl bg-[#3d3d3d7c] border border-dark-border hover:border-[#59deff] p-5 flex justify-between items-center cursor-pointer mb-5
+    }
+
     .setting-active{
         color: #FFF !important;
         @apply bg-[#59deff88] backdrop-blur-2xl text-white 
