@@ -350,6 +350,7 @@ async function getData() {
         check_nav_li()
     } catch (error) {
         console.error("❌ Error fetching data:", error);
+        city_not_found()
     } finally {
         hideLoading();
     }
@@ -700,6 +701,7 @@ function settingOption(item, all) {
 
 // -----------------------------------alert
 const alert = document.getElementById('alert')
+const alert2 = document.getElementById('alert2')
 
 document.querySelectorAll('.alert').forEach(item => {
     item.addEventListener('click', () => {
@@ -712,6 +714,16 @@ document.querySelectorAll('.alert').forEach(item => {
         }, 2000);
     })
 })
+
+function city_not_found() {
+    alert2.classList.remove('-bottom-[10%]')
+    alert2.classList.add('bottom-0')
+    setTimeout(() => {
+        alert2.classList.remove('bottom-0')
+        alert2.classList.add('-bottom-[10%]')
+
+    }, 2000);
+}
 // ------------------------------------------------------------------------------------charts
 let tempChart = null;
 let windChart = null;

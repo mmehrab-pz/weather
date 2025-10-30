@@ -99,7 +99,7 @@
     }
 
     .box{
-        @apply w-full h-[120px] rounded-2xl bg-[#3d3d3d7c] border border-dark-border hover:border-[#59deff] p-5 flex justify-between items-center cursor-pointer mb-5
+        @apply w-full h-[120px] rounded-2xl bg-slate-800 border border-dark-border hover:border-[#59deff] p-5 flex justify-between items-center cursor-pointer mb-5
     }
 
     .setting-active{
