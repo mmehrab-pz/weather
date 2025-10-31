@@ -400,7 +400,7 @@ function creat_current_weather() {
                                 <h3 class="font-['400'] text-[20px] capitalize text-[white]">current weather</h3>
                                 <div class="w-full flex items-center">
                                     <figure>
-                                        <img src="src/asset/img/icon/${currentMain.toLowerCase()}.png" alt="" class="w-[120px]">
+                                        <img src="src/asset/img/icon/${currentDescription.toLowerCase()}.png" alt="" class="w-[120px]">
                                     </figure>
                                     <h3 class="text-[40px] lg:text-[40px] xl:text-[50px] 2xl:text-[70px] font-['600'] ml-[30px]">
                                         ${currentTemp}
