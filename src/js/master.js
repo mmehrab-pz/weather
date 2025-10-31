@@ -1216,7 +1216,7 @@ function create_city_box() {
     box.innerHTML = `
         <div class="flex items-center">
             <figure class=" h-full">
-                <img src="src/asset/img/icon/${currentMain.toLowerCase()}.png" alt="">
+                <img src="src/asset/img/icon/${currentDescription.toLowerCase()}.png" alt="">
             </figure>
             <div class=" ml-5">
                <h3 class="text-[white] capitalize font-['400'] text-[35px]">${currentCity.toLowerCase()}</h3>
