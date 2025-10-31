@@ -1237,7 +1237,7 @@ function create_city_box() {
     storedCities.push({
         name: cityName,
         temp: currentTemp,
-        icon: currentMain
+        icon: currentDescription
     });
     localStorage.setItem('cities', JSON.stringify(storedCities));
 }
@@ -1267,7 +1267,7 @@ window.addEventListener('DOMContentLoaded', () => {
     storedCities.forEach(city => {
         currentCity = city.name;
         currentTemp = city.temp;
-        currentMain = city.icon;
+        currentDescription = city.icon;
         create_city_box();
     });
 });
