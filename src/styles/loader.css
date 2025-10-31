@@ -138,3 +138,42 @@
     transform: skewX(0deg) rotate(0deg);
   }
 }
+/* --------------------------map */
+
+/* 💫 مارکر نئونی سفارشی */
+.neon-marker {
+  position: relative;
+}
+
+.marker-glow {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(0, 255, 255, 0.4);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+  animation: pulse 1.5s infinite;
+}
+
+.marker-core {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  left: 5px;
+  top: 5px;
+  border-radius: 50%;
+  background: cyan;
+  box-shadow: 0 0 5px cyan;
+}
+
+/* انیمیشن پالس نئونی */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0.5;
+  }
+}

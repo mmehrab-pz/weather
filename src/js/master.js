@@ -16,11 +16,12 @@ window.addEventListener('load', () => {
         const loading = document.getElementById('loader');
         const content = document.getElementById('content');
 
-        
-            loading.classList.add('hidden')
-            content.classList.remove('hidden')
-        
-    }, remaining); 
+
+
+        loading.classList.add('hidden')
+        content.classList.remove('hidden')
+        map.invalidateSize();
+    }, remaining);
 });
 
 // -----------------------------------
@@ -91,9 +92,15 @@ let map;
 function createMap(currentLon, currentLat) {
     if (!map) {
         // 👇 فقط یک‌بار نقشه ساخته بشه
-        map = L.map('map').setView([currentLat, currentLon], 10);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; OpenStreetMap contributors'
+        map = L.map('map', {
+            attributionControl: false,
+            zoomControl: false
+        }).setView([currentLat, currentLon], 10);
+
+
+
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; <a href="https://carto.com/">CARTO</a> | &copy; OpenStreetMap contributors'
         }).addTo(map);
     } else {
 
@@ -104,10 +111,20 @@ function createMap(currentLon, currentLat) {
         map.removeLayer(map.currentMarker);
     }
 
-    map.currentMarker = L.marker([currentLat, currentLon])
-        .addTo(map)
-        .bindPopup(currentCity)
-        .openPopup();
+    const neonIcon = L.divIcon({
+        className: 'neon-marker',
+        html: '<div class="marker-glow"></div><div class="marker-core"></div>',
+        iconSize: [20, 20],
+        iconAnchor: [10, 10]
+    });
+
+    map.currentMarker = L.marker([currentLat, currentLon], {
+        icon: neonIcon
+    }).addTo(map);
+
+    setTimeout(() => {
+        map.invalidateSize();
+    }, 300);
 }
 // -----------------------------------weather api
 const API_KEY = 'ab1bcc592ad966be21f0817b800ba129'
