@@ -1,9 +1,5 @@
 // https://api.openweathermap.org/data/2.5/forecast?q=tehran&units=metric&appid=ab1bcc592ad966be21f0817b800ba129
 
-// const {
-//     createElement
-// } = require("react");
-
 const MIN_LOADING_TIME = 6000;
 const startTime = Date.now();
 
@@ -373,7 +369,10 @@ async function getData() {
 
         console.log("✅ Weather data for:", currentCity);
         console.log([currentTemp, currentPressure, currentHumidity, currentWind, currentDescription, currentDt]);
-
+        
+        if (currentTemp.endsWith("°C°C")) {
+            currentTemp = currentTemp.slice(0, -2); // دو کاراکتر آخر رو حذف می‌کنه
+        }
         creat_current_weather();
         creat_forecast_section();
         createTemperatureChart();
@@ -399,7 +398,7 @@ function creat_current_weather() {
                                 <h3 class="font-['400'] text-[20px] capitalize text-[white]">current weather</h3>
                                 <div class="w-full flex items-center">
                                     <figure>
-                                        <img src="src/asset/img/icon/${currentMain}.png" alt="" class="w-[120px]">
+                                        <img src="src/asset/img/icon/${currentMain.toLowerCase()}.png" alt="" class="w-[120px]">
                                     </figure>
                                     <h3 class="text-[40px] lg:text-[40px] xl:text-[50px] 2xl:text-[70px] font-['600'] ml-[30px]">
                                         ${currentTemp}
@@ -485,7 +484,7 @@ function creat_forecast_weather() {
                                         <img src="src/asset/img/icon/${forecastDays[forecastId].description}.png" alt="" class="w-[120px]">
                                     </figure>
                                     <h3 class="text-[40px] lg:text-[40px] xl:text-[50px] 2xl:text-[70px] font-['600'] ml-[30px]">
-                                        ${forecastDays[forecastId].temp}°C
+                                        ${forecastDays[forecastId].temp}
                                     </h3>
                                 </div>
                                 <div class="w-full flex flex-wrap items-center gap-2.5">
@@ -652,7 +651,6 @@ function forecastList() {
             })
             forecastId = item.dataset.id
             item.classList.add('active-nav2')
-            console.log(forecastId);
             creat_forecast_weather()
         })
     });
