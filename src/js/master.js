@@ -39,6 +39,8 @@ function check_nav_li() {
             item.classList.add('active-nav')
             if (item.dataset.name == 'search') {
                 document.getElementById('searchBtn').classList.add('active-nav')
+            }else if(item.dataset.name == 'first'){
+                document.getElementById('firstBtn').classList.add('active-nav')
             }
             let id = item.dataset.name
             pages.forEach((page) => {
