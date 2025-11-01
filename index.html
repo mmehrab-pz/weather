@@ -2,15 +2,15 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather</title>
-    <link rel="stylesheet" href="src/styles/output.css">
-    <link rel="icon" type="image/x-icon" href="src/asset/img/logo/logo-4.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="src/asset/img/logo/logo-4.png">
+    <link rel="stylesheet" href="src/styles/output.css" />
+    <link rel="icon" type="image/x-icon" href="src/asset/img/logo/logo-4.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="src/asset/img/logo/logo-4.png" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <link rel="stylesheet" href="src/styles/loader.css">
+    <link rel="stylesheet" href="src/styles/loader.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
@@ -49,31 +49,36 @@
         <div id="menu-mobile"
             class="w-full h-full absolute top-full left-0 z-100 rounded-[18px] bg-[#ffffff0e] backdrop-blur-2xl overflow-hidden p-3 flex justify-center items-center duration-300">
             <span id="close-menu" class="absolute top-[30px] cursor-pointer">
-                <img src="src/asset/img/icon/down.png" alt="" class="w-[70px]">
+                <img src="src/asset/img/icon/down.png" alt="" class="w-[70px]" />
             </span>
             <ul class="w-full nav-ul">
                 <li data-name="home"
                     class="cursor-pointer rounded-2xl capitalize text-[white] text-[35px] font-['400'] text-center mb-5 active-nav">
-                    home</li>
+                    home
+                </li>
                 <li data-name="first"
                     class="cursor-pointer rounded-2xl capitalize text-[white] text-[35px] font-['400'] text-center mb-5">
-                    weather</li>
+                    weather
+                </li>
                 <li data-name="search"
                     class="cursor-pointer rounded-2xl capitalize text-[white] text-[35px] font-['400'] text-center mb-5">
-                    search</li>
+                    search
+                </li>
                 <li data-name="profile"
                     class="cursor-pointer rounded-2xl capitalize text-[white] text-[35px] font-['400'] text-center mb-5">
-                    profile</li>
+                    profile
+                </li>
                 <li data-name="setting"
                     class="cursor-pointer rounded-2xl capitalize text-[white] text-[35px] font-['400'] text-center">
-                    setting</li>
+                    setting
+                </li>
             </ul>
         </div>
         <!-- ---------------------------------------aside---------------------------------- -->
         <aside
             class="hidden lg:block h-full w-[80px] px-2.5 rounded-l-[18px] bg-[#ffffff0e] backdrop-blur-2xl border-r border-r-[#ffffff17]">
             <figure class="w-full h-[65px] flex items-center">
-                <img src="src/asset/img/icon/clouds.png" alt="">
+                <img src="src/asset/img/icon/clouds.png" alt="" />
             </figure>
             <!-- -----------------nav bar---------------- -->
             <nav class="w-full h-[200px] mt-2.5">
@@ -81,31 +86,31 @@
                     <li data-name="home"
                         class="w-full flex justify-center rounded-2xl p-3.5 mb-7 cursor-pointer hover:bg-[#ffffff1e] duration-300">
                         <figure>
-                            <img src="src/asset/img/icon/icons8-home-96.png" class="w-[30px]">
+                            <img src="src/asset/img/icon/icons8-home-96.png" class="w-[30px]" />
                         </figure>
                     </li>
                     <li id="firstBtn" data-name="first"
                         class="w-full flex justify-center rounded-2xl p-3.5 mb-7 cursor-pointer active-nav hover:bg-[#ffffff1e] duration-300">
                         <figure>
-                            <img src="src/asset/img/icon/icons8-four-squares-96.png" class="w-[30px]">
+                            <img src="src/asset/img/icon/icons8-four-squares-96.png" class="w-[30px]" />
                         </figure>
                     </li>
                     <li id="searchBtn" data-name="search"
                         class="w-full flex justify-center rounded-2xl p-3.5 mb-7 cursor-pointer hover:bg-[#ffffff1e] duration-300">
                         <figure>
-                            <img src="src/asset/img/icon/icons8-search-96.png" class="w-[30px]">
+                            <img src="src/asset/img/icon/icons8-search-96.png" class="w-[30px]" />
                         </figure>
                     </li>
                     <li data-name="profile"
                         class="w-full flex justify-center rounded-2xl p-3.5 mb-7 cursor-pointer hover:bg-[#ffffff1e] duration-300">
                         <figure>
-                            <img src="src/asset/img/icon/icons8-profile-96.png" class="w-[30px]">
+                            <img src="src/asset/img/icon/icons8-profile-96.png" class="w-[30px]" />
                         </figure>
                     </li>
                     <li data-name="setting"
                         class="w-full flex justify-center rounded-2xl p-3.5 mb-7 cursor-pointer hover:bg-[#ffffff1e] duration-300">
                         <figure>
-                            <img src="src/asset/img/icon/icons8-setting-96.png" class="w-[30px]">
+                            <img src="src/asset/img/icon/icons8-setting-96.png" class="w-[30px]" />
                         </figure>
                     </li>
                 </ul>
@@ -116,15 +121,18 @@
             class="w-full h-full lg:w-[calc(100%-80px)] bg-[#ffffff0e] rounded-2xl lg:rounded-[0px] lg:rounded-r-2xl backdrop-blur-2xl relative">
             <!-- ---------------------------------alert--------------------------------- -->
             <span id="alert"
-                class="flex w-full md:w-auto h-[70px] bg-[#1d72f193] backdrop-blur-2xl absolute px-3 z-100 -bottom-[10%] left-[50%] translate-x-[-50%] rounded-t-2xl items-center duration-300">
-                <img src="src/asset/img/icon/info.png" alt="" class="w-[50px]">
-                <p class="text-[16px] text-[white] font-['400'] capitalize ml-2.5">this feature will be available in the
-                    future.</p>
+                class="flex w-full md:w-auto h-[70px] bg-[#1d72f193] backdrop-blur-2xl absolute px-3 z-100 -bottom-[10%] left-[50%] translate-x-[-50%] rounded-t-2xl items-center duration-300 hidden">
+                <img src="src/asset/img/icon/info.png" alt="" class="w-[50px]" />
+                <p class="text-[16px] text-[white] font-['400'] capitalize ml-2.5">
+                    this feature will be available in the future.
+                </p>
             </span>
             <span id="alert2"
-                class="flex w-full md:w-auto h-[70px] bg-[#ff18187a] backdrop-blur-2xl absolute px-3 z-100 -bottom-[10%] left-[50%] translate-x-[-50%] rounded-t-2xl items-center duration-300">
-                <img src="src/asset/img/icon/error.png" alt="" class="w-[50px]">
-                <p class="text-[16px] text-[white] font-['400'] capitalize ml-2.5">city not found!</p>
+                class="flex w-full md:w-auto h-[70px] bg-[#ff18187a] backdrop-blur-2xl absolute px-3 z-100 -bottom-[10%] left-[50%] translate-x-[-50%] rounded-t-2xl items-center duration-300 hidden">
+                <img src="src/asset/img/icon/error.png" alt="" class="w-[50px]" />
+                <p class="text-[16px] text-[white] font-['400'] capitalize ml-2.5">
+                    city not found!
+                </p>
             </span>
             <!-- ---------------------------------home--------------------------------- -->
             <section data-name="home" class="w-full h-full scrollHide hidden">
@@ -133,29 +141,29 @@
                         <li data-name="search"
                             class="w-[calc(100%-50px)] h-full rounded-full px-3 bg-[#00000067] backdrop-blur-2xl border border-dark-border flex justify-between items-center cursor-text">
                             <span class="text-[16px] text-[#ffffff73] capitalize">search for cities</span>
-                            <img src="src/asset/img/icon/search.png" alt="" class="w-5">
+                            <img src="src/asset/img/icon/search.png" alt="" class="w-5" />
                         </li>
                     </ul>
                     <div class="flex lg:hidden items-center">
-                        <figure class=" flex items-center">
-                            <img src="src/asset/img/icon/clouds.png" alt="" class="w-[50px]">
+                        <figure class="flex items-center">
+                            <img src="src/asset/img/icon/clouds.png" alt="" class="w-[50px]" />
                         </figure>
                         <span
-                            class="open-menu w-[40px] h-[40px] flex justify-center items-center rounded-2xl bg-[#ffffff1e] ml-5 cursor-pointer">
-                            <img src="src/asset/img/icon/menu.png" alt="" class="w-[30px]">
+                            class="open-menu w-10 h-10 flex justify-center items-center rounded-2xl bg-[#ffffff1e] ml-5 cursor-pointer">
+                            <img src="src/asset/img/icon/menu.png" alt="" class="w-[30px]" />
                         </span>
                     </div>
                     <div></div>
                     <div class="flex">
                         <span
-                            class="flex alert justify-center items-center w-[40px] h-[40px] rounded-full bg-[#ffffff1e] mr-2.5 cursor-pointer">
+                            class="flex alert justify-center items-center w-10 h-10 rounded-full bg-[#ffffff1e] mr-2.5 cursor-pointer">
                             <figure>
-                                <img src="src/asset/img/icon/bell.png" alt="" class="w-[25px]">
+                                <img src="src/asset/img/icon/bell.png" alt="" class="w-[25px]" />
                             </figure>
                         </span>
                         <figure class="alert">
                             <img src="src/asset/img/mehrab.png" alt="mehrab pourzakaria"
-                                class="w-[40px] rounded-full cursor-pointer">
+                                class="w-10 rounded-full cursor-pointer" />
                         </figure>
                     </div>
                 </header>
@@ -164,10 +172,11 @@
                         <a href="https://pourzakaria.com/" target="_blank"
                             class="w-full h-full flex justify-center items-center rounded-2xl bg1">
                             <figure class="flex items-center">
-                                <img src="src/asset/img/mehrab2.webp" alt="" class="w-[70px] lg:w-[80px]">
+                                <img src="src/asset/img/mehrab2.webp" alt="" class="w-[70px] lg:w-20" />
                                 <figcaption
                                     class="ml-5 capitalize text-[white] text-[30px] lg:text-[50px] xl:text-[70px] font-['500']">
-                                    my website</figcaption>
+                                    my website
+                                </figcaption>
                             </figure>
                         </a>
                     </div>
@@ -175,10 +184,11 @@
                         <a href="https://github.com/mmehrab-pz" target="_blank"
                             class="w-full h-full flex justify-center items-center rounded-2xl bg2">
                             <figure class="flex items-center">
-                                <img src="src/asset/img/icon/github.png" alt="" class="w-[70px] lg:w-[100px]">
+                                <img src="src/asset/img/icon/github.png" alt="" class="w-[70px] lg:w-[100px]" />
                                 <figcaption
                                     class="ml-5 capitalize text-[white] text-[30px] lg:text-[50px] xl:text-[70px] font-['500']">
-                                    github</figcaption>
+                                    github
+                                </figcaption>
                             </figure>
                         </a>
                     </div>
@@ -186,10 +196,11 @@
                         <a href="https://www.instagram.com/mehrab.poorzakaria_web/" target="_blank"
                             class="w-full h-full flex justify-center items-center rounded-2xl bg3">
                             <figure class="flex items-center">
-                                <img src="src/asset/img/icon/instagram.png" alt="" class="w-[70px] lg:w-[100px]">
+                                <img src="src/asset/img/icon/instagram.png" alt="" class="w-[70px] lg:w-[100px]" />
                                 <figcaption
                                     class="ml-5 capitalize text-[white] text-[30px] lg:text-[50px] xl:text-[70px] font-['500']">
-                                    instagram</figcaption>
+                                    instagram
+                                </figcaption>
                             </figure>
                         </a>
                     </div>
@@ -197,10 +208,11 @@
                         <a href="https://www.linkedin.com/in/mehrab-pourzakaria-1b2492237/" target="_blank"
                             class="w-full h-full flex justify-center items-center rounded-2xl bg4">
                             <figure class="flex items-center">
-                                <img src="src/asset/img/icon/linkedin.png" alt="" class="w-[70px] lg:w-[100px]">
+                                <img src="src/asset/img/icon/linkedin.png" alt="" class="w-[70px] lg:w-[100px]" />
                                 <figcaption
                                     class="ml-5 capitalize text-[white] text-[30px] lg:text-[50px] xl:text-[70px] font-['500']">
-                                    linkedin</figcaption>
+                                    linkedin
+                                </figcaption>
                             </figure>
                         </a>
                     </div>
@@ -213,29 +225,29 @@
                         <li data-name="search"
                             class="w-[calc(100%-50px)] h-full rounded-full px-3 bg-[#00000067] backdrop-blur-2xl border border-dark-border flex justify-between items-center cursor-text">
                             <span class="text-[16px] text-[#ffffff73] capitalize">search for cities</span>
-                            <img src="src/asset/img/icon/search.png" alt="" class="w-5">
+                            <img src="src/asset/img/icon/search.png" alt="" class="w-5" />
                         </li>
                     </ul>
                     <div class="flex lg:hidden items-center">
-                        <figure class=" flex items-center">
-                            <img src="src/asset/img/icon/clouds.png" alt="" class="w-[50px]">
+                        <figure class="flex items-center">
+                            <img src="src/asset/img/icon/clouds.png" alt="" class="w-[50px]" />
                         </figure>
                         <span
-                            class="open-menu w-[40px] h-[40px] flex justify-center items-center rounded-2xl bg-[#ffffff1e] ml-5 cursor-pointer">
-                            <img src="src/asset/img/icon/menu.png" alt="" class="w-[30px]">
+                            class="open-menu w-10 h-10 flex justify-center items-center rounded-2xl bg-[#ffffff1e] ml-5 cursor-pointer">
+                            <img src="src/asset/img/icon/menu.png" alt="" class="w-[30px]" />
                         </span>
                     </div>
                     <div></div>
                     <div class="flex">
                         <span
-                            class="flex alert justify-center items-center w-[40px] h-[40px] rounded-full bg-[#ffffff1e] mr-2.5 cursor-pointer">
+                            class="flex alert justify-center items-center w-10 h-10 rounded-full bg-[#ffffff1e] mr-2.5 cursor-pointer">
                             <figure>
-                                <img src="src/asset/img/icon/bell.png" alt="" class="w-[25px]">
+                                <img src="src/asset/img/icon/bell.png" alt="" class="w-[25px]" />
                             </figure>
                         </span>
                         <figure class="alert">
                             <img src="src/asset/img/mehrab.png" alt="mehrab pourzakaria"
-                                class="w-[40px] rounded-full cursor-pointer">
+                                class="w-10 rounded-full cursor-pointer" />
                         </figure>
                     </div>
                 </header>
@@ -263,84 +275,100 @@
                         <!-- -------------popular cities -->
                         <div class="w-full lg:w-3/12 h-[400px] p-2.5">
                             <div class="w-full h-full p-6 rounded-2xl bg-[#ffffff0a] backdrop-blur-2xl">
-                                <h3 class="font-['400'] text-[20px] capitalize text-[white]">popular cities</h3>
-                                <ul id="popular-cities" class=" w-full mt-5">
+                                <h3 class="font-['400'] text-[20px] capitalize text-[white]">
+                                    popular cities
+                                </h3>
+                                <ul id="popular-cities" class="w-full mt-5">
                                     <li
                                         class="px-2.5 rounded-2xl w-full flex justify-between items-center cursor-pointer py-2 border-b border-b-dark-border hover:*:text-[#59deff] hover:**:text-[#59deff]">
                                         <figure class="flex items-center">
-                                            <img src="src/asset/img/icon/cities/tokyo.png" class="w-[25px]">
+                                            <img src="src/asset/img/icon/cities/tokyo.png" class="w-[25px]" />
                                             <figcaption
                                                 class="font-['400'] text-[16px] capitalize text-[white] ml-2 duration-100">
-                                                tokyo</figcaption>
+                                                tokyo
+                                            </figcaption>
                                         </figure>
-                                        <h6 class="font-['400'] text-[14px] capitalize text-[white] duration-100">see
-                                            more</h6>
+                                        <h6 class="font-['400'] text-[14px] capitalize text-[white] duration-100">
+                                            see more
+                                        </h6>
                                     </li>
                                     <li
                                         class="px-2.5 rounded-2xl w-full flex justify-between items-center cursor-pointer py-2 border-b border-b-dark-border hover:*:text-[#59deff] hover:**:text-[#59deff]">
                                         <figure class="flex items-center">
-                                            <img src="src/asset/img/icon/cities/new.png" alt="" class="w-[25px]">
+                                            <img src="src/asset/img/icon/cities/new.png" alt="" class="w-[25px]" />
                                             <figcaption
                                                 class="font-['400'] text-[16px] capitalize text-[white] ml-2 duration-100">
-                                                new york</figcaption>
+                                                new york
+                                            </figcaption>
                                         </figure>
-                                        <h6 class="font-['400'] text-[14px] capitalize text-[white] duration-100">see
-                                            more</h6>
+                                        <h6 class="font-['400'] text-[14px] capitalize text-[white] duration-100">
+                                            see more
+                                        </h6>
                                     </li>
                                     <li
                                         class="px-2.5 rounded-2xl w-full flex justify-between items-center cursor-pointer py-2 border-b border-b-dark-border hover:*:text-[#59deff] hover:**:text-[#59deff]">
                                         <figure class="flex items-center">
-                                            <img src="src/asset/img/icon/cities/london.png" class="w-[25px]">
+                                            <img src="src/asset/img/icon/cities/london.png" class="w-[25px]" />
                                             <figcaption
                                                 class="font-['400'] text-[16px] capitalize text-[white] ml-2 duration-100">
-                                                london</figcaption>
+                                                london
+                                            </figcaption>
                                         </figure>
-                                        <h6 class="font-['400'] text-[14px] capitalize text-[white] duration-100">see
-                                            more</h6>
+                                        <h6 class="font-['400'] text-[14px] capitalize text-[white] duration-100">
+                                            see more
+                                        </h6>
                                     </li>
                                     <li
                                         class="px-2.5 rounded-2xl w-full flex justify-between items-center cursor-pointer py-2 border-b border-b-dark-border hover:*:text-[#59deff] hover:**:text-[#59deff]">
                                         <figure class="flex items-center">
-                                            <img src="src/asset/img/icon/cities/dubai.png" class="w-[25px]">
+                                            <img src="src/asset/img/icon/cities/dubai.png" class="w-[25px]" />
                                             <figcaption
                                                 class="font-['400'] text-[16px] capitalize text-[white] ml-2 duration-100">
-                                                dubai</figcaption>
+                                                dubai
+                                            </figcaption>
                                         </figure>
-                                        <h6 class="font-['400'] text-[14px] capitalize text-[white] duration-100">see
-                                            more</h6>
+                                        <h6 class="font-['400'] text-[14px] capitalize text-[white] duration-100">
+                                            see more
+                                        </h6>
                                     </li>
                                     <li
                                         class="px-2.5 rounded-2xl w-full flex justify-between items-center cursor-pointer py-2 border-b border-b-dark-border hover:*:text-[#59deff] hover:**:text-[#59deff]">
                                         <figure class="flex items-center">
-                                            <img src="src/asset/img/icon/cities/paris.png" class="w-[25px]">
+                                            <img src="src/asset/img/icon/cities/paris.png" class="w-[25px]" />
                                             <figcaption
                                                 class="font-['400'] text-[16px] capitalize text-[white] ml-2 duration-100">
-                                                paris</figcaption>
+                                                paris
+                                            </figcaption>
                                         </figure>
-                                        <h6 class="font-['400'] text-[14px] capitalize text-[white] duration-100">see
-                                            more</h6>
+                                        <h6 class="font-['400'] text-[14px] capitalize text-[white] duration-100">
+                                            see more
+                                        </h6>
                                     </li>
                                     <li
                                         class="px-2.5 rounded-2xl w-full flex justify-between items-center cursor-pointer py-2 border-b border-b-dark-border hover:*:text-[#59deff] hover:**:text-[#59deff]">
                                         <figure class="flex items-center">
-                                            <img src="src/asset/img/icon/cities/rome.png" alt="" class="w-[25px]">
+                                            <img src="src/asset/img/icon/cities/rome.png" alt="" class="w-[25px]" />
                                             <figcaption
                                                 class="font-['400'] text-[16px] capitalize text-[white] ml-2 duration-100">
-                                                rome</figcaption>
+                                                rome
+                                            </figcaption>
                                         </figure>
-                                        <h6 class="font-['400'] text-[14px] capitalize text-[white] duration-100">see
-                                            more</h6>
+                                        <h6 class="font-['400'] text-[14px] capitalize text-[white] duration-100">
+                                            see more
+                                        </h6>
                                     </li>
                                     <li
                                         class="px-2.5 rounded-2xl w-full flex justify-between items-center cursor-pointer py-2 hover:*:text-[#59deff] hover:**:text-[#59deff]">
                                         <figure class="flex items-center">
-                                            <img src="src/asset/img/icon/cities/barcelona.png" class="w-[25px]">
+                                            <img src="src/asset/img/icon/cities/barcelona.png" class="w-[25px]" />
                                             <figcaption
                                                 class="font-['400'] text-[16px] capitalize text-[white] ml-2 duration-100">
-                                                barcelona</figcaption>
+                                                barcelona
+                                            </figcaption>
                                         </figure>
-                                        <h6 class="font-['400'] text-[14px] capitalize text-[white] duration-100">see
-                                            more</h6>
+                                        <h6 class="font-['400'] text-[14px] capitalize text-[white] duration-100">
+                                            see more
+                                        </h6>
                                     </li>
                                 </ul>
                             </div>
@@ -354,20 +382,20 @@
                                     <div class="loader"></div>
                                 </div>
                                 <div class="w-full flex justify-between items-center">
-                                    <h3 class="font-['400'] text-[20px] capitalize text-[white]">forecast</h3>
+                                    <h3 class="font-['400'] text-[20px] capitalize text-[white]">
+                                        forecast
+                                    </h3>
                                     <div class="flex">
                                         <span onclick="getData()"
                                             class="w-11 h-11 flex justify-center items-center rounded-full bg-[#00000067] backdrop-blur-2xl mr-2.5 cursor-pointer hover:bg-[#59deff5e] duration-300">
-                                            <img src="src/asset/img/icon/reset.png" alt="" class="w-[25px]">
+                                            <img src="src/asset/img/icon/reset.png" alt="" class="w-[25px]" />
                                         </span>
                                         <span
-                                            class="font-['400'] text-[16px] capitalize text-[white]  py-2.5 px-4 rounded-2xl bg-[#00000067] backdrop-blur-2xl">5
+                                            class="font-['400'] text-[16px] capitalize text-[white] py-2.5 px-4 rounded-2xl bg-[#00000067] backdrop-blur-2xl">5
                                             days</span>
                                     </div>
                                 </div>
-                                <ul id="forecast-weather" class="w-full mt-3 relative">
-
-                                </ul>
+                                <ul id="forecast-weather" class="w-full mt-3 relative"></ul>
                             </div>
                         </div>
                         <!-- -------------chart -->
@@ -377,19 +405,19 @@
                                 <div class="w-full flex justify-center">
                                     <span data-name="temperature" title="temperature"
                                         class="chartBtn w-11 h-11 flex justify-center items-center rounded-full bg-[#00000067] backdrop-blur-2xl mr-2.5 cursor-pointer hover:bg-[#59deff5e] duration-300 active-btn">
-                                        <img src="src/asset/img/icon/temperature.png" alt="" class="w-[25px]">
+                                        <img src="src/asset/img/icon/temperature.png" alt="" class="w-[25px]" />
                                     </span>
                                     <span data-name="wind" title="wind"
                                         class="chartBtn w-11 h-11 flex justify-center items-center rounded-full bg-[#00000067] backdrop-blur-2xl mr-2.5 cursor-pointer hover:bg-[#59deff5e] duration-300">
-                                        <img src="src/asset/img/icon/wind.png" alt="" class="w-[25px]">
+                                        <img src="src/asset/img/icon/wind.png" alt="" class="w-[25px]" />
                                     </span>
                                     <span data-name="humidity" title="Humidity"
                                         class="chartBtn w-11 h-11 flex justify-center items-center rounded-full bg-[#00000067] backdrop-blur-2xl mr-2.5 cursor-pointer hover:bg-[#59deff5e] duration-300">
-                                        <img src="src/asset/img/icon/Humidity.png" alt="" class="w-[25px]">
+                                        <img src="src/asset/img/icon/Humidity.png" alt="" class="w-[25px]" />
                                     </span>
                                     <span data-name="pressure" title="pressure"
                                         class="chartBtn w-11 h-11 flex justify-center items-center rounded-full bg-[#00000067] backdrop-blur-2xl mr-2.5 cursor-pointer hover:bg-[#59deff5e] duration-300">
-                                        <img src="src/asset/img/icon/pressure.png" alt="" class="w-[25px]">
+                                        <img src="src/asset/img/icon/pressure.png" alt="" class="w-[25px]" />
                                     </span>
                                 </div>
                                 <!-- ---------------temperature -->
@@ -399,7 +427,7 @@
                                         <div class="loader"></div>
                                     </div>
                                     <canvas id="temperatureChart"
-                                        style="width:100% !important; height:100% !important;"></canvas>
+                                        style="width: 100% !important; height: 100% !important"></canvas>
                                 </div>
                                 <!-- ---------------wind -->
                                 <div data-name="wind" class="chartBox w-full h-[calc(100%-45px)] relative hidden">
@@ -408,7 +436,7 @@
                                         <div class="loader"></div>
                                     </div>
                                     <canvas id="windChart"
-                                        style="width:100% !important; height:100% !important;"></canvas>
+                                        style="width: 100% !important; height: 100% !important"></canvas>
                                 </div>
                                 <!-- ---------------Humidity -->
                                 <div data-name="humidity" class="chartBox w-full h-[calc(100%-45px)] relative hidden">
@@ -417,7 +445,7 @@
                                         <div class="loader"></div>
                                     </div>
                                     <canvas id="humidityChart"
-                                        style="width:100% !important; height:100% !important;"></canvas>
+                                        style="width: 100% !important; height: 100% !important"></canvas>
                                 </div>
                                 <!-- ---------------pressure -->
                                 <div data-name="pressure" class="chartBox w-full h-[calc(100%-45px)] relative hidden">
@@ -426,8 +454,7 @@
                                         <div class="loader"></div>
                                     </div>
                                     <canvas id="pressureChart"
-                                        style="width:100% !important; height:100% !important;"></canvas>
-
+                                        style="width: 100% !important; height: 100% !important"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -438,30 +465,30 @@
             <section data-name="search" class="w-full h-full hidden">
                 <header class="w-full flex justify-between items-center px-2.5 h-[65px] border-b border-b-dark-border">
                     <div class="flex lg:hidden items-center">
-                        <figure class=" flex items-center">
-                            <img src="src/asset/img/icon/clouds.png" alt="" class="w-[50px]">
+                        <figure class="flex items-center">
+                            <img src="src/asset/img/icon/clouds.png" alt="" class="w-[50px]" />
                         </figure>
                         <span
-                            class="open-menu w-[40px] h-[40px] flex justify-center items-center rounded-2xl bg-[#ffffff1e] ml-5 cursor-pointer">
-                            <img src="src/asset/img/icon/menu.png" alt="" class="w-[30px]">
+                            class="open-menu w-10 h-10 flex justify-center items-center rounded-2xl bg-[#ffffff1e] ml-5 cursor-pointer">
+                            <img src="src/asset/img/icon/menu.png" alt="" class="w-[30px]" />
                         </span>
                     </div>
                     <div></div>
                     <div class="flex">
                         <span
-                            class="flex alert justify-center items-center w-[40px] h-[40px] rounded-full bg-[#ffffff1e] mr-2.5 cursor-pointer">
+                            class="flex alert justify-center items-center w-10 h-10 rounded-full bg-[#ffffff1e] mr-2.5 cursor-pointer">
                             <figure>
-                                <img src="src/asset/img/icon/bell.png" alt="" class="w-[25px]">
+                                <img src="src/asset/img/icon/bell.png" alt="" class="w-[25px]" />
                             </figure>
                         </span>
                         <figure class="alert">
                             <img src="src/asset/img/mehrab.png" alt="mehrab pourzakaria"
-                                class="w-[40px] rounded-full cursor-pointer">
+                                class="w-10 rounded-full cursor-pointer" />
                         </figure>
                     </div>
                 </header>
-                <section class="w-full h-[calc(100%-65px)] flex flex-wrap p-2.5 scrollHide">
-                    <div class="w-[60%] h-full p-2.5">
+                <section class="w-full h-[calc(100%-65px)] flex flex-wrap-reverse p-2.5 scrollHide">
+                    <div class="w-full lg:w-[60%] h-full p-2.5">
                         <div
                             class="w-full h-full rounded-2xl p-5 bg-[#00000067] backdrop-blur-2xl border border-dark-border scrollHide relative">
                             <div class="loading absolute left-0 top-[50%] translate-y-[-50%] hidden">
@@ -469,38 +496,41 @@
                             </div>
                             <!-- ----------search box -->
                             <div class="w-full h-[60px] flex">
-                                <input id="search-box" type="text" placeholder="search ctiy" class="w-[90%] h-full pl-5 bg-slate-800 text-white text-[16px] font-['400'] border border-dark-border border-r-0 outline-0 rounded-l-full
-                                        placeholder:text-[16px] placeholder:text-[#ffffff73] placeholder:capitalize">
+                                <input id="search-box" type="text" placeholder="search ctiy"
+                                    class="w-[90%] h-full pl-5 bg-slate-800 text-white text-[16px] font-['400'] border border-dark-border border-r-0 outline-0 rounded-l-full placeholder:text-[16px] placeholder:text-[#ffffff73] placeholder:capitalize" />
                                 <button id="search-btn"
                                     class="h-full w-[10%] rounded-r-full flex justify-center items-center bg-slate-800 border border-dark-border border-l-0 outline-0 cursor-pointer">
-                                    <img src="src/asset/img/icon/search.png" alt="" class="w-[30px]">
+                                    <img src="src/asset/img/icon/search.png" alt="" class="w-[30px]" />
                                 </button>
                             </div>
                             <!-- ----------------- -->
                             <ul id="city-box" class="nav-ul w-full h-auto pt-5"></ul>
                         </div>
                     </div>
-                    <div class="w-[40%] h-full p-2.5">
+                    <div class="w-full lg:w-[40%] h-full p-2.5">
                         <div
                             class="w-full h-full rounded-2xl p-5 bg-[#00000067] backdrop-blur-2xl border border-dark-border scrollHide">
-                            <h2 class="text-xl font-semibold mb-3 text-white font-['400']">How to Use the Weather App
+                            <h2 class="text-xl font-semibold mb-3 text-white font-['400']">
+                                How to Use the Weather App
                             </h2>
 
                             <p class="text-slate-300 mb-4">
-                                Type a city name in the search bar to get detailed weather information. Here’s how it
-                                works:
+                                Type a city name in the search bar to get detailed weather
+                                information. Here’s how it works:
                             </p>
 
                             <ul class="list-disc list-inside space-y-2 text-slate-200">
                                 <li>
-                                    <strong>Enter any city name</strong> (e.g. <em>London</em>, <em>New York</em>,
-                                    <em>Tehran</em>).
+                                    <strong>Enter any city name</strong> (e.g. <em>London</em>,
+                                    <em>New York</em>, <em>Tehran</em>).
                                 </li>
                                 <li>
-                                    <strong>Use English</strong> for city names to ensure accurate results.
+                                    <strong>Use English</strong> for city names to ensure
+                                    accurate results.
                                 </li>
                                 <li>
-                                    The app provides full weather details for <strong>day and night</strong>, including:
+                                    The app provides full weather details for
+                                    <strong>day and night</strong>, including:
                                     <ul class="list-disc list-inside ml-6 mt-2 text-slate-300 space-y-1">
                                         <li>Temperature</li>
                                         <li>Wind speed</li>
@@ -511,28 +541,33 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    View all data on <strong>interactive charts</strong> for better visualization.
+                                    View all data on <strong>interactive charts</strong> for
+                                    better visualization.
                                 </li>
                                 <li>
-                                    See the selected city on an <strong>interactive map</strong>.
+                                    See the selected city on an
+                                    <strong>interactive map</strong>.
                                 </li>
                                 <li>
-                                    From <strong>Settings</strong>, switch measurement units (°C / °F, km/h / mph).
+                                    From <strong>Settings</strong>, switch measurement units (°C
+                                    / °F, km/h / mph).
                                 </li>
                             </ul>
 
                             <div class="flex flex-wrap gap-3 mt-6">
                                 <div class="bg-slate-800 p-3 rounded-lg text-sky-300 text-sm">
-                                    💡 Tip: Type <em>city + country</em> for better accuracy (e.g. <strong>Springfield,
-                                        US</strong>).
+                                    💡 Tip: Type <em>city + country</em> for better accuracy
+                                    (e.g. <strong>Springfield, US</strong>).
                                 </div>
                                 <div class="bg-slate-800 p-3 rounded-lg text-amber-300 text-sm">
-                                    ⚠️ Note: Live data requires an internet connection and may vary slightly by source.
+                                    ⚠️ Note: Live data requires an internet connection and may
+                                    vary slightly by source.
                                 </div>
                             </div>
 
                             <footer class="mt-5 text-slate-400 text-sm">
-                                Need help? Click the <strong>Help</strong> icon or contact support.
+                                Need help? Click the <strong>Help</strong> icon or contact
+                                support.
                             </footer>
                         </div>
                     </div>
@@ -545,29 +580,29 @@
                         <li data-name="search"
                             class="w-[calc(100%-50px)] h-full rounded-full px-3 bg-[#00000067] backdrop-blur-2xl border border-dark-border flex justify-between items-center cursor-text">
                             <span class="text-[16px] text-[#ffffff73] capitalize">search for cities</span>
-                            <img src="src/asset/img/icon/search.png" alt="" class="w-5">
+                            <img src="src/asset/img/icon/search.png" alt="" class="w-5" />
                         </li>
                     </ul>
                     <div class="flex lg:hidden items-center">
-                        <figure class=" flex items-center">
-                            <img src="src/asset/img/icon/clouds.png" alt="" class="w-[50px]">
+                        <figure class="flex items-center">
+                            <img src="src/asset/img/icon/clouds.png" alt="" class="w-[50px]" />
                         </figure>
                         <span
                             class="open-menu w-10 h-10 flex justify-center items-center rounded-2xl bg-[#ffffff1e] ml-5 cursor-pointer">
-                            <img src="src/asset/img/icon/menu.png" alt="" class="w-[30px]">
+                            <img src="src/asset/img/icon/menu.png" alt="" class="w-[30px]" />
                         </span>
                     </div>
                     <div></div>
                     <div class="flex">
                         <span
-                            class="flex alert justify-center items-center w-[40px] h-[40px] rounded-full bg-[#ffffff1e] mr-2.5 cursor-pointer">
+                            class="flex alert justify-center items-center w-10 h-10 rounded-full bg-[#ffffff1e] mr-2.5 cursor-pointer">
                             <figure>
-                                <img src="src/asset/img/icon/bell.png" alt="" class="w-[25px]">
+                                <img src="src/asset/img/icon/bell.png" alt="" class="w-[25px]" />
                             </figure>
                         </span>
                         <figure class="alert">
                             <img src="src/asset/img/mehrab.png" alt="mehrab pourzakaria"
-                                class="w-10 rounded-full cursor-pointer">
+                                class="w-10 rounded-full cursor-pointer" />
                         </figure>
                     </div>
                 </header>
@@ -576,14 +611,16 @@
                         <!-- ----------------profile -->
                         <div
                             class="w-full h-full rounded-2xl p-5 bg-[#00000067] backdrop-blur-2xl border border-dark-border scrollHide">
-                            <h3 class="text-[white] h-[50px] capitalize font-['500'] text-[20px]">profile</h3>
+                            <h3 class="text-[white] h-[50px] capitalize font-['500'] text-[20px]">
+                                profile
+                            </h3>
                             <div class="w-full h-[calc(100%-50px)] flex flex-col justify-center items-center">
-
                                 <figure class="w-[200px] h-[200px] rounded-full overflow-hidden">
-                                    <img src="src/asset/img/mehrab.png" alt="">
+                                    <img src="src/asset/img/mehrab.png" alt="" />
                                 </figure>
-                                <h3 class="text-white font-['500'] text-[25px] capitalize text-center mt-5">mehrab
-                                    pourzakaria</h3>
+                                <h3 class="text-white font-['500'] text-[25px] capitalize text-center mt-5">
+                                    mehrab pourzakaria
+                                </h3>
                                 <span
                                     class="text-[30px] text-center flex justify-center capitalize text-[#59deff49] font-['500'] mt-5">This
                                     feature will be available in the future.</span>
@@ -594,7 +631,9 @@
                         <!-- ----------------edit data user -->
                         <div
                             class="w-full h-full rounded-2xl p-5 bg-[#00000067] backdrop-blur-2xl border border-dark-border scrollHide">
-                            <h3 class="text-[white] capitalize font-['500'] text-[20px]">edit data user</h3>
+                            <h3 class="text-[white] capitalize font-['500'] text-[20px]">
+                                edit data user
+                            </h3>
                             <!-- -----------------------form----------- -->
                             <form class="w-full mt-5 flex flex-wrap">
                                 <!-- ----------name -->
@@ -602,91 +641,91 @@
                                     <label for=""
                                         class="text-[16px] capitalize text-[#59deff] font-['400'] mb-2.5">first
                                         name</label>
-                                    <input type="text" disabled placeholder="mehrab" class="h-10 alert pl-2.5 bg-slate-800 text-white border border-dark-border outline-0 rounded-[10px]
-                                        placeholder:text-[16px] placeholder:text-[#ffffff73] placeholder:capitalize">
+                                    <input type="text" disabled placeholder="mehrab"
+                                        class="h-10 alert pl-2.5 bg-slate-800 text-white border border-dark-border outline-0 rounded-[10px] placeholder:text-[16px] placeholder:text-[#ffffff73] placeholder:capitalize" />
                                 </div>
                                 <!-- ----------l name -->
                                 <div class="w-full lg:w-1/2 flex flex-col px-2.5 mb-5">
                                     <label for="" class="text-[16px] capitalize text-[#59deff] font-['400'] mb-2.5">last
                                         name</label>
-                                    <input type="text" disabled placeholder="pourzakaria" class="h-10 alert pl-2.5 bg-slate-800 text-white border border-dark-border outline-0 rounded-[10px]
-                                        placeholder:text-[16px] placeholder:text-[#ffffff73] placeholder:capitalize">
+                                    <input type="text" disabled placeholder="pourzakaria"
+                                        class="h-10 alert pl-2.5 bg-slate-800 text-white border border-dark-border outline-0 rounded-[10px] placeholder:text-[16px] placeholder:text-[#ffffff73] placeholder:capitalize" />
                                 </div>
                                 <!-- ----------username -->
                                 <div class="w-full lg:w-1/2 flex flex-col px-2.5 mb-5">
                                     <label for=""
                                         class="text-[16px] capitalize text-[#59deff] font-['400'] mb-2.5">username</label>
-                                    <input type="text" disabled placeholder="medivh" class="h-10 alert pl-2.5 bg-slate-800 text-white border border-dark-border outline-0 rounded-[10px]
-                                        placeholder:text-[16px] placeholder:text-[#ffffff73] placeholder:capitalize">
+                                    <input type="text" disabled placeholder="medivh"
+                                        class="h-10 alert pl-2.5 bg-slate-800 text-white border border-dark-border outline-0 rounded-[10px] placeholder:text-[16px] placeholder:text-[#ffffff73] placeholder:capitalize" />
                                 </div>
                                 <!-- ----------phone -->
                                 <div class="w-full lg:w-1/2 flex flex-col px-2.5 mb-5">
                                     <label for=""
                                         class="text-[16px] capitalize text-[#59deff] font-['400'] mb-2.5">phone
                                         number</label>
-                                    <input type="text" disabled placeholder="+989309791544" class="h-10 alert pl-2.5 bg-slate-800 text-white border border-dark-border outline-0 rounded-[10px]
-                                        placeholder:text-[16px] placeholder:text-[#ffffff73] placeholder:capitalize">
+                                    <input type="text" disabled placeholder="+989309791544"
+                                        class="h-10 alert pl-2.5 bg-slate-800 text-white border border-dark-border outline-0 rounded-[10px] placeholder:text-[16px] placeholder:text-[#ffffff73] placeholder:capitalize" />
                                 </div>
                                 <!-- ----------email -->
                                 <div class="w-full lg:w-1/2 flex flex-col px-2.5 mb-5">
                                     <label for=""
                                         class="text-[16px] capitalize text-[#59deff] font-['400'] mb-2.5">email</label>
-                                    <input type="email" disabled placeholder="mmehrab.pk@gmail.com" class="h-10 alert pl-2.5 bg-slate-800 text-white border border-dark-border outline-0 rounded-[10px]
-                                        placeholder:text-[16px] placeholder:text-[#ffffff73] placeholder:capitalize">
+                                    <input type="email" disabled placeholder="mmehrab.pk@gmail.com"
+                                        class="h-10 alert pl-2.5 bg-slate-800 text-white border border-dark-border outline-0 rounded-[10px] placeholder:text-[16px] placeholder:text-[#ffffff73] placeholder:capitalize" />
                                 </div>
                                 <!-- ----------password -->
                                 <div class="w-full lg:w-1/2 flex flex-col px-2.5 mb-5">
                                     <label for=""
                                         class="text-[16px] capitalize text-[#59deff] font-['400'] mb-2.5">password</label>
-                                    <input type="password" disabled placeholder="" class="h-10 alert pl-2.5 bg-slate-800 text-white border border-dark-border outline-0 rounded-[10px]
-                                        placeholder:text-[16px] placeholder:text-[#ffffff73] placeholder:capitalize">
+                                    <input type="password" disabled placeholder=""
+                                        class="h-10 alert pl-2.5 bg-slate-800 text-white border border-dark-border outline-0 rounded-[10px] placeholder:text-[16px] placeholder:text-[#ffffff73] placeholder:capitalize" />
                                 </div>
                                 <!-- ----------country -->
                                 <div class="w-full lg:w-1/2 flex flex-col px-2.5 mb-5">
                                     <label for=""
                                         class="text-[16px] capitalize text-[#59deff] font-['400'] mb-2.5">country</label>
-                                    <input type="text" disabled placeholder="iran" class="h-10 alert pl-2.5 bg-slate-800 text-white border border-dark-border outline-0 rounded-[10px]
-                                        placeholder:text-[16px] placeholder:text-[#ffffff73] placeholder:capitalize">
+                                    <input type="text" disabled placeholder="iran"
+                                        class="h-10 alert pl-2.5 bg-slate-800 text-white border border-dark-border outline-0 rounded-[10px] placeholder:text-[16px] placeholder:text-[#ffffff73] placeholder:capitalize" />
                                 </div>
                                 <!-- ----------repeat password -->
                                 <div class="w-full lg:w-1/2 flex flex-col px-2.5 mb-5">
                                     <label for=""
                                         class="text-[16px] capitalize text-[#59deff] font-['400'] mb-2.5">repeat
                                         password</label>
-                                    <input type="password" disabled placeholder="" class="h-10 alert pl-2.5 bg-slate-800 text-white border border-dark-border outline-0 rounded-[10px]
-                                        placeholder:text-[16px] placeholder:text-[#ffffff73] placeholder:capitalize">
+                                    <input type="password" disabled placeholder=""
+                                        class="h-10 alert pl-2.5 bg-slate-800 text-white border border-dark-border outline-0 rounded-[10px] placeholder:text-[16px] placeholder:text-[#ffffff73] placeholder:capitalize" />
                                 </div>
                                 <!-- ----------city -->
                                 <div class="w-full lg:w-1/2 flex flex-col px-2.5 mb-5">
                                     <label for=""
                                         class="text-[16px] capitalize text-[#59deff] font-['400'] mb-2.5">city</label>
-                                    <input type="text" disabled placeholder="tehran" class="h-10 alert pl-2.5 bg-slate-800 text-white border border-dark-border outline-0 rounded-[10px]
-                                        placeholder:text-[16px] placeholder:text-[#ffffff73] placeholder:capitalize">
+                                    <input type="text" disabled placeholder="tehran"
+                                        class="h-10 alert pl-2.5 bg-slate-800 text-white border border-dark-border outline-0 rounded-[10px] placeholder:text-[16px] placeholder:text-[#ffffff73] placeholder:capitalize" />
                                 </div>
                                 <!-- ----------birthday -->
                                 <div class="w-full lg:w-1/2 flex flex-col px-2.5 mb-5">
                                     <label for=""
                                         class="text-[16px] capitalize text-[#59deff] font-['400'] mb-2.5">birthday</label>
-                                    <input type="date" disabled placeholder="tehran" class="h-10 alert pl-2.5 bg-slate-800 text-white border border-dark-border outline-0 rounded-[10px]
-                                        placeholder:text-[16px] placeholder:text-[#ffffff73] placeholder:capitalize">
+                                    <input type="date" disabled placeholder="tehran"
+                                        class="h-10 alert pl-2.5 bg-slate-800 text-white border border-dark-border outline-0 rounded-[10px] placeholder:text-[16px] placeholder:text-[#ffffff73] placeholder:capitalize" />
                                 </div>
                                 <!-- ----------gender -->
                                 <div class="w-full lg:w-1/2 flex flex-col px-2.5 mb-5">
                                     <label for=""
                                         class="text-[16px] capitalize text-[#59deff] font-['400'] mb-2.5">gender</label>
-                                    <input type="text" disabled placeholder="male" class="alert h-10 pl-2.5 bg-slate-800 text-white border border-dark-border outline-0 rounded-[10px]
-                                        placeholder:text-[16px] placeholder:text-[#ffffff73] placeholder:capitalize">
+                                    <input type="text" disabled placeholder="male"
+                                        class="alert h-10 pl-2.5 bg-slate-800 text-white border border-dark-border outline-0 rounded-[10px] placeholder:text-[16px] placeholder:text-[#ffffff73] placeholder:capitalize" />
                                 </div>
                                 <!-- ----------buttons -->
                                 <div class="w-full lg:w-1/2 flex items-end px-2.5 mb-5 gap-2.5">
                                     <button type="button"
                                         class="alert w-1/2 h-10 rounded-[10px] border-2 border-[#59deff] text-[#59deff] text-[16px] font-['400'] cursor-pointer flex gap-2.5 justify-center items-center">
-                                        <img src="src/asset/img/icon/cancel.png" alt="" class="w-[30px]">
+                                        <img src="src/asset/img/icon/cancel.png" alt="" class="w-[30px]" />
                                         cancel
                                     </button>
                                     <button type="button"
                                         class="alert w-1/2 h-10 rounded-[10px] border-2 border-[#59deff] bg-[#59deff] text-[black] text-[16px] font-['400'] cursor-pointer flex gap-2.5 justify-center items-center">
-                                        <img src="src/asset/img/icon/save.png" alt="" class="w-[30px]">
+                                        <img src="src/asset/img/icon/save.png" alt="" class="w-[30px]" />
                                         save
                                     </button>
                                 </div>
@@ -702,36 +741,38 @@
                         <li data-name="search"
                             class="w-[calc(100%-50px)] h-full rounded-full px-3 bg-[#00000067] backdrop-blur-2xl border border-dark-border flex justify-between items-center cursor-text">
                             <span class="text-[16px] text-[#ffffff73] capitalize">search for cities</span>
-                            <img src="src/asset/img/icon/search.png" alt="" class="w-5">
+                            <img src="src/asset/img/icon/search.png" alt="" class="w-5" />
                         </li>
                     </ul>
                     <div class="flex lg:hidden items-center">
-                        <figure class=" flex items-center">
-                            <img src="src/asset/img/icon/clouds.png" alt="" class="w-[50px]">
+                        <figure class="flex items-center">
+                            <img src="src/asset/img/icon/clouds.png" alt="" class="w-[50px]" />
                         </figure>
                         <span
                             class="open-menu w-10 h-10 flex justify-center items-center rounded-2xl bg-[#ffffff1e] ml-5 cursor-pointer">
-                            <img src="src/asset/img/icon/menu.png" alt="" class="w-[30px]">
+                            <img src="src/asset/img/icon/menu.png" alt="" class="w-[30px]" />
                         </span>
                     </div>
                     <div></div>
                     <div class="flex">
                         <span
-                            class="flex alert justify-center items-center w-[40px] h-[40px] rounded-full bg-[#ffffff1e] mr-2.5 cursor-pointer">
+                            class="flex alert justify-center items-center w-10 h-10 rounded-full bg-[#ffffff1e] mr-2.5 cursor-pointer">
                             <figure>
-                                <img src="src/asset/img/icon/bell.png" alt="" class="w-[25px]">
+                                <img src="src/asset/img/icon/bell.png" alt="" class="w-[25px]" />
                             </figure>
                         </span>
                         <figure class="alert">
                             <img src="src/asset/img/mehrab.png" alt="mehrab pourzakaria"
-                                class="w-10 rounded-full cursor-pointer">
+                                class="w-10 rounded-full cursor-pointer" />
                         </figure>
                     </div>
                 </header>
                 <section class="w-full h-[calc(100%-65px)] p-2.5 flex flex-wrap relative">
                     <div class="w-full h-full p-2.5 scrollHide">
                         <!-- -------------------------------------units -->
-                        <h3 class="text-[white] text-[16px] capitalize font-['500']">unit</h3>
+                        <h3 class="text-[white] text-[16px] capitalize font-['500']">
+                            unit
+                        </h3>
                         <div
                             class="w-full p-5 rounded-2xl bg-[#00000067] backdrop-blur-2xl border border-dark-border mt-2.5 relative overflow-hidden">
                             <span id="loading2"
@@ -740,105 +781,142 @@
                             </span>
 
                             <!-- -------------temperature -->
-                            <h3 class="text-[#ffffff7e] text-[14px] uppercase font-['500']">temperature</h3>
+                            <h3 class="text-[#ffffff7e] text-[14px] uppercase font-['500']">
+                                temperature
+                            </h3>
                             <div data-temperature=""
                                 class="temperature w-full h-12 rounded-xl p-1 mt-2.5 flex bg-slate-800 border border-dark-border">
                                 <div
-                                    class="setting-option w-1/3 rounded-lg flex justify-center items-center text-[#ffffff7e]  font-['400'] text-[14px] cursor-pointer setting-active">
-                                    celsius</div>
+                                    class="setting-option w-1/3 rounded-lg flex justify-center items-center text-[#ffffff7e] font-['400'] text-[14px] cursor-pointer setting-active">
+                                    celsius
+                                </div>
                                 <div
-                                    class="setting-option w-1/3 rounded-lg flex justify-center items-center text-[#ffffff7e]  font-['400'] text-[14px] cursor-pointer">
-                                    fahrenheit</div>
+                                    class="setting-option w-1/3 rounded-lg flex justify-center items-center text-[#ffffff7e] font-['400'] text-[14px] cursor-pointer">
+                                    fahrenheit
+                                </div>
                                 <div
-                                    class="setting-option w-1/3 rounded-lg flex justify-center items-center text-[#ffffff7e]  font-['400'] text-[14px] cursor-pointer">
-                                    kelvin</div>
+                                    class="setting-option w-1/3 rounded-lg flex justify-center items-center text-[#ffffff7e] font-['400'] text-[14px] cursor-pointer">
+                                    kelvin
+                                </div>
                             </div>
                             <!-- -------------wind speed -->
-                            <h3 class="text-[#ffffff7e] text-[14px] uppercase font-['500'] mt-5">wind speed</h3>
+                            <h3 class="text-[#ffffff7e] text-[14px] uppercase font-['500'] mt-5">
+                                wind speed
+                            </h3>
                             <div
                                 class="windSpeed w-full h-12 rounded-xl p-1 mt-2.5 flex bg-slate-800 border border-dark-border">
                                 <div
                                     class="w-1/3 rounded-lg flex justify-center items-center text-[#ffffff7e] font-['400'] text-[14px] cursor-pointer">
-                                    km/h</div>
+                                    km/h
+                                </div>
                                 <div
                                     class="w-1/3 rounded-lg flex justify-center items-center text-[#ffffff7e] font-['400'] text-[14px] cursor-pointer setting-active">
-                                    m/s</div>
+                                    m/s
+                                </div>
                                 <div
                                     class="w-1/3 rounded-lg flex justify-center items-center text-[#ffffff7e] font-['400'] text-[14px] cursor-pointer">
-                                    mph</div>
+                                    mph
+                                </div>
                             </div>
                             <!-- -------------pressure -->
-                            <h3 class="text-[#ffffff7e] text-[14px] uppercase font-['500'] mt-5">pressure</h3>
+                            <h3 class="text-[#ffffff7e] text-[14px] uppercase font-['500'] mt-5">
+                                pressure
+                            </h3>
                             <div
                                 class="pressure w-full h-12 rounded-xl p-1 mt-2.5 flex bg-slate-800 border border-dark-border">
                                 <div
                                     class="w-1/4 rounded-lg flex justify-center items-center text-[#ffffff7e] font-['400'] text-[14px] cursor-pointer setting-active">
-                                    hPa</div>
+                                    hPa
+                                </div>
                                 <div
                                     class="w-1/4 rounded-lg flex justify-center items-center text-[#ffffff7e] font-['400'] text-[14px] cursor-pointer">
-                                    atm</div>
+                                    atm
+                                </div>
                                 <div
                                     class="w-1/4 rounded-lg flex justify-center items-center text-[#ffffff7e] font-['400'] text-[14px] cursor-pointer">
-                                    Pa</div>
+                                    Pa
+                                </div>
                                 <div
                                     class="w-1/4 rounded-lg flex justify-center items-center text-[#ffffff7e] font-['400'] text-[14px] cursor-pointer">
-                                    mmHg</div>
+                                    mmHg
+                                </div>
                             </div>
                             <!-- -------------precipitation -->
-                            <h3 class="text-[#ffffff7e] text-[14px] uppercase font-['500'] mt-5">precipitation</h3>
+                            <h3 class="text-[#ffffff7e] text-[14px] uppercase font-['500'] mt-5">
+                                precipitation
+                            </h3>
                             <div
                                 class="precipitation w-full h-12 rounded-xl p-1 mt-2.5 flex bg-slate-800 border border-dark-border">
                                 <div
                                     class="w-1/2 rounded-lg flex justify-center items-center text-[#ffffff7e] font-['400'] text-[14px] cursor-pointer setting-active">
-                                    milimeters</div>
+                                    milimeters
+                                </div>
                                 <div
                                     class="w-1/2 rounded-lg flex justify-center items-center text-[#ffffff7e] font-['400'] text-[14px] cursor-pointer">
-                                    inches</div>
+                                    inches
+                                </div>
                             </div>
                             <!-- -------------distance -->
-                            <h3 class="text-[#ffffff7e] text-[14px] uppercase font-['500'] mt-5">distance</h3>
+                            <h3 class="text-[#ffffff7e] text-[14px] uppercase font-['500'] mt-5">
+                                distance
+                            </h3>
                             <div
                                 class="distance w-full h-12 rounded-xl p-1 mt-2.5 flex bg-slate-800 border border-dark-border">
                                 <div
                                     class="w-1/2 rounded-lg flex justify-center items-center text-[#ffffff7e] font-['400'] text-[14px] cursor-pointer setting-active">
-                                    kilometers</div>
+                                    kilometers
+                                </div>
                                 <div
                                     class="w-1/2 rounded-lg flex justify-center items-center text-[#ffffff7e] font-['400'] text-[14px] cursor-pointer">
-                                    miles</div>
+                                    miles
+                                </div>
                             </div>
                         </div>
                         <!-- -------------------------------------notification -->
-                        <h3 class="text-[white] text-[16px] capitalize font-['500'] mt-5">notification</h3>
+                        <h3 class="text-[white] text-[16px] capitalize font-['500'] mt-5">
+                            notification
+                        </h3>
                         <div
                             class="alert w-full p-5 rounded-2xl bg-[#00000067] backdrop-blur-2xl border border-dark-border mt-2.5 cursor-pointer">
                             <div class="w-full flex items-center justify-between">
-                                <h4 class="text-[white] text-[15px] capitalize font-['400']">notification</h4>
+                                <h4 class="text-[white] text-[15px] capitalize font-['400']">
+                                    notification
+                                </h4>
                                 <span
                                     class="w-12 h-6 rounded-full bg-[#3d3d3d7c] border border-dark-border cursor-pointer flex items-center pl-[3px]">
                                     <span class="w-4 h-4 rounded-full bg-white"></span>
                                 </span>
                             </div>
-                            <p class="text-[#ffffff7e] capitalize font-['400'] text-[14px]">be aware of the weather</p>
+                            <p class="text-[#ffffff7e] capitalize font-['400'] text-[14px]">
+                                be aware of the weather
+                            </p>
                         </div>
                         <!-- -------------------------------------general -->
-                        <h3 class="text-[white] text-[16px] capitalize font-['500'] mt-5">general</h3>
+                        <h3 class="text-[white] text-[16px] capitalize font-['500'] mt-5">
+                            general
+                        </h3>
                         <div
                             class="alert w-full p-5 rounded-2xl bg-[#00000067] backdrop-blur-2xl border border-dark-border mt-2.5 cursor-pointer">
                             <div class="w-full flex items-center justify-between pb-5 border-b border-b-dark-border">
-                                <h4 class="text-[white] text-[15px] capitalize font-['400']">12-Hour time</h4>
+                                <h4 class="text-[white] text-[15px] capitalize font-['400']">
+                                    12-Hour time
+                                </h4>
                                 <span
                                     class="w-12 h-6 bg-[#3d3d3d7c] border border-dark-border rounded-full cursor-pointer flex items-center pl-[3px]">
                                     <span class="w-4 h-4 rounded-full bg-white"></span>
                                 </span>
                             </div>
                             <div class="w-full flex items-center justify-between pt-5">
-                                <h4 class="text-[white] text-[15px] capitalize font-['400']">location</h4>
+                                <h4 class="text-[white] text-[15px] capitalize font-['400']">
+                                    location
+                                </h4>
                                 <span
                                     class="w-12 h-6 bg-[#3d3d3d7c] border border-dark-border rounded-full cursor-pointer flex items-center pl-[3px]">
                                     <span class="w-4 h-4 rounded-full bg-white"></span>
                                 </span>
                             </div>
-                            <p class="text-[#ffffff7e] capitalize font-['400'] text-[14px]">get weather of your location
+                            <p class="text-[#ffffff7e] capitalize font-['400'] text-[14px]">
+                                get weather of your location
                             </p>
                         </div>
                     </div>
