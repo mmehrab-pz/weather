@@ -12,7 +12,7 @@ Your recent city searches are automatically saved for quick access later.
 View the selected city directly on the map with live updates.  
 
 🌡️ **Detailed Weather Information**  
-Displays temperature, humidity, wind speed, pressure, visibility, and date.  
+Displays temperature, humidity, wind speed, pressure, visibility and date.  
 
 📅 **5-Day Forecast**  
 View weather predictions for the next five days in a clean, organized layout.  
